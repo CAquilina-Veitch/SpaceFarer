@@ -5,12 +5,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public enum tileType { empty, single, nine, test}
+public enum tileShape { empty, single, nine, test}
+public enum tileType { empty, ore, test0, test1}
 
 
 public class TileManager : MonoBehaviour
 {
+    [SerializeField] Tile TilePrefab;
+
     public Dictionary<Vector2, Tile> tileDictionary = new Dictionary<Vector2, Tile>();
+    public Dictionary<tileType, tileShape> tileTypeShapes = new Dictionary<tileType, tileShape> 
+    { 
+        {tileType.ore, tileShape.nine},
+        {tileType.test0, tileShape.single},
+        {tileType.test1, tileShape.test},
+        {tileType.empty, tileShape.empty}
+    };
 
     public Tile[] tilesOnStart;
 
@@ -28,34 +38,46 @@ public class TileManager : MonoBehaviour
     {
         foreach(Tile tile in tilesOnStart)
         {
+            SetTile(tile.coordinate, tileTypeShapes[tile.type],tile);
             tileDictionary[tile.coordinate] = tile;
         }
     }
 
 
-    Vector2[] CoordinatePositionToVectorArray(Vector2 basePos, tileType type)
+    Vector2[] CoordinatePositionToVectorArray(Vector2 basePos, tileShape shape)
     {
-        Vector2[] temp = new Vector2[ExternalTilePositions[(int)type].Length];
-        for(int i = 0; i < ExternalTilePositions[(int)type].Length; i++)
+        Vector2[] temp = new Vector2[ExternalTilePositions[(int)shape].Length];
+        for(int i = 0; i < ExternalTilePositions[(int)shape].Length; i++)
         {
-            temp[i] = basePos + ExternalTilePositions[(int)type][i];
+            temp[i] = basePos + ExternalTilePositions[(int)shape][i];
         }
         
         return temp;
     }
 
-    bool checkEmpty(Vector2 basePos, tileType type)
+    bool checkShapeEmpty(Vector2 basePos, tileShape shape)
     {
-        Vector2[] temp = CoordinatePositionToVectorArray(basePos, type);
+        Vector2[] temp = CoordinatePositionToVectorArray(basePos, shape);
         foreach(Vector2 pos in temp)
         {
             tileDictionary.TryGetValue(pos, out Tile v);
+            if (v != null)
+            {
+                return false;
+            }
+            
         }
+        return true;
     }
 
-    void SetTile(Vector2 basePos,tileType type)
+    void SetTile(Vector2 basePos, tileShape shape, Tile tileObj)
     {
-
+        
+        Vector2[] temp = CoordinatePositionToVectorArray(basePos, shape);
+        foreach (Vector2 pos in temp)
+        {
+            tileDictionary[pos] = tileObj;
+        }
     }
 
 
@@ -63,11 +85,13 @@ public class TileManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Vector2[] a =CoordinatePositionToVectorArray(new Vector2(5, 2), tileType.nine);
+        Vector2[] a =CoordinatePositionToVectorArray(new Vector2(5, 2), tileShape.nine);
         Debug.Log("5, 2 becomes  " + string.Join("",
              new List<Vector2>(a)
              .ConvertAll(i => i.ToString())
              .ToArray()));
+
+        Tile t = Instantiate(TilePrefab);
     }
 
     // Update is called once per frame
