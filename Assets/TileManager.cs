@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 public enum tileShape { empty, single, nine, test}
-public enum tileType { empty, ore, test0, test1}
+public enum tileType { empty, ore, furnace, test1}
 
 
 public class TileManager : MonoBehaviour
@@ -31,14 +31,14 @@ public class TileManager : MonoBehaviour
     public Vector2 draftCoord;
     [Header("Tiles Information")]
 
-    [SerializeField] Tile TilePrefab;
+    //[SerializeField] Tile TilePrefab;
     [SerializeField] Tile[] tilePrefabs;
 
     public Dictionary<Vector2, Tile> tileDictionary = new Dictionary<Vector2, Tile>();
     public Dictionary<tileType, tileShape> tileTypeShapes = new Dictionary<tileType, tileShape>
     {
         {tileType.ore, tileShape.nine},
-        {tileType.test0, tileShape.single},
+        {tileType.furnace, tileShape.single},
         {tileType.test1, tileShape.test},
         {tileType.empty, tileShape.empty}
     };
@@ -118,7 +118,7 @@ public class TileManager : MonoBehaviour
              .ToArray()));
 
         initiate();
-        Tile t = Instantiate(TilePrefab);
+        //Tile t = Instantiate(getTilePrefab(type));
     }
 
     void FixedUpdate()
@@ -181,7 +181,7 @@ public class TileManager : MonoBehaviour
 
     Tile MakeTile(Vector2 coord, tileType type)
     {
-        Tile tempTile = Instantiate(TilePrefab, coordToPoint(coord), Quaternion.identity, transform);
+        Tile tempTile = Instantiate(getTilePrefab(type), coordToPoint(coord), Quaternion.identity, transform);
         return tempTile;
     }
     void replaceTile(Vector2 coord)
@@ -226,7 +226,7 @@ public class TileManager : MonoBehaviour
 
     Tile getTilePrefab(tileType type)
     {
-        
+        return tilePrefabs[(int)type];
     }
 
 
