@@ -32,6 +32,7 @@ public class TileManager : MonoBehaviour
     [Header("Tiles Information")]
 
     [SerializeField] Tile TilePrefab;
+    [SerializeField] Tile[] tilePrefabs;
 
     public Dictionary<Vector2, Tile> tileDictionary = new Dictionary<Vector2, Tile>();
     public Dictionary<tileType, tileShape> tileTypeShapes = new Dictionary<tileType, tileShape>
@@ -222,4 +223,11 @@ public class TileManager : MonoBehaviour
         }
         else { Debug.Log("NOTHING ON MOUSE"); return Vector2.zero; }
     }
+
+    Tile getTilePrefab(tileType type)
+    {
+        
+    }
+
+
 }
