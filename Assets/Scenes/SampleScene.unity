@@ -427,12 +427,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b11a881813ddb242bdd2d1d5b0f173d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selecting: 1
   CameraGroundLayer:
     serializedVersion: 2
     m_Bits: 64
   Camera: {fileID: 233417018}
-  TilePrefab: {fileID: 7366246581113151018, guid: d57b688c9351c054c925a752b5027d97, type: 3}
+  selecting: 1
+  currentlySelected: {fileID: 0}
+  selectedTileType: 0
+  drafted: 0
+  draftType: 0
+  draftCoord: {x: 0, y: 0}
+  tilePrefabs:
+  - {fileID: 7366246581113151018, guid: af97cd1ad6a10024282b5521dd12e78b, type: 3}
+  - {fileID: 7366246581113151018, guid: af97cd1ad6a10024282b5521dd12e78b, type: 3}
+  - {fileID: 7366246581113151018, guid: d57b688c9351c054c925a752b5027d97, type: 3}
   tilesOnStart: []
 --- !u!4 &993367026
 Transform:
