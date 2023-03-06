@@ -11,6 +11,26 @@ public enum tileType { empty, ore, test0, test1}
 
 public class TileManager : MonoBehaviour
 {
+    [Header("Camera Selection")]
+
+    [SerializeField] LayerMask CameraGroundLayer;
+
+    [SerializeField] Transform Camera;
+
+    [Header("Tile Selection")]
+
+    public bool selecting = true;
+
+    public Tile currentlySelected;
+    public tileType selectedTileType;
+
+    [Header("Draft Tile")]
+
+    public bool drafted;
+    public tileType draftType;
+    public Vector2 draftCoord;
+    [Header("Tiles Information")]
+
     [SerializeField] Tile TilePrefab;
 
     public Dictionary<Vector2, Tile> tileDictionary = new Dictionary<Vector2, Tile>();
@@ -21,10 +41,6 @@ public class TileManager : MonoBehaviour
         {tileType.test1, tileShape.test},
         {tileType.empty, tileShape.empty}
     };
-
-    public Tile[] tilesOnStart;
-
-
     public Vector2[][] ExternalTilePositions =
     {
         new[] {new Vector2(0,0)},
@@ -32,6 +48,15 @@ public class TileManager : MonoBehaviour
         new[] {new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1),new Vector2(0,-1),new Vector2(0,0),new Vector2(0,1),new Vector2(1,-1),new Vector2(1,0),new Vector2(1,1)},
         new[] {new Vector2(-1,0),new Vector2(0,0),new Vector2(1,0)}
     };
+
+    [Header("Instantiate Information")]
+
+    public Tile[] tilesOnStart;
+
+
+    
+
+
 
 
     void initiate()
@@ -91,12 +116,86 @@ public class TileManager : MonoBehaviour
              .ConvertAll(i => i.ToString())
              .ToArray()));
 
+        initiate();
         Tile t = Instantiate(TilePrefab);
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
+    {
+        if (selecting)
+        {
+            Ray ray = Camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, CameraGroundLayer))
+            {
+
+                Vector3 temp = posToCoord(hit.point);
+                Debug.Log(temp);
+            }
+        }
+    }
+
+    private void Update()
+    {
+        if (selecting)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                
+            }
+        }
+    }
+
+
+    void TryPlaceBuilding(Vector2 coord,tileType type)
+    {
+        if (checkShapeEmpty(coord, tileTypeShapes[type]))
+        {
+            Tile tile = MakeTile(coord, type);
+            SetTile(coord, tileTypeShapes[type], tile); ;
+        }
+    }
+
+
+
+    Vector2 posToCoord(Vector3 pos)
+    {
+        Vector2 temp = new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.z));
+
+        return temp;
+    }
+
+    Vector3 coordToPoint(Vector2 coord)
+    {
+        return new Vector3(coord.x, 0, coord.y);
+    }
+
+
+
+    Tile MakeTile(Vector2 coord ,tileType type)
+    {
+        Tile tempTile = Instantiate(TilePrefab, coordToPoint(coord), Quaternion.identity,transform);
+        return tempTile;
+    }
+    void replaceTile(Vector2 coord)
     {
         
     }
+
+    public void ConfirmPlaceTile()
+    {
+        if (drafted)
+        {
+            TryPlaceBuilding(draftCoord, draftType);
+            ClearDraft();
+        }
+    }
+    void ClearDraft()
+    {
+        drafted = false;
+        draftType = tileType.empty;
+        draftCoord = Vector2.zero;
+    }
+
+
 }
