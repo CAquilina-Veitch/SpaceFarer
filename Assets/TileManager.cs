@@ -8,6 +8,7 @@ using UnityEngine;
 public enum tileShape { empty, single, nine, test}
 public enum tileType { empty, ore, furnace, test1}
 
+public enum mouseAction { blank, selecting, drafting, building }
 
 public class TileManager : MonoBehaviour
 {
@@ -19,9 +20,9 @@ public class TileManager : MonoBehaviour
 
     [Header("Tile Selection")]
 
-    public bool selecting = true;
+    public mouseAction currentAction;
 
-    public Tile currentlySelected;
+    public Tile currentlySelectedTile;
     public tileType selectedTileType;
 
     [Header("Draft Tile")]
@@ -47,7 +48,7 @@ public class TileManager : MonoBehaviour
         new[] {new Vector2(0,0)},
         new[] {new Vector2(0,0)},
         new[] {new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1),new Vector2(0,-1),new Vector2(0,0),new Vector2(0,1),new Vector2(1,-1),new Vector2(1,0),new Vector2(1,1)},
-        new[] {new Vector2(-1,0),new Vector2(0,0),new Vector2(1,0)}
+        new[] {new Vector2(-1,0),new Vector2(0,0),new Vector2(1,0)} 
     };
 
     [Header("Instantiate Information")]
@@ -106,6 +107,10 @@ public class TileManager : MonoBehaviour
         }
     }
 
+    Tile TileAtCoord(Vector2 coord)
+    {
+        return tileDictionary[coord];
+    }
 
 
     // Start is called before the first frame update
@@ -123,8 +128,8 @@ public class TileManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (selecting)
-        {
+        /*if (currentAction = )
+        {*/
             Ray ray = Camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, CameraGroundLayer))
@@ -133,12 +138,12 @@ public class TileManager : MonoBehaviour
                 Vector3 temp = posToCoord(hit.point);
                 Debug.Log(temp);
             }
-        }
+        //}
     }
 
     private void Update()
     {
-        if (selecting)
+        if (currentAction == mouseAction.building)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
@@ -147,6 +152,13 @@ public class TileManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
                 ConfirmPlaceTile();
+            }
+        }
+        if (currentAction == mouseAction.selecting)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                InteractCurrent();
             }
         }
     }
@@ -229,5 +241,11 @@ public class TileManager : MonoBehaviour
         return tilePrefabs[(int)type];
     }
 
+    void InteractCurrent()
+    {
+        currentlySelectedTile.InteractionWindow(false);
+        currentlySelectedTile = TileAtCoord(CurrentMouseCoord());
+        currentlySelectedTile.InteractionWindow(true);
+    }
 
 }

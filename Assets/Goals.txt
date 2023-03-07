@@ -1,0 +1,11 @@
+Building function:
+- converting resources
+- generate power
+- generates resources
+- stores resources
+- launcher
+- launchpad
+
+
+requires power
+upgradable
