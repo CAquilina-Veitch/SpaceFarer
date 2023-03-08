@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(ItemStorage))]  
 public class Launchpad : MonoBehaviour
 {
     [SerializeField] bool requiresPower = false;
@@ -25,5 +25,9 @@ public class Launchpad : MonoBehaviour
     void Update()
     {
         
+    }
+    public void gFCall()
+    {
+
     }
 }

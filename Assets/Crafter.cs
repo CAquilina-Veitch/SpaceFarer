@@ -2,19 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class Crafter : MonoBehaviour
 {
     [SerializeField] bool requiresPower = true;
     public bool activity;
-    public float speed = 0.5f;
-    public float process = 0;
     bool currentlyCooking; // if u want it to brighten up>?? ????? ? 
+
+    GlobalFunctionality gF;
+
+    private void OnEnable()
+    {
+        gF = GameObject.FindGameObjectWithTag("TileManager").GetComponent<GlobalFunctionality>();
+    }
 
     public void setActivity(bool to)
     {
         if (requiresPower)
         {
             activity = to;
+        }
+        if (activity)
+        {
+            gF.activeCrafters.Add(this);
+        }
+        else
+        {
+            gF.activeCrafters.Remove(this);
         }
 
     }
@@ -30,29 +45,16 @@ public class Crafter : MonoBehaviour
     [SerializeField] int[] resourceSlotRequirements = new int[4];
     [SerializeField] int[] currentSlotValues = new int[4];
 
-    private void FixedUpdate()
-    {
-        if (activity)
-        {
-            if (currentSlotValues[3] >= outputItemMax)
-            {
-                activity = false;
-                return;
-            }
-            else
-            {
-                process += Time.deltaTime;
-                if (process >= speed)
-                {
-                    TryCraftItem();
-                }
-            }
-        }
-    }
+
 
 
     void TryCraftItem()
     {
+        if (currentSlotValues[3] >= outputItemMax)
+        {
+            activity = false;
+            return;
+        }
         bool canCraft = true;
         for(int i = 0; i<currentSlotValues.Length; i++)
         {
@@ -74,17 +76,9 @@ public class Crafter : MonoBehaviour
         currentlyCooking = canCraft;
     }
 
-
-
-    // Start is called before the first frame update
-    void Start()
+    public void gFCall()
     {
-        
+        TryCraftItem();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

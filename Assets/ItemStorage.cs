@@ -36,4 +36,8 @@ public class ItemStorage : MonoBehaviour
     {
         
     }
+    public void gFCall()
+    {
+
+    }
 }

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[RequireComponent(typeof(ItemStorage))]
 public class Launcher : MonoBehaviour
 {
     [SerializeField] bool requiresPower = false;
     public bool activity;
+
+    public Launchpad destination;
+
 
     public void setActivity(bool to)
     {
@@ -25,5 +28,9 @@ public class Launcher : MonoBehaviour
     void Update()
     {
         
+    }
+    public void gFCall()
+    {
+
     }
 }

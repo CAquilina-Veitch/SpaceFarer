@@ -8,7 +8,7 @@ public enum Requirement { none, sun, water}
 public class PowerGenerator : MonoBehaviour
 {
     public float powerOutput;
-    public Tile[] powerTo;
+    public List<Tile> powerTo;
     public Requirement requirement;
     public bool requirementMet;
 
@@ -52,7 +52,7 @@ public class PowerGenerator : MonoBehaviour
             case Requirement.none:
                 foreach (Tile tile in powerTo)
                 {
-                    tile.UpdatePowerValue(-powerOutput);
+                    //tile.UpdatePowerValue(-powerOutput);
                 }
                 break;
             case Requirement.sun:
@@ -65,9 +65,35 @@ public class PowerGenerator : MonoBehaviour
         }
     }
 
+    void changePowerToTiles (bool addedTile, Tile changed)
+    {
+        float initEachValue = powerOutput/ powerTo.Count;
 
+        foreach (Tile tile in powerTo)
+        {
+            tile.UpdatePowerValue(-initEachValue);
+        }
+        if (addedTile)
+        {
+            powerTo.Add(changed);
+        }
+        else
+        {
+            powerTo.Remove(changed);
+        }
 
+        float finalEachValue = powerOutput / powerTo.Count;
+        foreach (Tile tile in powerTo)
+        {
+            tile.UpdatePowerValue(finalEachValue);
+        }
 
+    }
+
+    public void gFCall()
+    {
+
+    }
 
 
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -408,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 993367026}
   - component: {fileID: 993367025}
+  - component: {fileID: 993367027}
   m_Layer: 0
   m_Name: Tile Manager
   m_TagString: Untagged
@@ -431,8 +432,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Camera: {fileID: 233417018}
-  selecting: 1
-  currentlySelected: {fileID: 0}
+  currentAction: 0
+  currentlySelectedTile: {fileID: 0}
   selectedTileType: 0
   drafted: 0
   draftType: 0
@@ -457,6 +458,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &993367027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993367024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ede8821481e3cbd4cb52108a8eb69ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeCrafters: []
+  activePowerGenerators: []
+  activeItemStorage: []
+  activeLaunchers: []
+  activeLaunchpads: []
 --- !u!1 &1016364832
 GameObject:
   m_ObjectHideFlags: 0
