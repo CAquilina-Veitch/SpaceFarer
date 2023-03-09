@@ -19,10 +19,7 @@ public class Crafter : MonoBehaviour
 
     public void setActivity(bool to)
     {
-        if (requiresPower)
-        {
-            activity = to;
-        }
+        activity = to;
         if (activity)
         {
             gF.activeCrafters.Add(this);
@@ -50,13 +47,14 @@ public class Crafter : MonoBehaviour
 
     void TryCraftItem()
     {
+
+        bool canCraft = true;
         if (currentSlotValues[3] >= outputItemMax)
         {
-            activity = false;
-            return;
+            Debug.LogError("Output Full");
+            canCraft = false;
         }
-        bool canCraft = true;
-        for(int i = 0; i<currentSlotValues.Length; i++)
+        for (int i = 0; i<currentSlotValues.Length; i++)
         {
             if(currentSlotValues[i]< resourceSlotRequirements[i])
             {

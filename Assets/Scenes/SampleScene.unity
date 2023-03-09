@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 993367027}
   m_Layer: 0
   m_Name: Tile Manager
-  m_TagString: Untagged
+  m_TagString: TileManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -443,6 +443,7 @@ MonoBehaviour:
   - {fileID: 7366246581113151018, guid: af97cd1ad6a10024282b5521dd12e78b, type: 3}
   - {fileID: 7366246581113151018, guid: d57b688c9351c054c925a752b5027d97, type: 3}
   tilesOnStart: []
+  gF: {fileID: 993367027}
 --- !u!4 &993367026
 Transform:
   m_ObjectHideFlags: 0
@@ -475,6 +476,7 @@ MonoBehaviour:
   activeItemStorage: []
   activeLaunchers: []
   activeLaunchpads: []
+  PowerLevel: 0
 --- !u!1 &1016364832
 GameObject:
   m_ObjectHideFlags: 0

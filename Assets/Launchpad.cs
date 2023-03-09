@@ -4,15 +4,12 @@ using UnityEngine;
 [RequireComponent(typeof(ItemStorage))]  
 public class Launchpad : MonoBehaviour
 {
-    [SerializeField] bool requiresPower = false;
+    //[SerializeField] bool requiresPower = false;
     public bool activity;
 
     public void setActivity(bool to)
     {
-        if (requiresPower)
-        {
-            activity = to;
-        }
+        activity = to;
 
     }
     // Start is called before the first frame update

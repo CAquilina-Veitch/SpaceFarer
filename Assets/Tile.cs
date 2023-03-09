@@ -12,10 +12,8 @@ public class Tile : MonoBehaviour
 
 
     [Header("Power")]
-    [SerializeField] float powerInput;
-    [SerializeField] float powerRequirement;
+    [SerializeField] public float powerRequirement;
     bool currentlyActive;
-    //public PowerGenerator[] powerGenerators;
 
 
 
@@ -61,39 +59,7 @@ public class Tile : MonoBehaviour
 
         }
     }
-    public void UpdatePowerValue(float input)
-    {
-        powerInput += input;
-        powerInput = powerInput < 0 ? 0 : powerInput;
-        currentlyActive = powerInput > powerRequirement ? true : false;
-        SetFunctionalityActivity();
-    }
-    void SetFunctionalityActivity()
-    {
-        if (crafter != null)
-        {
-            crafter.setActivity(currentlyActive);
-        }
-        else if (powerGenerator != null)
-        {
-            powerGenerator.setActivity(currentlyActive);
-        }
-        else if (itemStorage != null)
-        {
-            itemStorage.setActivity(currentlyActive);
-        }
-        else if (launcher != null)
-        {
-            launcher.setActivity(currentlyActive);
-        }
-        else if (launchpad != null)
-        {
-            launchpad.setActivity(currentlyActive);
-        }
-    }
-    /*private void FixedUpdate()
-    {
-        SetFunctionalityActivity();
-    }*/
+    
+
 
 }

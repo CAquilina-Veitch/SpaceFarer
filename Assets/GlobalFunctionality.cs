@@ -13,6 +13,9 @@ public class GlobalFunctionality : MonoBehaviour
     float frequency = 0.5f;
     float progress;
 
+
+    public float PowerLevel;
+
     private void FixedUpdate()
     {
         progress += Time.deltaTime;

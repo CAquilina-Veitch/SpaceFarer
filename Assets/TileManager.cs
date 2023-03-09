@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Security;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -54,7 +56,8 @@ public class TileManager : MonoBehaviour
 
     public Tile[] tilesOnStart;
 
-
+    [Header("Ingame Information")]
+    [SerializeField] GlobalFunctionality gF;
 
 
 
@@ -165,6 +168,9 @@ public class TileManager : MonoBehaviour
 
     void TryPlaceBuilding(Vector2 coord, tileType type)
     {
+        
+
+
         if (checkShapeEmpty(coord, tileTypeShapes[type]))
         {
             Tile tile = MakeTile(coord, type);
@@ -202,6 +208,15 @@ public class TileManager : MonoBehaviour
 
     public void ConfirmPlaceTile()
     {
+        Tile tileInfo = MakeTile(draftCoord, draftType);
+        if (tileInfo.powerRequirement > gF.PowerLevel)
+        {
+            Debug.LogError("Not enough power to place building");
+            Destroy(tileInfo);
+            return;
+        }
+        Destroy(tileInfo);
+
         if (drafted)
         {
             TryPlaceBuilding(draftCoord, draftType);
