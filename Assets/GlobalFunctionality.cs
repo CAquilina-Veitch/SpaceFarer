@@ -35,10 +35,10 @@ public class GlobalFunctionality : MonoBehaviour
         {
             pG.gFCall();
         }
-        /*foreach(ItemStorage iS in activeItemStorage)
+        foreach(ItemStorage iS in activeItemStorage)
         {
             iS.gFCall();
-        }*/
+        }
         foreach(Launcher lr in activeLaunchers)
         {
            lr.gFCall();

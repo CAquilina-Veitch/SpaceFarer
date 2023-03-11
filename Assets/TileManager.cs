@@ -13,6 +13,9 @@ public enum mouseAction { blank, selecting, drafting, building }
 
 public class TileManager : MonoBehaviour
 {
+    [Header("Dependencies")]
+    [SerializeField] GlobalFunctionality gF;
+
     [Header("Camera Selection")]
 
     [SerializeField] LayerMask CameraGroundLayer;
@@ -51,13 +54,14 @@ public class TileManager : MonoBehaviour
         new[] {new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1),new Vector2(0,-1),new Vector2(0,0),new Vector2(0,1),new Vector2(1,-1),new Vector2(1,0),new Vector2(1,1)},
         new[] {new Vector2(-1,0),new Vector2(0,0),new Vector2(1,0)} 
     };
+    public int[] TileTypeActivePopulationArray = new int[10];
+
 
     [Header("Instantiate Information")]
 
     public Tile[] tilesOnStart;
 
-    [Header("Ingame Information")]
-    [SerializeField] GlobalFunctionality gF;
+    //[Header("Ingame Information")]
 
 
 
@@ -69,6 +73,7 @@ public class TileManager : MonoBehaviour
         {
             SetTile(tile.coordinate, tileTypeShapes[tile.type], tile);
             tileDictionary[tile.coordinate] = tile;
+            TileTypeActivePopulationArray[(int)tile.type] += 1;
         }
     }
 
@@ -98,6 +103,11 @@ public class TileManager : MonoBehaviour
         }
         return true;
     }
+    bool checkTileEmpty(Vector2 coordinate)
+    {
+        tileDictionary.TryGetValue(coordinate, out Tile clickedTile);
+        return clickedTile == null ? true : false;
+    }
 
     void SetTile(Vector2 basePos, tileShape shape, Tile tileObj)
     {
@@ -106,7 +116,19 @@ public class TileManager : MonoBehaviour
         foreach (Vector2 pos in temp)
         {
             tileDictionary[pos] = tileObj;
+            TileTypeActivePopulationArray[(int)tileObj.type] += 1;
         }
+    }
+    void RemoveTile(Vector2 coord)
+    {
+        Tile deletingTile = TileAtCoord(coord);
+        foreach (Vector2 Coordinate in CoordinatePositionToVectorArray(coord, tileTypeShapes[deletingTile.type]))
+        {
+            tileDictionary.Remove(Coordinate);
+        }
+        TileTypeActivePopulationArray[(int)deletingTile.type] -= 1;
+        Destroy(deletingTile);
+        
     }
 
     Tile TileAtCoord(Vector2 coord)
@@ -145,6 +167,45 @@ public class TileManager : MonoBehaviour
 
     private void Update()
     {
+        /// ALL TEMPORARY TESTING STUFF :DD:D::D:D::D::D::D:D::D::D:D:D::D::D::D:D:D:D:D
+        /// 
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            ClickedOnCoord(CurrentMouseCoord());
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            selectedTileType = (tileType)0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedTileType = (tileType)1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectedTileType = (tileType)2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedTileType = (tileType)3;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            selectedTileType = (tileType)4;
+        }
+
+
+
+
+
+
+
+
+
         if (currentAction == mouseAction.building)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -232,6 +293,7 @@ public class TileManager : MonoBehaviour
 
     void DraftCurrent()
     {
+        Debug.Log("Drafted");
         draftCoord = CurrentMouseCoord();
         draftType = selectedTileType;
         drafted = true;
@@ -261,5 +323,36 @@ public class TileManager : MonoBehaviour
         currentlySelectedTile = TileAtCoord(CurrentMouseCoord());
         currentlySelectedTile.InteractionWindow(true);
     }
+    void ClickedOnCoord(Vector2 Coordinate)
+    {
+        // when you click a tile
+        if (checkTileEmpty(Coordinate))
+        {
+            //if the tile has nothing in it
+            if (checkDraftAtCoord(Coordinate))
+            {
+                // if there is a draft
+            }
+            else
+            {
 
+            }
+        }
+        else
+        {
+            //if the tile has something in it
+        }
+    }
+
+    bool checkDraftAtCoord(Vector2 coord)
+    {
+        bool temp = false;
+
+        foreach(Vector2 position in CoordinatePositionToVectorArray(coord, tileTypeShapes[draftType]))
+        {
+            temp = position == draftCoord ? true : false;
+        }
+        return temp;
+        
+    }
 }
