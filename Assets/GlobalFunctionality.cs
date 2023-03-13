@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GlobalFunctionality : MonoBehaviour
 {
-    public List<Crafter> activeCrafters;
+    //public List<Crafter> activeCrafters;
     public List<PowerGenerator> activePowerGenerators;
     public List<ItemStorage> activeItemStorage;
     public List<Launcher> activeLaunchers;
@@ -27,11 +27,11 @@ public class GlobalFunctionality : MonoBehaviour
     }
     void NextInstance()
     {
-        foreach(Crafter c in activeCrafters)
+        /*foreach(Crafter c in activeCrafters)
         {
             c.gFCall();
-        }
-        foreach(PowerGenerator pG in activePowerGenerators)
+        }*/
+/*        foreach(PowerGenerator pG in activePowerGenerators)
         {
             pG.gFCall();
         }
@@ -46,7 +46,7 @@ public class GlobalFunctionality : MonoBehaviour
         foreach(Launchpad lp in activeLaunchpads)
         {
             lp.gFCall();
-        }
+        }*/
     }
 
 

@@ -409,6 +409,8 @@ GameObject:
   - component: {fileID: 993367026}
   - component: {fileID: 993367025}
   - component: {fileID: 993367027}
+  - component: {fileID: 993367028}
+  - component: {fileID: 993367029}
   m_Layer: 0
   m_Name: Tile Manager
   m_TagString: TileManager
@@ -428,6 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b11a881813ddb242bdd2d1d5b0f173d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gF: {fileID: 993367027}
   CameraGroundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -442,8 +445,8 @@ MonoBehaviour:
   - {fileID: 7366246581113151018, guid: af97cd1ad6a10024282b5521dd12e78b, type: 3}
   - {fileID: 7366246581113151018, guid: af97cd1ad6a10024282b5521dd12e78b, type: 3}
   - {fileID: 7366246581113151018, guid: d57b688c9351c054c925a752b5027d97, type: 3}
+  TileTypeActivePopulationArray: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   tilesOnStart: []
-  gF: {fileID: 993367027}
 --- !u!4 &993367026
 Transform:
   m_ObjectHideFlags: 0
@@ -471,12 +474,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede8821481e3cbd4cb52108a8eb69ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeCrafters: []
-  activePowerGenerators: []
   activeItemStorage: []
   activeLaunchers: []
   activeLaunchpads: []
   PowerLevel: 0
+--- !u!114 &993367028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993367024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831e83c52cc67574ab0095675d2f5351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildings:
+  - type: 0
+    tileTypeName: Ore
+    shape:
+      name: 
+      Layout: []
+    powerRequirement: 0
+    constructionResources:
+    - name: 
+      icon: {fileID: 0}
+      quantity: 0
+    - name: 
+      icon: {fileID: 0}
+      quantity: 0
+    hasCrafter: 0
+    crafterFunc:
+      input: []
+      output: []
+    hasPowerGenerator: 0
+    hasItemStorage: 0
+    hasLauncher: 0
+    hasLaunchpad: 0
+  buildingShapes:
+  - name: Empty
+    Layout:
+    - {x: 0, y: 0}
+  - name: Single
+    Layout:
+    - {x: 0, y: 0}
+  - name: 3x1
+    Layout:
+    - {x: 1, y: 0}
+    - {x: 0, y: 0}
+    - {x: -1, y: 0}
+  - name: 1x3
+    Layout:
+    - {x: 0, y: 1}
+    - {x: 0, y: 0}
+    - {x: 0, y: -1}
+--- !u!114 &993367029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993367024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f31615a0d5efc14b9b402a589f67258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - name: 
+    icon: {fileID: 0}
+    quantity: 0
 --- !u!1 &1016364832
 GameObject:
   m_ObjectHideFlags: 0

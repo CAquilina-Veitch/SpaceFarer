@@ -18,7 +18,7 @@ public class Tile : MonoBehaviour
 
 
     [Header("Functionality Dependencies")]
-    public Crafter crafter;
+    //public Crafter crafter;
     public PowerGenerator powerGenerator;
     public ItemStorage itemStorage;
     public Launcher launcher;
@@ -28,7 +28,7 @@ public class Tile : MonoBehaviour
 
     private void OnEnable()
     {
-        TryGetComponent<Crafter>(out crafter);
+        //TryGetComponent<Crafter>(out crafter);
         TryGetComponent<PowerGenerator>(out powerGenerator);
         TryGetComponent<ItemStorage>(out itemStorage);
         TryGetComponent<Launcher>(out launcher);
@@ -38,11 +38,11 @@ public class Tile : MonoBehaviour
     public void InteractionWindow(bool openWindow)
     {
         //open correct gui
-        if (crafter != null)
+        /*if (crafter != null)
         {
 
-        }
-        else if (powerGenerator != null)
+        }*/
+       /* if (powerGenerator != null)
         {
 
         }
@@ -57,7 +57,7 @@ public class Tile : MonoBehaviour
         else if (launchpad != null)
         {
 
-        }
+        }*/
     }
     
 

@@ -11,6 +11,8 @@ public enum tileShape { empty, single, nine, test}
 public enum tileType { empty, ore, furnace, test1}
 public enum mouseAction { blank, selecting, drafting, building }
 
+
+
 public class TileManager : MonoBehaviour
 {
     [Header("Dependencies")]

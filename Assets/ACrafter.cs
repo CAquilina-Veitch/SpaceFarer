@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public class Crafter : MonoBehaviour
+public class ACrafter : MonoBehaviour
 {
     [SerializeField] bool requiresPower = true;
     public bool activity;
@@ -19,7 +19,7 @@ public class Crafter : MonoBehaviour
 
     public void setActivity(bool to)
     {
-        activity = to;
+        /*activity = to;
         if (activity)
         {
             gF.activeCrafters.Add(this);
@@ -27,7 +27,7 @@ public class Crafter : MonoBehaviour
         else
         {
             gF.activeCrafters.Remove(this);
-        }
+        }*/
 
     }
 
