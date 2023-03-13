@@ -7,13 +7,8 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public Vector2 coordinate;
-    public tileType type;
-    public Vector2[] externalEffectors;
+    public Building building;
 
-
-    [Header("Power")]
-    [SerializeField] public float powerRequirement;
-    bool currentlyActive;
 
 
 

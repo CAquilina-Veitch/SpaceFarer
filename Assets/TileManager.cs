@@ -7,16 +7,25 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 
-public enum tileShape { empty, single, nine, test}
-public enum tileType { empty, ore, furnace, test1}
+public enum tileShape { empty, single, nine, test}/*
+public enum tileType { empty, ore, furnace, test1}*/
 public enum mouseAction { blank, selecting, drafting, building }
 
-
+public struct BuildingDraft
+{
+    public bool active;
+    public Vector2 coordinate;
+    public Building building;
+};
 
 public class TileManager : MonoBehaviour
 {
     [Header("Dependencies")]
     [SerializeField] GlobalFunctionality gF;
+    [SerializeField] Buildings buildings;
+
+
+    
 
     [Header("Camera Selection")]
 
@@ -29,75 +38,36 @@ public class TileManager : MonoBehaviour
     public mouseAction currentAction;
 
     public Tile currentlySelectedTile;
-    public tileType selectedTileType;
+
 
     [Header("Draft Tile")]
 
-    public bool drafted;
-    public tileType draftType;
-    public Vector2 draftCoord;
+    BuildingDraft draft;
+
     [Header("Tiles Information")]
 
-    //[SerializeField] Tile TilePrefab;
-    [SerializeField] Tile[] tilePrefabs;
+    public Dictionary<Vector2, Building> BuildingPositions = new Dictionary<Vector2, Building>();
+    public Dictionary<Building, int> BuildingPopulations = new Dictionary<Building, int>();
 
     public Dictionary<Vector2, Tile> tileDictionary = new Dictionary<Vector2, Tile>();
-    public Dictionary<tileType, tileShape> tileTypeShapes = new Dictionary<tileType, tileShape>
+
+    
+    Vector2[] CoordinatePositionToVectorArray(Vector2 basePos, BuildingShape shape)
     {
-        {tileType.ore, tileShape.nine},
-        {tileType.furnace, tileShape.single},
-        {tileType.test1, tileShape.test},
-        {tileType.empty, tileShape.empty}
-    };
-    public Vector2[][] ExternalTilePositions =
-    {
-        new[] {new Vector2(0,0)},
-        new[] {new Vector2(0,0)},
-        new[] {new Vector2(-1,-1),new Vector2(-1,0),new Vector2(-1,1),new Vector2(0,-1),new Vector2(0,0),new Vector2(0,1),new Vector2(1,-1),new Vector2(1,0),new Vector2(1,1)},
-        new[] {new Vector2(-1,0),new Vector2(0,0),new Vector2(1,0)} 
-    };
-    public int[] TileTypeActivePopulationArray = new int[10];
-
-
-    [Header("Instantiate Information")]
-
-    public Tile[] tilesOnStart;
-
-    //[Header("Ingame Information")]
-
-
-
-
-
-    void initiate()
-    {
-        foreach (Tile tile in tilesOnStart)
+        Vector2[] temp = shape.Layout;
+        for (int i = 0; i < shape.Layout.Length; i++)
         {
-            SetTile(tile.coordinate, tileTypeShapes[tile.type], tile);
-            tileDictionary[tile.coordinate] = tile;
-            TileTypeActivePopulationArray[(int)tile.type] += 1;
-        }
-    }
-
-
-    Vector2[] CoordinatePositionToVectorArray(Vector2 basePos, tileShape shape)
-    {
-        Vector2[] temp = new Vector2[ExternalTilePositions[(int)shape].Length];
-        for (int i = 0; i < ExternalTilePositions[(int)shape].Length; i++)
-        {
-            temp[i] = basePos + ExternalTilePositions[(int)shape][i];
+            temp[i] = basePos + shape.Layout[i];
         }
 
         return temp;
     }
-
-    bool checkShapeEmpty(Vector2 basePos, tileShape shape)
+    bool checkShapeEmpty(Vector2 basePos, BuildingShape shape)
     {
         Vector2[] temp = CoordinatePositionToVectorArray(basePos, shape);
         foreach (Vector2 pos in temp)
         {
-            tileDictionary.TryGetValue(pos, out Tile v);
-            if (v != null)
+            if (BuildingPositions.ContainsKey(pos))
             {
                 return false;
             }
@@ -107,55 +77,44 @@ public class TileManager : MonoBehaviour
     }
     bool checkTileEmpty(Vector2 coordinate)
     {
-        tileDictionary.TryGetValue(coordinate, out Tile clickedTile);
-        return clickedTile == null ? true : false;
+        return BuildingPositions.ContainsKey(coordinate) ? false : true;
     }
 
-    void SetTile(Vector2 basePos, tileShape shape, Tile tileObj)
+    void SetTile(Vector2 basePos, BuildingShape shape, Building building)
     {
 
         Vector2[] temp = CoordinatePositionToVectorArray(basePos, shape);
         foreach (Vector2 pos in temp)
         {
-            tileDictionary[pos] = tileObj;
-            TileTypeActivePopulationArray[(int)tileObj.type] += 1;
+            BuildingPositions[pos] = building;
         }
+        BuildingPopulations[building] += 1;
     }
     void RemoveTile(Vector2 coord)
     {
         Tile deletingTile = TileAtCoord(coord);
-        foreach (Vector2 Coordinate in CoordinatePositionToVectorArray(coord, tileTypeShapes[deletingTile.type]))
+        foreach (Vector2 Coordinate in CoordinatePositionToVectorArray(coord, buildings.GetBuildingShapeFromID(deletingTile.name)))
         {
-            tileDictionary.Remove(Coordinate);
+            BuildingPositions.Remove(Coordinate);
         }
-        TileTypeActivePopulationArray[(int)deletingTile.type] -= 1;
+        BuildingPopulations[deletingTile.building] -= 1;
         Destroy(deletingTile);
         
     }
 
+    Building BuildingAtCoord(Vector2 coord)
+    {
+        return BuildingPositions[coord];
+    }
     Tile TileAtCoord(Vector2 coord)
     {
         return tileDictionary[coord];
     }
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        Vector2[] a = CoordinatePositionToVectorArray(new Vector2(5, 2), tileShape.nine);
-        Debug.Log("5, 2 becomes  " + string.Join("",
-             new List<Vector2>(a)
-             .ConvertAll(i => i.ToString())
-             .ToArray()));
-
-        initiate();
-        //Tile t = Instantiate(getTilePrefab(type));
-    }
 
     void FixedUpdate()
     {
-        /*if (currentAction = )
-        {*/
             Ray ray = Camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, CameraGroundLayer))
@@ -164,7 +123,6 @@ public class TileManager : MonoBehaviour
                 Vector3 temp = posToCoord(hit.point);
                 Debug.Log(temp);
             }
-        //}
     }
 
     private void Update()
@@ -179,7 +137,7 @@ public class TileManager : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Alpha0))
+        /*if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             selectedTileType = (tileType)0;
         }
@@ -198,7 +156,7 @@ public class TileManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             selectedTileType = (tileType)4;
-        }
+        }*/
 
 
 
@@ -229,17 +187,12 @@ public class TileManager : MonoBehaviour
     }
 
 
-    void TryPlaceBuilding(Vector2 coord, tileType type)
+    void TryPlaceBuilding(Vector2 coord, Building build)
     {
-        
-
-
-        if (checkShapeEmpty(coord, tileTypeShapes[type]))
+        if (checkShapeEmpty(coord, buildings.GetBuildingShapeFromID(build.tileShapeID)))
         {
-            Tile tile = MakeTile(coord, type);
-            tile.type = type;
-            tile.coordinate = coord;
-            SetTile(coord, tileTypeShapes[type], tile); ;
+            Tile tile = MakeTile(coord, build);
+            SetTile(coord, buildings.GetBuildingShapeFromID(build.tileShapeID), build); ;
         }
     }
 
@@ -259,9 +212,11 @@ public class TileManager : MonoBehaviour
 
 
 
-    Tile MakeTile(Vector2 coord, tileType type)
+    Tile MakeTile(Vector2 coord, Building build)
     {
-        Tile tempTile = Instantiate(getTilePrefab(type), coordToPoint(coord), Quaternion.identity, transform);
+        Tile tempTile = Instantiate(build.prefab, coordToPoint(coord), Quaternion.identity, transform).GetComponent<Tile>();
+        tempTile.coordinate = coord;
+        tempTile.building = build;
         return tempTile;
     }
     void replaceTile(Vector2 coord)
@@ -271,34 +226,29 @@ public class TileManager : MonoBehaviour
 
     public void ConfirmPlaceTile()
     {
-        Tile tileInfo = MakeTile(draftCoord, draftType);
-        if (tileInfo.powerRequirement > gF.PowerLevel)
+        if (draft.building.powerRequirement > gF.PowerLevel)
         {
             Debug.LogError("Not enough power to place building");
-            Destroy(tileInfo);
             return;
         }
-        Destroy(tileInfo);
-
-        if (drafted)
+        else if(draft.active)
         {
-            TryPlaceBuilding(draftCoord, draftType);
+            TryPlaceBuilding(draft.coordinate, draft.building);
             ClearDraft();
         }
     }
     void ClearDraft()
     {
-        drafted = false;
-        draftType = tileType.empty;
-        draftCoord = Vector2.zero;
+        draft.active = false;
+        draft.coordinate = Vector2.zero;
+        draft.building = buildings.GetBuildingFromID("Empty");
     }
 
     void DraftCurrent()
     {
         Debug.Log("Drafted");
-        draftCoord = CurrentMouseCoord();
-        draftType = selectedTileType;
-        drafted = true;
+        draft.coordinate = CurrentMouseCoord();
+        draft.active = true;
     }
     Vector2 CurrentMouseCoord()
     {
@@ -314,10 +264,6 @@ public class TileManager : MonoBehaviour
         else { Debug.Log("NOTHING ON MOUSE"); return Vector2.zero; }
     }
 
-    Tile getTilePrefab(tileType type)
-    {
-        return tilePrefabs[(int)type];
-    }
 
     void InteractCurrent()
     {
@@ -350,9 +296,9 @@ public class TileManager : MonoBehaviour
     {
         bool temp = false;
 
-        foreach(Vector2 position in CoordinatePositionToVectorArray(coord, tileTypeShapes[draftType]))
+        foreach(Vector2 position in CoordinatePositionToVectorArray(coord, buildings.GetBuildingShapeFromID(draft.building.name)))
         {
-            temp = position == draftCoord ? true : false;
+            temp = position == draft.coordinate ? true : false;
         }
         return temp;
         

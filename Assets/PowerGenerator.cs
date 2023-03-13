@@ -1,14 +1,14 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Requirement { none, sun, water}
+public enum Requirement { none, sun, water }
 
 
 public class PowerGenerator : MonoBehaviour
 {
     public float powerOutput;
-    
+
     public Requirement requirement;
     public bool requirementMet;
 
@@ -27,4 +27,3 @@ public class PowerGenerator : MonoBehaviour
 
 
 }
-*/

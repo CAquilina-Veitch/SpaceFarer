@@ -5,25 +5,22 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-
 [Serializable]
 public struct Building
 {
-    public string tileTypeID;
+    public string name;
     public string tileShapeID;
     public float powerRequirement;
 
     public Item[] constructionResources;
 
     public bool hasCrafter;
-    public Crafter crafterFunc;
     public bool hasPowerGenerator;
-    public PowerGenerator powerGeneratorFunc;
     public bool hasItemStorage;
     public bool hasLauncher;
     public bool hasLaunchpad;
 
-
+    public GameObject prefab;
 }
 [Serializable]
 public struct BuildingShape
@@ -33,14 +30,18 @@ public struct BuildingShape
 }
 
 [Serializable]
-public struct Crafter
+public struct CrafterType
 {
     public Item[] input;
     public Item[] output;
+    public int[] ratio;
+    public int[] max;
 }
-public struct PowerGenerator
+public struct PowerGeneratorType
 {
-
+    public Requirement requirement;
+    public bool requiresItems;
+    public Item requiredItem;
 }
 
 
@@ -59,7 +60,16 @@ public class Buildings : MonoBehaviour
     }
 
 
-
+    public BuildingShape GetBuildingShapeFromID(string id)
+    {
+        
+        return buildingShapes.Find(x => x.name == id);
+    }
+    public Building GetBuildingFromID(string id)
+    {
+        
+        return buildings.Find(x => x.name == id);
+    }
 
 
 
