@@ -56,12 +56,14 @@ public class TileManager : MonoBehaviour
     
     Vector2[] CoordinatePositionToVectorArray(Vector2 basePos, BuildingShape shape)
     {
-        Vector2[] temp = shape.Layout;
-        for (int i = 0; i < shape.Layout.Length; i++)
+        Debug.LogWarning($"{basePos} basepos, shape layout");
+        Vector2[] temp = (Vector2[])shape.Layout.Clone();
+        Debug.LogWarning($"temp {temp[0]}, {temp[1]}");
+        for (int i = 0; i < temp.Length; i++)
         {
-            temp[i] = basePos + shape.Layout[i];
+            temp[i] += basePos;
         }
-
+        Debug.LogWarning($"temp after {temp[0]}, {temp[1]}");
         return temp;
     }
     bool checkShapeEmpty(Vector2 basePos, BuildingShape shape)
