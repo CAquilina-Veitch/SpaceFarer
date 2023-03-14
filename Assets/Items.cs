@@ -9,7 +9,6 @@ public struct Item
 {
     public string name;
     public Texture2D icon;
-    public int quantity;
 }
 
 

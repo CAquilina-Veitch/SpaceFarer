@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -410,7 +410,6 @@ GameObject:
   - component: {fileID: 993367025}
   - component: {fileID: 993367027}
   - component: {fileID: 993367028}
-  - component: {fileID: 993367029}
   m_Layer: 0
   m_Name: Tile Manager
   m_TagString: TileManager
@@ -431,13 +430,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gF: {fileID: 993367027}
-  buildings: {fileID: 0}
+  buildings: {fileID: 993367028}
+  inv: {fileID: 1640325457}
   CameraGroundLayer:
     serializedVersion: 2
     m_Bits: 64
   Camera: {fileID: 233417018}
   currentAction: 0
   currentlySelectedTile: {fileID: 0}
+  draft:
+    active: 0
+    coordinate: {x: 0, y: 0}
+    building:
+      name: 
+      tileShapeID: 
+      powerRequirement: 0
+      constructionResourcesID: []
+      constructionRatio: 
+      hasCrafter: 0
+      hasPowerGenerator: 0
+      hasItemStorage: 0
+      hasLauncher: 0
+      hasLaunchpad: 0
+      prefab: {fileID: 0}
+  activeBuildings: []
 --- !u!4 &993367026
 Transform:
   m_ObjectHideFlags: 0
@@ -483,22 +499,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildings:
-  - name: 
+  - name: Test1
     tileShapeID: Single
     powerRequirement: 0
-    constructionResources:
-    - name: 
-      icon: {fileID: 0}
-      quantity: 0
-    - name: 
-      icon: {fileID: 0}
-      quantity: 0
+    constructionResourcesID:
+    - Redstone
+    constructionRatio: 01000000
     hasCrafter: 0
     hasPowerGenerator: 0
     hasItemStorage: 0
     hasLauncher: 0
     hasLaunchpad: 0
-    prefab: {fileID: 0}
+    prefab: {fileID: 3452736814177867905, guid: af97cd1ad6a10024282b5521dd12e78b, type: 3}
+  - name: Test2
+    tileShapeID: 3x1
+    powerRequirement: 0
+    constructionResourcesID:
+    - Netherite
+    constructionRatio: 02000000
+    hasCrafter: 0
+    hasPowerGenerator: 0
+    hasItemStorage: 0
+    hasLauncher: 0
+    hasLaunchpad: 0
+    prefab: {fileID: 3452736814177867905, guid: d57b688c9351c054c925a752b5027d97, type: 3}
   buildingShapes:
   - name: Empty
     Layout:
@@ -506,32 +530,22 @@ MonoBehaviour:
   - name: Single
     Layout:
     - {x: 0, y: 0}
+  - name: 1x3
+    Layout:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 0, y: -1}
   - name: 3x1
     Layout:
     - {x: 1, y: 0}
     - {x: 0, y: 0}
     - {x: -1, y: 0}
-  - name: 1x3
-    Layout:
-    - {x: 0, y: 1}
-    - {x: 0, y: 0}
-    - {x: 0, y: -1}
---- !u!114 &993367029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 993367024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f31615a0d5efc14b9b402a589f67258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  items:
-  - name: 
-    icon: {fileID: 0}
-    quantity: 0
+  activeBuilds:
+    activeCrafters: 0
+    activePowerGenerators: 0
+    activeItemStorage: 0
+    activeLaunchers: 0
+    activeLaunchpads: 0
 --- !u!1 &1016364832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1226,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1640325455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1640325456}
+  - component: {fileID: 1640325458}
+  - component: {fileID: 1640325457}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1640325456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640325455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2809687, y: -2.7233558, z: -0.8555826}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1640325457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640325455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4d25d80027cb149b9872ab46f88adb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items: {fileID: 1640325458}
+  maxItemStackCapacity: 40
+--- !u!114 &1640325458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640325455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f31615a0d5efc14b9b402a589f67258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  items:
+  - name: Netherite
+    icon: {fileID: 2800000, guid: 3ee07bb73ba3e6849b2e768864b386aa, type: 3}
+  - name: Redstone
+    icon: {fileID: 2800000, guid: aa6a58884a6332d458796b01182fbd01, type: 3}
 --- !u!1 &2009575842
 GameObject:
   m_ObjectHideFlags: 0

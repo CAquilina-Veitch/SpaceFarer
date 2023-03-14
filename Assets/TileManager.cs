@@ -11,6 +11,7 @@ public enum tileShape { empty, single, nine, test}/*
 public enum tileType { empty, ore, furnace, test1}*/
 public enum mouseAction { blank, selecting, drafting, building }
 
+[Serializable]
 public struct BuildingDraft
 {
     public bool active;
@@ -23,7 +24,7 @@ public class TileManager : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] GlobalFunctionality gF;
     [SerializeField] Buildings buildings;
-
+    [SerializeField] Inventory inv;
 
     
 
@@ -42,14 +43,15 @@ public class TileManager : MonoBehaviour
 
     [Header("Draft Tile")]
 
-    BuildingDraft draft;
+    [SerializeField] BuildingDraft draft;
 
     [Header("Tiles Information")]
 
-    public Dictionary<Vector2, Building> BuildingPositions = new Dictionary<Vector2, Building>();
+    //public Dictionary<Vector2, Building> BuildingPositions = new Dictionary<Vector2, Building>();
+    public List<Building> activeBuildings;
     public Dictionary<Building, int> BuildingPopulations = new Dictionary<Building, int>();
 
-    public Dictionary<Vector2, Tile> tileDictionary = new Dictionary<Vector2, Tile>();
+    public Dictionary<Vector2, Tile> tilePositions = new Dictionary<Vector2, Tile>();
 
     
     Vector2[] CoordinatePositionToVectorArray(Vector2 basePos, BuildingShape shape)
@@ -67,7 +69,7 @@ public class TileManager : MonoBehaviour
         Vector2[] temp = CoordinatePositionToVectorArray(basePos, shape);
         foreach (Vector2 pos in temp)
         {
-            if (BuildingPositions.ContainsKey(pos))
+            if (tilePositions.ContainsKey(pos))
             {
                 return false;
             }
@@ -77,38 +79,24 @@ public class TileManager : MonoBehaviour
     }
     bool checkTileEmpty(Vector2 coordinate)
     {
-        return BuildingPositions.ContainsKey(coordinate) ? false : true;
+        return tilePositions.ContainsKey(coordinate) ? false : true;
     }
 
-    void SetTile(Vector2 basePos, BuildingShape shape, Building building)
-    {
-
-        Vector2[] temp = CoordinatePositionToVectorArray(basePos, shape);
-        foreach (Vector2 pos in temp)
-        {
-            BuildingPositions[pos] = building;
-        }
-        BuildingPopulations[building] += 1;
-    }
     void RemoveTile(Vector2 coord)
     {
         Tile deletingTile = TileAtCoord(coord);
         foreach (Vector2 Coordinate in CoordinatePositionToVectorArray(coord, buildings.GetBuildingShapeFromID(deletingTile.name)))
         {
-            BuildingPositions.Remove(Coordinate);
+            tilePositions.Remove(Coordinate);
         }
         BuildingPopulations[deletingTile.building] -= 1;
         Destroy(deletingTile);
         
     }
 
-    Building BuildingAtCoord(Vector2 coord)
-    {
-        return BuildingPositions[coord];
-    }
     Tile TileAtCoord(Vector2 coord)
     {
-        return tileDictionary[coord];
+        return tilePositions[coord];
     }
 
 
@@ -140,30 +128,24 @@ public class TileManager : MonoBehaviour
         /*if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             selectedTileType = (tileType)0;
-        }
+        }*/
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            selectedTileType = (tileType)1;
+            draft.building = buildings.buildings[0];
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            selectedTileType = (tileType)2;
+            draft.building = buildings.buildings[1];
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            selectedTileType = (tileType)3;
+            Debug.LogWarning(buildings.GetBuildingShapeFromID(draft.building.name).name);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            selectedTileType = (tileType)4;
-        }*/
 
 
 
 
-
-
-
+/*
 
 
         if (currentAction == mouseAction.building)
@@ -183,18 +165,9 @@ public class TileManager : MonoBehaviour
             {
                 InteractCurrent();
             }
-        }
+        }*/
     }
 
-
-    void TryPlaceBuilding(Vector2 coord, Building build)
-    {
-        if (checkShapeEmpty(coord, buildings.GetBuildingShapeFromID(build.tileShapeID)))
-        {
-            Tile tile = MakeTile(coord, build);
-            SetTile(coord, buildings.GetBuildingShapeFromID(build.tileShapeID), build); ;
-        }
-    }
 
 
 
@@ -211,32 +184,11 @@ public class TileManager : MonoBehaviour
     }
 
 
-
-    Tile MakeTile(Vector2 coord, Building build)
-    {
-        Tile tempTile = Instantiate(build.prefab, coordToPoint(coord), Quaternion.identity, transform).GetComponent<Tile>();
-        tempTile.coordinate = coord;
-        tempTile.building = build;
-        return tempTile;
-    }
     void replaceTile(Vector2 coord)
     {
 
     }
 
-    public void ConfirmPlaceTile()
-    {
-        if (draft.building.powerRequirement > gF.PowerLevel)
-        {
-            Debug.LogError("Not enough power to place building");
-            return;
-        }
-        else if(draft.active)
-        {
-            TryPlaceBuilding(draft.coordinate, draft.building);
-            ClearDraft();
-        }
-    }
     void ClearDraft()
     {
         draft.active = false;
@@ -273,34 +225,164 @@ public class TileManager : MonoBehaviour
     }
     void ClickedOnCoord(Vector2 Coordinate)
     {
-        // when you click a tile
+        Debug.LogError($"Clicked on {Coordinate}");
+        Debug.LogWarning("when you click a tile");
+
         if (checkTileEmpty(Coordinate))
         {
-            //if the tile has nothing in it
-            if (checkDraftAtCoord(Coordinate))
+            Debug.LogWarning("if the tile has nothing in it");
+            if (draft.active)
             {
-                // if there is a draft
+                Debug.LogWarning("draft is currently active");
+                if (checkDraftAtCoord(Coordinate))
+                {
+                    Debug.LogWarning("clicked on draft");
+
+                    bool canMake = true;
+                    for (int i = 0; i < draft.building.constructionResourcesID.Length; i++)
+                    {
+                        if (inv.inventory[draft.building.constructionResourcesID[i]] < draft.building.constructionRatio[i])
+                        {
+                            canMake = false;
+                        }
+                    }
+                    if (canMake)
+                    {
+                        Debug.LogWarning("you have the materials to build");
+
+                        ConfirmPlaceTile();
+
+
+                    }
+                    else
+                    {
+                        Debug.LogWarning("no materials");
+
+                    }
+
+
+
+
+
+                }
+                else
+                {
+                    Debug.LogWarning("empty, switched position");
+                    draft.coordinate = Coordinate;
+                }
             }
             else
             {
-
+                Debug.LogWarning("not drafting yet, doing now");
+                draft.active = true;
+                draft.coordinate = Coordinate;
             }
+            
         }
         else
         {
-            //if the tile has something in it
+            Debug.LogWarning($"if the tile has something in it that is of course a: {TileAtCoord(Coordinate)}");
+
         }
     }
+
+
+
+    public void ConfirmPlaceTile()
+    {
+        if (draft.building.powerRequirement > gF.PowerLevel)
+        {
+            Debug.LogError("Not enough power to place building");
+            return;
+        }
+        else if (draft.active)
+        {
+            TryPlaceBuilding(draft.coordinate, draft.building);
+            ClearDraft();
+        }
+    }
+    void TryPlaceBuilding(Vector2 coord, Building build)
+    {
+        if (checkShapeEmpty(coord, buildings.GetBuildingShapeFromID(build.tileShapeID)))
+        {
+            PlaceTile(build, coord);
+        }
+    }
+    void PlaceTile(Building build, Vector2 coord)
+    {
+        Tile tile = MakeTile(coord, build);
+        SetTile(coord, tile, build);
+    }
+
+    Tile MakeTile(Vector2 coord, Building build)
+    {
+        Tile tempTile = Instantiate(build.prefab, coordToPoint(coord), Quaternion.identity, transform).GetComponent<Tile>();
+        tempTile.coordinate = coord;
+        tempTile.building = build;
+        return tempTile;
+    }
+    void SetTile(Vector2 basePos, Tile tile, Building building)
+    {
+
+        Vector2[] temp = CoordinatePositionToVectorArray(basePos, buildings.GetBuildingShapeFromID(building.tileShapeID));
+        foreach (Vector2 pos in temp)
+        {
+            tilePositions[pos] = tile;
+        }
+        buildings.activeBuilds = activeBuildingsOperator(buildings.activeBuilds, BuildingToActiveBuilds(building), 1);
+    }
+    ActiveBuildings activeBuildingsOperator(ActiveBuildings a,ActiveBuildings b,int m)
+    {
+        ActiveBuildings temp = a;
+
+        temp.activeCrafters += m*b.activeCrafters;
+        temp.activePowerGenerators += m*b.activePowerGenerators;
+        temp.activeItemStorage += m*b.activeItemStorage;
+        temp.activeLaunchers += m*b.activeLaunchers;
+        temp.activeLaunchpads += m*b.activeLaunchpads;
+        return temp;
+    }
+    ActiveBuildings BuildingToActiveBuilds(Building build)
+    {
+        ActiveBuildings temp = new ActiveBuildings { };
+        temp.activeCrafters = build.hasCrafter ? 1 : 0;
+        temp.activePowerGenerators = build.hasPowerGenerator ? 1 : 0;
+        temp.activeItemStorage = build.hasItemStorage ? 1 : 0;
+        temp.activeLaunchers = build.hasLauncher ? 1 : 0;
+        temp.activeLaunchpads = build.hasLaunchpad ? 1 : 0;
+        return temp;
+}
 
     bool checkDraftAtCoord(Vector2 coord)
     {
         bool temp = false;
-
-        foreach(Vector2 position in CoordinatePositionToVectorArray(coord, buildings.GetBuildingShapeFromID(draft.building.name)))
+        Debug.LogError($"DRAFTCHECK AT {coord}");
+        foreach(Vector2 position in CoordinatePositionToVectorArray(coord, buildings.GetBuildingShapeFromID(draft.building.tileShapeID)))
         {
-            temp = position == draft.coordinate ? true : false;
+            if(position == draft.coordinate)
+            {
+                temp = true;
+            }
+            Debug.LogError($"temp {temp}, position {position}, draft coordinate {draft.coordinate}");
         }
         return temp;
         
     }
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
 }

@@ -12,7 +12,8 @@ public struct Building
     public string tileShapeID;
     public float powerRequirement;
 
-    public Item[] constructionResources;
+    public string[] constructionResourcesID;
+    public int[] constructionRatio;
 
     public bool hasCrafter;
     public bool hasPowerGenerator;
@@ -22,6 +23,16 @@ public struct Building
 
     public GameObject prefab;
 }
+[Serializable]
+public struct ActiveBuildings
+{
+    public int activeCrafters;
+    public int activePowerGenerators;
+    public int activeItemStorage;
+    public int activeLaunchers;
+    public int activeLaunchpads;
+}
+
 [Serializable]
 public struct BuildingShape
 {
@@ -41,7 +52,8 @@ public struct PowerGeneratorType
 {
     public Requirement requirement;
     public bool requiresItems;
-    public Item requiredItem;
+    public string requiredItemID;
+    public int quantity;
 }
 
 
@@ -51,6 +63,8 @@ public class Buildings : MonoBehaviour
 {
     public List<Building> buildings = new List<Building>();
     public List<BuildingShape> buildingShapes = new List<BuildingShape>();
+    public ActiveBuildings activeBuilds;
+
     private void OnEnable()
     {
         foreach (BuildingShape bS in buildingShapes)
@@ -62,7 +76,20 @@ public class Buildings : MonoBehaviour
 
     public BuildingShape GetBuildingShapeFromID(string id)
     {
-        
+        Debug.LogError($"id {id} being searched, through {buildingShapes[0].name}, {buildingShapes[1].name}, {buildingShapes[2].name}, {buildingShapes[3].name}");
+        int index = buildingShapes.FindIndex(x => x.name == id);
+        if (index >= 0)
+        {
+            // found!
+            Debug.LogError("FOUND");
+            return(buildingShapes[index]);
+        }
+        else
+        {
+            Debug.LogError("NOT FOUND");
+            return buildingShapes[1];
+        }
+
         return buildingShapes.Find(x => x.name == id);
     }
     public Building GetBuildingFromID(string id)
@@ -77,7 +104,7 @@ public class Buildings : MonoBehaviour
     void Start()
     {
 
-        buildings.Find(x => x.tileShapeID == "foobar");
+        
     }
 
     // Update is called once per frame

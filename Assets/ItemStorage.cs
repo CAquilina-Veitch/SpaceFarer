@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum resource { empty, iron, gold, redstone }
 public class ItemStorage : MonoBehaviour
 {
     
