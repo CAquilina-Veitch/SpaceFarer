@@ -54,7 +54,10 @@ public class Tile : MonoBehaviour
 
         }*/
     }
-    
+    private void OnDrawGizmos()
+    {
+        
+    }
 
 
 }

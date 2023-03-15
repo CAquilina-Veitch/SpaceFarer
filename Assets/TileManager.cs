@@ -54,21 +54,13 @@ public class TileManager : MonoBehaviour
     public Dictionary<Vector2, Tile> tilePositions = new Dictionary<Vector2, Tile>();
 
     
-    Vector2[] CoordinatePositionToVectorArray(Vector2 basePos, BuildingShape shape)
+    Vector2[] CoordinatePositionToVectorArray(Vector2 coord, BuildingShape shape)
     {
-        Debug.LogWarning($"{basePos} basepos, shape layout");
-        Vector2[] temp = (Vector2[])shape.Layout.Clone();
-        Debug.LogWarning($"temp {temp[0]}, {temp[1]}");
-        for (int i = 0; i < temp.Length; i++)
-        {
-            temp[i] += basePos;
-        }
-        Debug.LogWarning($"temp after {temp[0]}, {temp[1]}");
-        return temp;
+        return GlobalFunctions.V2ArrayToCoord(coord, shape.Layout);
     }
-    bool checkShapeEmpty(Vector2 basePos, BuildingShape shape)
+    bool checkShapeEmpty(Vector2 coord, BuildingShape shape)
     {
-        Vector2[] temp = CoordinatePositionToVectorArray(basePos, shape);
+        Vector2[] temp = GlobalFunctions.V2ArrayToCoord(coord, shape.Layout);
         foreach (Vector2 pos in temp)
         {
             if (tilePositions.ContainsKey(pos))
@@ -87,7 +79,7 @@ public class TileManager : MonoBehaviour
     void RemoveTile(Vector2 coord)
     {
         Tile deletingTile = TileAtCoord(coord);
-        foreach (Vector2 Coordinate in CoordinatePositionToVectorArray(coord, buildings.GetBuildingShapeFromID(deletingTile.name)))
+        foreach (Vector2 Coordinate in GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(deletingTile.name).Layout))
         {
             tilePositions.Remove(Coordinate);
         }
@@ -110,7 +102,7 @@ public class TileManager : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, CameraGroundLayer))
             {
 
-                Vector3 temp = posToCoord(hit.point);
+                Vector3 temp = GlobalFunctions.posToCoord(hit.point);
                 Debug.Log(temp);
             }
     }
@@ -134,10 +126,12 @@ public class TileManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             draft.building = buildings.buildings[0];
+            UpdateDraftActivity();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             draft.building = buildings.buildings[1];
+            UpdateDraftActivity();
         }
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
@@ -173,17 +167,7 @@ public class TileManager : MonoBehaviour
 
 
 
-    Vector2 posToCoord(Vector3 pos)
-    {
-        Vector2 temp = new Vector2(Mathf.Round(pos.x), Mathf.Round(pos.z));
 
-        return temp;
-    }
-
-    Vector3 coordToPoint(Vector2 coord)
-    {
-        return new Vector3(coord.x, 0, coord.y);
-    }
 
 
     void replaceTile(Vector2 coord)
@@ -202,7 +186,7 @@ public class TileManager : MonoBehaviour
     {
         Debug.Log("Drafted");
         draft.coordinate = CurrentMouseCoord();
-        draft.active = true;
+        UpdateDraftActivity();
     }
     Vector2 CurrentMouseCoord()
     {
@@ -211,7 +195,7 @@ public class TileManager : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, CameraGroundLayer))
         {
 
-            Vector3 temp = posToCoord(hit.point);
+            Vector3 temp = GlobalFunctions.posToCoord(hit.point);
 
             return temp;
         }
@@ -233,6 +217,7 @@ public class TileManager : MonoBehaviour
         if (checkTileEmpty(Coordinate))
         {
             Debug.LogWarning("if the tile has nothing in it");
+            UpdateDraftActivity();
             if (draft.active)
             {
                 Debug.LogWarning("draft is currently active");
@@ -318,48 +303,28 @@ public class TileManager : MonoBehaviour
 
     Tile MakeTile(Vector2 coord, Building build)
     {
-        Tile tempTile = Instantiate(build.prefab, coordToPoint(coord), Quaternion.identity, transform).GetComponent<Tile>();
+        Tile tempTile = Instantiate(build.prefab, GlobalFunctions.coordToPoint(coord), Quaternion.identity, transform).GetComponent<Tile>();
         tempTile.coordinate = coord;
         tempTile.building = build;
         return tempTile;
     }
-    void SetTile(Vector2 basePos, Tile tile, Building building)
+    void SetTile(Vector2 coord, Tile tile, Building building)
     {
 
-        Vector2[] temp = CoordinatePositionToVectorArray(basePos, buildings.GetBuildingShapeFromID(building.tileShapeID));
+        Vector2[] temp = GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(building.name).Layout);
         foreach (Vector2 pos in temp)
         {
             tilePositions[pos] = tile;
         }
-        buildings.activeBuilds = activeBuildingsOperator(buildings.activeBuilds, BuildingToActiveBuilds(building), 1);
+        buildings.activeBuilds = GlobalFunctions.activeBuildingsOperator(buildings.activeBuilds, GlobalFunctions.BuildingToActiveBuilds(building), 1);
     }
-    ActiveBuildings activeBuildingsOperator(ActiveBuildings a,ActiveBuildings b,int m)
-    {
-        ActiveBuildings temp = a;
-
-        temp.activeCrafters += m*b.activeCrafters;
-        temp.activePowerGenerators += m*b.activePowerGenerators;
-        temp.activeItemStorage += m*b.activeItemStorage;
-        temp.activeLaunchers += m*b.activeLaunchers;
-        temp.activeLaunchpads += m*b.activeLaunchpads;
-        return temp;
-    }
-    ActiveBuildings BuildingToActiveBuilds(Building build)
-    {
-        ActiveBuildings temp = new ActiveBuildings { };
-        temp.activeCrafters = build.hasCrafter ? 1 : 0;
-        temp.activePowerGenerators = build.hasPowerGenerator ? 1 : 0;
-        temp.activeItemStorage = build.hasItemStorage ? 1 : 0;
-        temp.activeLaunchers = build.hasLauncher ? 1 : 0;
-        temp.activeLaunchpads = build.hasLaunchpad ? 1 : 0;
-        return temp;
-}
-
     bool checkDraftAtCoord(Vector2 coord)
     {
+        UpdateDraftActivity();
+        if (!draft.active) { return false; }
         bool temp = false;
         Debug.LogError($"DRAFTCHECK AT {coord}");
-        foreach(Vector2 position in CoordinatePositionToVectorArray(coord, buildings.GetBuildingShapeFromID(draft.building.tileShapeID)))
+        foreach(Vector2 position in GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(draft.building.name).Layout))
         {
             if(position == draft.coordinate)
             {
@@ -369,6 +334,14 @@ public class TileManager : MonoBehaviour
         }
         return temp;
         
+    }
+
+    void UpdateDraftActivity()
+    {
+        if (draft.active && draft.building.name == "Empty")
+        {
+            draft.active = false;
+        }
     }
 
 

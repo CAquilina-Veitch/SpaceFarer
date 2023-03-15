@@ -14,6 +14,7 @@ public struct Building
 
     public string[] constructionResourcesID;
     public int[] constructionRatio;
+    public Sprite icon;
 
     public bool hasCrafter;
     public bool hasPowerGenerator;
@@ -57,8 +58,6 @@ public struct PowerGeneratorType
 }
 
 
-
-
 public class Buildings : MonoBehaviour
 {
     public List<Building> buildings = new List<Building>();
@@ -76,29 +75,15 @@ public class Buildings : MonoBehaviour
 
     public BuildingShape GetBuildingShapeFromID(string id)
     {
-        Debug.LogError($"id {id} being searched, through {buildingShapes[0].name}, {buildingShapes[1].name}, {buildingShapes[2].name}, {buildingShapes[3].name}");
-        int index = buildingShapes.FindIndex(x => x.name == id);
+        //Debug.LogError($"id {id} being searched, through {buildingShapes[0].name}, {buildingShapes[1].name}, {buildingShapes[2].name}, {buildingShapes[3].name}");
+        //int index = buildingShapes.FindIndex(x => x.name == id);
         return buildingShapes.First(shape => shape.name == id);
-        if (index >= 0)
-        {
-            // found!
-            Debug.LogError("FOUND");
-            return(buildingShapes[index]);
-        }
-        else
-        {
-            Debug.LogError("NOT FOUND");
-            return buildingShapes[1];
-        }
-
-        return buildingShapes.Find(x => x.name == id);
     }
     public Building GetBuildingFromID(string id)
     {
         
         return buildings.Find(x => x.name == id);
     }
-
 
 
     // Start is called before the first frame update
