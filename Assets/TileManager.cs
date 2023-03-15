@@ -273,7 +273,10 @@ public class TileManager : MonoBehaviour
         }
     }
 
-
+    public void SetDraft(int num)
+    {
+        draft.building = buildings.buildings[num];
+    }
 
     public void ConfirmPlaceTile()
     {
@@ -311,7 +314,7 @@ public class TileManager : MonoBehaviour
     void SetTile(Vector2 coord, Tile tile, Building building)
     {
 
-        Vector2[] temp = GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(building.name).Layout);
+        Vector2[] temp = GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(building.tileShapeID).Layout);
         foreach (Vector2 pos in temp)
         {
             tilePositions[pos] = tile;
@@ -324,7 +327,7 @@ public class TileManager : MonoBehaviour
         if (!draft.active) { return false; }
         bool temp = false;
         Debug.LogError($"DRAFTCHECK AT {coord}");
-        foreach(Vector2 position in GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(draft.building.name).Layout))
+        foreach(Vector2 position in GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(draft.building.tileShapeID).Layout))
         {
             if(position == draft.coordinate)
             {

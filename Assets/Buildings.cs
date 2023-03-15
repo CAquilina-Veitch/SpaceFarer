@@ -75,7 +75,7 @@ public class Buildings : MonoBehaviour
 
     public BuildingShape GetBuildingShapeFromID(string id)
     {
-        //Debug.LogError($"id {id} being searched, through {buildingShapes[0].name}, {buildingShapes[1].name}, {buildingShapes[2].name}, {buildingShapes[3].name}");
+        Debug.LogError($"id {id} being searched, through {buildingShapes[0].name}, {buildingShapes[1].name}, {buildingShapes[2].name}, {buildingShapes[3].name}");
         //int index = buildingShapes.FindIndex(x => x.name == id);
         return buildingShapes.First(shape => shape.name == id);
     }
