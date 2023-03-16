@@ -98,7 +98,7 @@ public class TileManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!IsMouseOverUIWithIgnores())
+        /*if (!IsMouseOverUIWithIgnores())
         {
             Ray ray = Camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -108,7 +108,7 @@ public class TileManager : MonoBehaviour
                 Vector3 temp = GlobalFunctions.posToCoord(hit.point);
                 Debug.Log(temp);
             }
-        }
+        }*/
             
     }
 

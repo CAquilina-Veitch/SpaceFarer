@@ -44,6 +44,9 @@ public static class GlobalFunctions
         temp.activeLaunchpads = build.hasLaunchpad ? 1 : 0;
         return temp;
     }
-
+    public static float EvenlyCenteredValueAround0(int numOfItems, int i)
+    {
+        return ((numOfItems - 1) * -20) + (40 * i);
+    }
 
 }

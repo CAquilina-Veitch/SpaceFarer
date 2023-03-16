@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 
 public class Hover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    public int id;
     public UnityEvent StartHover;
     public UnityEvent EndHover;
     private void OnMouseEnter()

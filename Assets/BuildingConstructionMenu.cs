@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Events;
 
 
 public class BuildingConstructionMenu : MonoBehaviour
@@ -43,9 +44,7 @@ public class BuildingConstructionMenu : MonoBehaviour
         {
             GameObject Icon = Instantiate(iconPrefab, scrollParent);
             Icon.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenWidth * ((i+1 ) / (howManyOnScreen+1)), 15);
-            Icon.GetComponent<Image>().sprite = constructables[i].icon;
-            Icon.GetComponentInChildren<TextMeshProUGUI>().text = constructables[i].name;
-            Icon.GetComponent<GUIButton>().id = i;
+            Icon.GetComponent<BuildingIcon>().initiate(constructables[i],i);
             Icons.Add(Icon);
             maxScrollDistance = i == constructables.Count - 1 ? screenWidth * ((i + 1) / (howManyOnScreen + 1)) : 0;
             maxScrollDistance = i == constructables.Count - 1 && i < howManyOnScreen ? 0 : maxScrollDistance;
