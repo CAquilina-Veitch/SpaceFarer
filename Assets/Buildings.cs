@@ -15,6 +15,7 @@ public struct Building
     public string[] constructionResourcesID;
     public int[] constructionRatio;
     public Sprite icon;
+    public string description;
 
     public bool hasCrafter;
     public bool hasPowerGenerator;
