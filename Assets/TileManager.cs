@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Security;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 
 public enum tileShape { empty, single, nine, test}/*
@@ -97,6 +98,8 @@ public class TileManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!IsMouseOverUIWithIgnores())
+        {
             Ray ray = Camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, CameraGroundLayer))
@@ -105,6 +108,8 @@ public class TileManager : MonoBehaviour
                 Vector3 temp = GlobalFunctions.posToCoord(hit.point);
                 Debug.Log(temp);
             }
+        }
+            
     }
 
     private void Update()
@@ -112,7 +117,7 @@ public class TileManager : MonoBehaviour
         /// ALL TEMPORARY TESTING STUFF :DD:D::D:D::D::D::D:D::D::D:D:D::D::D::D:D:D:D:D
         /// 
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0)&&!IsMouseOverUIWithIgnores())
         {
             ClickedOnCoord(CurrentMouseCoord());
         }
@@ -138,32 +143,24 @@ public class TileManager : MonoBehaviour
             Debug.LogWarning(buildings.GetBuildingShapeFromID(draft.building.name).name);
         }
 
+    }
+    private bool IsMouseOverUIWithIgnores()
+    {
+        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
+        pointerEventData.position = Input.mousePosition;
 
-
-
-/*
-
-
-        if (currentAction == mouseAction.building)
+        List<RaycastResult> raycastResultList = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerEventData, raycastResultList);
+        for(int i = 0; i < raycastResultList.Count; i++)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if(raycastResultList[i].gameObject.GetComponent<MouseUIClickthrough>() != null)
             {
-                DraftCurrent();
-            }
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-            {
-                ConfirmPlaceTile();
+                raycastResultList.RemoveAt(i);
+                i--;
             }
         }
-        if (currentAction == mouseAction.selecting)
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                InteractCurrent();
-            }
-        }*/
+        return raycastResultList.Count > 0;
     }
-
 
 
 
@@ -178,7 +175,7 @@ public class TileManager : MonoBehaviour
     void ClearDraft()
     {
         draft.active = false;
-        draft.coordinate = Vector2.zero;
+        draft.coordinate = Vector2.positiveInfinity;
         draft.building = buildings.GetBuildingFromID("Empty");
     }
 
@@ -261,7 +258,8 @@ public class TileManager : MonoBehaviour
             else
             {
                 Debug.LogWarning("not drafting yet, doing now");
-                draft.active = true;
+                //draft.active = true;
+                UpdateDraftActivity();
                 draft.coordinate = Coordinate;
             }
             
@@ -326,14 +324,13 @@ public class TileManager : MonoBehaviour
         UpdateDraftActivity();
         if (!draft.active) { return false; }
         bool temp = false;
-        Debug.LogError($"DRAFTCHECK AT {coord}");
         foreach(Vector2 position in GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(draft.building.tileShapeID).Layout))
         {
             if(position == draft.coordinate)
             {
                 temp = true;
             }
-            Debug.LogError($"temp {temp}, position {position}, draft coordinate {draft.coordinate}");
+            
         }
         return temp;
         
@@ -341,9 +338,13 @@ public class TileManager : MonoBehaviour
 
     void UpdateDraftActivity()
     {
-        if (draft.active && draft.building.name == "Empty")
+        draft.active = false;
+        if(draft.coordinate != Vector2.positiveInfinity)
         {
-            draft.active = false;
+            if(draft.building.name!="Empty"&&draft.building.name!= "")
+            {
+                draft.active = true;
+            }
         }
     }
 

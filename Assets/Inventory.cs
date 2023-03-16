@@ -18,6 +18,12 @@ public class Inventory: MonoBehaviour
     {
         foreach(Item item in items.items)
         {
+            inventory.Add(item.name, 0);
+            Debug.LogError($"Added item {item.name}");
+        }
+
+        foreach(Item item in items.items)
+        {
             inventory[item.name] = maxItemStackCapacity;
         }
     }

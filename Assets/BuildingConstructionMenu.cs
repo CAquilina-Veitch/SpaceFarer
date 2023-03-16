@@ -49,7 +49,6 @@ public class BuildingConstructionMenu : MonoBehaviour
             Icons.Add(Icon);
             maxScrollDistance = i == constructables.Count - 1 ? screenWidth * ((i + 1) / (howManyOnScreen + 1)) : 0;
             maxScrollDistance = i == constructables.Count - 1 && i < howManyOnScreen ? 0 : maxScrollDistance;
-
         }
     }
     public void OptionClicked(int num)
