@@ -13,6 +13,9 @@ public class Inventory: MonoBehaviour
     public int maxItemStackCapacity;
 
 
+    public int currentInventoryVersion;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,9 +27,29 @@ public class Inventory: MonoBehaviour
 
         foreach(Item item in items.items)
         {
-            inventory[item.name] = maxItemStackCapacity;
+            TryChangeItems(item.name,maxItemStackCapacity);
         }
     }
+
+    public bool hasEnoughOfResource(string itemID, int num)
+    {
+        return inventory[itemID] >= num;
+    }
+
+    public bool TryChangeItems(string itemID, int val)
+    {
+        if (inventory[itemID] >= -val)
+        {
+            inventory[itemID] += val;
+            currentInventoryVersion++;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 
     // Update is called once per frame
     void Update()

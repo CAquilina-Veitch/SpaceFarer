@@ -496,7 +496,6 @@ GameObject:
   - component: {fileID: 8776018260494648916}
   - component: {fileID: 3612556086430073994}
   - component: {fileID: 5608929061610253783}
-  - component: {fileID: 5425776048528382318}
   - component: {fileID: 277235586955263140}
   m_Layer: 5
   m_Name: BuildingConstructionIconPrefab
@@ -609,56 +608,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GUIButton, Assembly-CSharp
+      - m_Target: {fileID: 277235586955263140}
+        m_TargetAssemblyTypeName: BuildingIcon, Assembly-CSharp
         m_MethodName: Activate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5425776048528382318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7851556850091961098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64a148fbe3cb99349acffcd86f446d58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 0
-  StartHover:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  EndHover:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -681,6 +637,7 @@ MonoBehaviour:
   GUIName: {fileID: 3258450922051627141}
   GUIDescription: {fileID: 2015819139204238957}
   image: {fileID: 3612556086430073994}
+  GUIWindow: {fileID: 5350287598516716403}
 --- !u!1 &8809579643462762936
 GameObject:
   m_ObjectHideFlags: 0

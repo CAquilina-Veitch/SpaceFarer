@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class BuildingIcon : MonoBehaviour
+public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     Building build;
     public GameObject resourceImagePrefab;
@@ -14,6 +15,7 @@ public class BuildingIcon : MonoBehaviour
     [SerializeField] TextMeshProUGUI GUIName;
     [SerializeField] TextMeshProUGUI GUIDescription;
     [SerializeField] Image image;
+    [SerializeField] GameObject GUIWindow;
 
 
     public void initiate(Building b, int _id)
@@ -32,10 +34,19 @@ public class BuildingIcon : MonoBehaviour
 
         for (int i = 0; i < build.constructionResourcesID.Length; i++)
         {
-            GameObject resourceObj = Instantiate(resourceImagePrefab, transform);
-            resourceObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(GlobalFunctions.EvenlyCenteredValueAround0(build.constructionResourcesID.Length, i), 63.84f);
+            GameObject resourceObj = Instantiate(resourceImagePrefab, GUIWindow.transform);
+            resourceObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(GlobalFunctions.EvenlyCenteredValueAround0(build.constructionResourcesID.Length, i), 3.84f);
             resourceObj.GetComponent<Image>().sprite = items.GetItemFromID(build.constructionResourcesID[i]).icon;
+
+            ResourceAvailability _rA = resourceObj.GetComponent<ResourceAvailability>();
+            _rA.items = new string[1];
+            _rA.ratio = new int[1];
+            _rA.invAmount = new float[1];
+            _rA.items[0] = build.constructionResourcesID[i];
+            _rA.ratio[0] = build.constructionRatio[i];
+            _rA.Size(20);
         }
+        SetHover(false);
     }
 
     public void Activate()
@@ -44,5 +55,18 @@ public class BuildingIcon : MonoBehaviour
     }
 
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        SetHover(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        SetHover(false);
+    }
+    void SetHover(bool val)
+    {
+        GUIWindow.SetActive(val);
+    }
 
 }
