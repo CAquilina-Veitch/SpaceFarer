@@ -2,64 +2,59 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum GUIType {blank, buildingConstruction, megaStructures, planetInfo, constructionMicro}
+public enum MainGUIType {noGUI, GUIMenu, construction, megaStructures, inventory, planetInfo}
+public enum AdditionalGUIType { temperature, objectives, times}
 
-[Serializable]
-public struct GUIWindow
-{
-    public GUIType type;
-    public GameObject Obj;
-    public bool active;
-    public bool hoverable;
-    public bool clickable;
-    public GUIType hoverGUI;
-}
 
 
 
 public class GUI : MonoBehaviour
 {
-    
-    public List<GUIWindow> windows;
+    public MainGUIType currentMainGUIType;
+    public GameObject[] MainGUIObjects;
+    public GameObject[] AdditionalGUIObjects;
 
 
 
-    public void SetGUI(GUIWindow window, bool to)
+    private void OnEnable()
     {
-        if(window.active = to)
+        SwitchMainGUITo(MainGUIType.GUIMenu);
+    }
+
+    public void SwitchMainGUITo(MainGUIType to)
+    {
+        if (to != currentMainGUIType)
         {
-            return;
+            for (int i = 0; i < Enum.GetNames(typeof(MainGUIType)).Length; i++)
+            {
+                if (MainGUIObjects.Length > i)
+                {
+                    if (MainGUIObjects[i] != null)
+                    {
+                        MainGUIObjects[i].SetActive(i == (int)to);
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"trying to access mainGUIobject {i}, but only {MainGUIObjects.Length} exist"); /////////////////// DELETE THIS ELSE WHEN WE fill all fields
+                }
+            }
         }
-        window.active = to;
-        window.Obj.SetActive(to);
     }
-    public void ToggleGUI(GUIWindow window)
+    public void SetAdditionalGUIactivity(bool to, AdditionalGUIType type)
     {
-        window.active = !window.active;
-        window.Obj.SetActive(window.active);
+        AdditionalGUIObjects[(int)type].SetActive(to);
     }
-
-    public GUIWindow findGUIWindow(GUIType type)
+    public void HideAllAdditionalGUI()
     {
-        return windows.Find(x => x.type == type);
+        foreach(GameObject obj in AdditionalGUIObjects)
+        {
+            obj.SetActive(false);
+        }
     }
-
-    private void FixedUpdate()
-    {
+   
         
-    }
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
