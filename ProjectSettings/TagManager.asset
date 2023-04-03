@@ -6,6 +6,7 @@ TagManager:
   tags:
   - TileManager
   - Inventory
+  - ProbeManager
   layers:
   - Default
   - TransparentFX
