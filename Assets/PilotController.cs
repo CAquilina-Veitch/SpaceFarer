@@ -25,6 +25,7 @@ public class PilotController : MonoBehaviour
     private void OnEnable()
     {
         Toggle(true);
+        yaw = transform.eulerAngles.y;
     }
     private void OnDisable()
     {

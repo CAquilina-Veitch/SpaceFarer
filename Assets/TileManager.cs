@@ -26,6 +26,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] GlobalFunctionality gF;
     [SerializeField] Buildings buildings;
     [SerializeField] Inventory inv;
+    [SerializeField] GameManager gM;
 
     
 
@@ -116,6 +117,11 @@ public class TileManager : MonoBehaviour
     {
         /// ALL TEMPORARY TESTING STUFF :DD:D::D:D::D::D::D:D::D::D:D:D::D::D::D:D:D:D:D
         /// 
+
+        if (gM.state != gameState.surface)
+        {
+            return;
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0)&&!IsMouseOverUIWithIgnores())
         {
