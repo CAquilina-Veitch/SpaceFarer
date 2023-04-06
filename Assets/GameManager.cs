@@ -43,11 +43,15 @@ public class GameManager : MonoBehaviour
                 shipPilot.SetActive(false);
                 surfacePlayer.SetActive(false);
                 menuCamera.SetActive(true);
+                GameMenu(true);
+
                 break;
             case gameState.ship:
                 shipPilot.SetActive(true);
                 surfacePlayer.SetActive(false);
                 menuCamera.SetActive(false);
+
+
                 mC.ChangeState(MenuState.none);
                 GameMenu(false);
                 break;
@@ -55,11 +59,14 @@ public class GameManager : MonoBehaviour
                 shipPilot.SetActive(true);
                 surfacePlayer.SetActive(false);
                 menuCamera.SetActive(false);
+                GameMenu(false);
                 break;
             case gameState.surface:
                 shipPilot.SetActive(false);
                 surfacePlayer.SetActive(true);
                 menuCamera.SetActive(false);
+                mC.ChangeState(MenuState.none);
+                GameMenu(false);
                 break;
             default:
                 break;
