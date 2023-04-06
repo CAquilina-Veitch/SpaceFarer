@@ -16,11 +16,15 @@ public class GUI : MonoBehaviour
 
 
 
-/*    private void OnEnable()
+    /*    private void OnEnable()
+        {
+            //SwitchMainGUITo(MainGUIType.GUIMenu);
+        }
+    */
+    public void SwitchMainGUIToString(string to)
     {
-        //SwitchMainGUITo(MainGUIType.GUIMenu);
+        SwitchMainGUITo((MainGUIType)Enum.Parse(typeof(MainGUIType), to));
     }
-*/
     public void SwitchMainGUITo(MainGUIType to)
     {
         if (to != currentMainGUIType)
