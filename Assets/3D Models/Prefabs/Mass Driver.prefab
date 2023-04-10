@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4470670276656152394}
   - component: {fileID: 694919366268137711}
   - component: {fileID: 3332714519756751909}
+  - component: {fileID: -1817425829609916303}
   m_Layer: 0
   m_Name: Mass Driver
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-1817425829609916303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3837298065732855280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae05f2a5bf95ecd42a80e60f5cd370b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectiveComplete:
+    m_PersistentCalls:
+      m_Calls: []

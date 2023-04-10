@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4503497972351946729}
   - component: {fileID: 707197215477973068}
   - component: {fileID: 3329443629241808006}
+  - component: {fileID: -5961392301377245460}
   m_Layer: 0
   m_Name: Cyanobacteria Container
   m_TagString: Untagged
@@ -83,3 +84,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-5961392301377245460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833815794174301523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae05f2a5bf95ecd42a80e60f5cd370b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectiveComplete:
+    m_PersistentCalls:
+      m_Calls: []

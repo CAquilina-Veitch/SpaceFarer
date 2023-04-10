@@ -19,7 +19,7 @@ public class PilotController : MonoBehaviour
     public void Toggle(bool to)
     {
         Cursor.lockState = to ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = to;
+        Cursor.visible = !to;
     }
 
     private void OnEnable()
@@ -30,6 +30,8 @@ public class PilotController : MonoBehaviour
     private void OnDisable()
     {
         Toggle(false);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 
