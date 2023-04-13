@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 [Serializable]
 public struct Building
@@ -24,6 +26,8 @@ public struct Building
     public bool hasLaunchpad;
 
     public GameObject prefab;
+
+    public UnityEvent instantiationAction;
 }
 [Serializable]
 public struct ActiveBuildings

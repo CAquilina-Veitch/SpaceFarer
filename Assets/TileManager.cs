@@ -6,6 +6,8 @@ using System.Security;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Events;
+
 
 
 public enum tileShape { empty, single, nine, test}/*
@@ -300,6 +302,7 @@ public class TileManager : MonoBehaviour
         if (checkShapeEmpty(coord, buildings.GetBuildingShapeFromID(build.tileShapeID)))
         {
             PlaceTile(build, coord);
+            build.instantiationAction.Invoke();
         }
     }
     void PlaceTile(Building build, Vector2 coord)
