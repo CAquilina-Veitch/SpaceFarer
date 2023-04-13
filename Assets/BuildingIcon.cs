@@ -16,13 +16,14 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] TextMeshProUGUI GUIDescription;
     [SerializeField] Image image;
     [SerializeField] GameObject GUIWindow;
+    [SerializeField] GameObject CantUseOverlay;
 
 
     public void initiate(Building b, int _id)
     {
         id = _id;
         build = b;
-
+        CanBeClicked(true);
 
         items = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Items>();
 
@@ -67,6 +68,11 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     void SetHover(bool val)
     {
         GUIWindow.SetActive(val);
+    }
+    public void CanBeClicked(bool to)
+    {
+        CantUseOverlay.SetActive(!to);
+        GetComponent<Button>().interactable = to;
     }
 
 }
