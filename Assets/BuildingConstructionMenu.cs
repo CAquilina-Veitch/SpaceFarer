@@ -45,6 +45,7 @@ public class BuildingConstructionMenu : MonoBehaviour
             GameObject Icon = Instantiate(iconPrefab, scrollParent);
             Icon.GetComponent<RectTransform>().anchoredPosition = new Vector3(screenWidth * ((i+1 ) / (howManyOnScreen+1)), 15);
             Icon.GetComponent<BuildingIcon>().initiate(constructables[i],i);
+            Icon.name = constructables[i].name;
             Icons.Add(Icon);
             maxScrollDistance = i == constructables.Count - 1 ? screenWidth * ((i + 1) / (howManyOnScreen + 1)) : 0;
             maxScrollDistance = i == constructables.Count - 1 && i < howManyOnScreen ? 0 : maxScrollDistance;
@@ -85,6 +86,11 @@ public class BuildingConstructionMenu : MonoBehaviour
     {
         currentlyActive = to;
         bgObj.SetActive(currentlyActive);
+    }
+
+    public void DeactivateBuildButton(string id)
+    {
+        Icons.Find(x => x.name == id).GetComponent<BuildingIcon>().CanBeClicked(false);
     }
 
 
