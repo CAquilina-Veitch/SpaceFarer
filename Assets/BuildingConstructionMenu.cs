@@ -92,6 +92,10 @@ public class BuildingConstructionMenu : MonoBehaviour
     {
         Icons.Find(x => x.name == id).GetComponent<BuildingIcon>().CanBeClicked(false);
     }
+    public void ActivateBuildButton(string id)
+    {
+        Icons.Find(x => x.name == id).GetComponent<BuildingIcon>().CanBeClicked(true);
+    }
 
 
 }

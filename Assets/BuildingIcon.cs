@@ -23,11 +23,10 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         id = _id;
         build = b;
-        CanBeClicked(true);
 
         items = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Items>();
 
-
+        CanBeClicked(build.canBeClickedFromStart);
         Name.text = build.name;
         GUIName.text = build.name;
         image.sprite = build.icon;

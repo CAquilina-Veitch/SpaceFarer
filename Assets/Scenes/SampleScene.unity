@@ -8979,6 +8979,7 @@ MonoBehaviour:
       hasLauncher: 0
       hasLaunchpad: 0
       prefab: {fileID: 0}
+      canBeClickedFromStart: 0
       instantiationAction:
         m_PersistentCalls:
           m_Calls: []
@@ -9042,6 +9043,7 @@ MonoBehaviour:
     hasLauncher: 0
     hasLaunchpad: 0
     prefab: {fileID: 3452736814177867905, guid: af97cd1ad6a10024282b5521dd12e78b, type: 3}
+    canBeClickedFromStart: 1
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -9082,6 +9084,7 @@ MonoBehaviour:
     hasLauncher: 0
     hasLaunchpad: 0
     prefab: {fileID: 8723628151866066843, guid: dc14ce4236d88824eb1bf6b0dbd377c8, type: 3}
+    canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -9122,6 +9125,7 @@ MonoBehaviour:
     hasLauncher: 0
     hasLaunchpad: 0
     prefab: {fileID: 3837298065732855280, guid: 3ed5cc0f4376005459d89b66c97143c9, type: 3}
+    canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -9162,6 +9166,7 @@ MonoBehaviour:
     hasLauncher: 0
     hasLaunchpad: 0
     prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
+    canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -9190,6 +9195,7 @@ MonoBehaviour:
     hasLauncher: 0
     hasLaunchpad: 0
     prefab: {fileID: 4305938258199211177, guid: 584bf630097b5fd4897597eeeab89498, type: 3}
+    canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -9230,6 +9236,7 @@ MonoBehaviour:
     hasLauncher: 0
     hasLaunchpad: 0
     prefab: {fileID: 7992014355419568440, guid: fc878b70846471a4db0f2df5b0836ae5, type: 3}
+    canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -9258,6 +9265,7 @@ MonoBehaviour:
     hasLauncher: 0
     hasLaunchpad: 0
     prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
+    canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls: []

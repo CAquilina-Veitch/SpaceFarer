@@ -26,6 +26,7 @@ public struct Building
     public bool hasLaunchpad;
 
     public GameObject prefab;
+    public bool canBeClickedFromStart;
 
     public UnityEvent instantiationAction;
 }
