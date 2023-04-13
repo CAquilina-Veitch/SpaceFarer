@@ -50,13 +50,13 @@ public class GameManager : MonoBehaviour
                 shipPilot.SetActive(true);
                 surfacePlayer.SetActive(false);
                 menuCamera.SetActive(false);
-
-
+                shipPilot.GetComponent<PilotController>().ShowMouse(false);
                 mC.ChangeState(MenuState.none);
                 GameMenu(false);
                 break;
             case gameState.shipGUI:
                 shipPilot.SetActive(true);
+                shipPilot.GetComponent<PilotController>().ShowMouse(true);
                 surfacePlayer.SetActive(false);
                 menuCamera.SetActive(false);
                 GameMenu(false);

@@ -34,7 +34,9 @@ public class PilotController : MonoBehaviour
         Cursor.visible = true;
     }
 
-
+    public void ShowMouse(bool to){
+        Toggle(!to);
+    }
 
 
     void Update()
