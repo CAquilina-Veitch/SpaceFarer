@@ -320,6 +320,7 @@ public class TileManager : MonoBehaviour
         Debug.Log($"{tempObj.name}");
         tempTile.coordinate = coord;
         tempTile.building = build;
+        ClearDraft();
         return tempTile;
     }
     void SetTile(Vector2 coord, Tile tile, Building building)
