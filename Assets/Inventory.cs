@@ -5,11 +5,7 @@ using UnityEngine;
 
 public enum resource { empty, iron, gold, redstone }
 
-public struct generatingItem
-{
-    Item item;
-    float rate;
-}
+
 public class Inventory: MonoBehaviour
 {
     [SerializeField] Items items;
@@ -22,8 +18,10 @@ public class Inventory: MonoBehaviour
     public int currentInventoryVersion;
 
 
-    float itemDelay;
+    float itemDelay = 1;
     bool itemGenerating;
+
+    Dictionary<string,int> Gens = new Dictionary<string, int>();
 
 
     // Start is called before the first frame update
@@ -74,13 +72,37 @@ public class Inventory: MonoBehaviour
     IEnumerator GenerateItem()
     {
         
+        foreach(string i in Gens.Keys)
+        {;
+            inventory[i] += Gens[i];
+        }
 
-
+        currentInventoryVersion++;
         yield return new WaitForSeconds(itemDelay);
         if (itemGenerating)
         {
             StartCoroutine(GenerateItem());
         }
     }
+    public void StopGeneration(string item)
+    {
+        if (Gens.ContainsKey(item))
+        {
+            Gens.Remove(item);
+        }
+    }
+
+    public void ChangeItemGeneration(Item item, int rate)
+    {
+        if (!Gens.ContainsKey(item.name))
+        {
+            Gens.Add(item.name, 0);
+        }
+        Gens[item.name] += rate;
+    }
+    //buildingShapes.First(shape => shape.name == id);
+
+
+
 
 }
