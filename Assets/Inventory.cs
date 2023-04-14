@@ -4,6 +4,12 @@ using UnityEngine;
 
 
 public enum resource { empty, iron, gold, redstone }
+
+public struct generatingItem
+{
+    Item item;
+    float rate;
+}
 public class Inventory: MonoBehaviour
 {
     [SerializeField] Items items;
@@ -14,6 +20,10 @@ public class Inventory: MonoBehaviour
 
 
     public int currentInventoryVersion;
+
+
+    float itemDelay;
+    bool itemGenerating;
 
 
     // Start is called before the first frame update
@@ -60,4 +70,17 @@ public class Inventory: MonoBehaviour
     {
 
     }
+
+    IEnumerator GenerateItem()
+    {
+        
+
+
+        yield return new WaitForSeconds(itemDelay);
+        if (itemGenerating)
+        {
+            StartCoroutine(GenerateItem());
+        }
+    }
+
 }

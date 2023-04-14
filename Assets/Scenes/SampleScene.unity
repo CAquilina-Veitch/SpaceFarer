@@ -19164,10 +19164,12 @@ MonoBehaviour:
     - {x: -1, y: 0}
   - name: 2x1
     Layout:
-    - {x: 2, y: 1}
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
   - name: 1x2
     Layout:
-    - {x: 1, y: 2}
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
   activeBuilds:
     activeCrafters: 0
     activePowerGenerators: 0
@@ -41668,15 +41670,14 @@ MonoBehaviour:
 
     Distance from Sun: 5.8 billion km
 
-    
 
-    Pluto is
-    the furthest away from the sun and technically not a planet. Although it was
-    originally classified as a plant when it was discovered in the 1930s, it was
-    downgraded into one of many dwarf planets orbiting the sun due to its small size.
-    Pluto was named by an 11 year old girl after the Roman god of the underworld
-    and its 5 known moons are all named after different beings of the Greek and Roman
-    underworld.
+
+    Pluto is the furthest
+    away from the sun and technically not a planet. Although it was originally classified
+    as a plant when it was discovered in the 1930s, it was downgraded into one of
+    many dwarf planets orbiting the sun due to its small size. Pluto was named by
+    an 11 year old girl after the Roman god of the underworld and its 5 known moons
+    are all named after different beings of the Greek and Roman underworld.
 
 '
   m_isRightToLeft: 0
@@ -45112,14 +45113,14 @@ MonoBehaviour:
 
     Distance from Sun: 1.4 billion km
 
-    
 
-    Saturn is
-    the 6th planet from the sun and the second largest planet in the solar system.
-    It is most recognisable by its large rings that circle the planet. Like Jupiter,
-    Saturn is a gas giant, its atmosphere consists mostly of hydrogen and helium
-    with the possibility of a small rocky core in the centre. There are more than
-    80 moons orbiting Saturn long with billions of small particles in its rings.
+
+    Saturn is the 6th
+    planet from the sun and the second largest planet in the solar system. It is
+    most recognisable by its large rings that circle the planet. Like Jupiter, Saturn
+    is a gas giant, its atmosphere consists mostly of hydrogen and helium with the
+    possibility of a small rocky core in the centre. There are more than 80 moons
+    orbiting Saturn long with billions of small particles in its rings.
 
 '
   m_isRightToLeft: 0
@@ -49399,19 +49400,18 @@ MonoBehaviour:
 
     Length of Day: 16 hours
 
-    Length of Year:
-    165 Earth Years
+    Length of Year: 165
+    Earth Years
 
     Distance from Sun: 4.5 Billion km
 
-    
 
-    Neptune
-    is the 8th planet and technically the furthest planet from the sun. It is so
-    far from Earth that it cannot be seen without the assistance of a telescope.
-    It is the last of the ice giants, and is named after the Roman sea god Neptune
-    due to its blue colour. It has 14 known moons and some small rings surrounding
-    the planet.
+
+    Neptune is the 8th
+    planet and technically the furthest planet from the sun. It is so far from Earth
+    that it cannot be seen without the assistance of a telescope. It is the last
+    of the ice giants, and is named after the Roman sea god Neptune due to its blue
+    colour. It has 14 known moons and some small rings surrounding the planet.
 
 '
   m_isRightToLeft: 0

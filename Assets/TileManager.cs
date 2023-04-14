@@ -303,6 +303,7 @@ public class TileManager : MonoBehaviour
         {
             PlaceTile(build, coord);
             build.instantiationAction.Invoke();
+            Debug.Log("ASDSADASD");
         }
     }
     void PlaceTile(Building build, Vector2 coord)
@@ -313,7 +314,10 @@ public class TileManager : MonoBehaviour
 
     Tile MakeTile(Vector2 coord, Building build)
     {
-        Tile tempTile = Instantiate(build.prefab, GlobalFunctions.coordToPoint(coord), Quaternion.identity, transform).GetComponent<Tile>();
+        Debug.Log($"Making tile {build}, {build.name}, at {coord}");
+        GameObject tempObj = Instantiate(build.prefab, GlobalFunctions.coordToPoint(coord), Quaternion.identity, transform);
+        Tile tempTile = tempObj.GetComponent<Tile>();
+        Debug.Log($"{tempObj.name}");
         tempTile.coordinate = coord;
         tempTile.building = build;
         return tempTile;

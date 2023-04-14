@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 707197215477973068}
   - component: {fileID: 3329443629241808006}
   - component: {fileID: -5961392301377245460}
+  - component: {fileID: -5051246967281379015}
   m_Layer: 0
   m_Name: Cyanobacteria Container
   m_TagString: Untagged
@@ -99,3 +100,38 @@ MonoBehaviour:
   ObjectiveComplete:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-5051246967281379015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833815794174301523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21661c33426ddad4fae5a6d96e373580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coordinate: {x: 0, y: 0}
+  building:
+    name: 
+    tileShapeID: 
+    powerRequirement: 0
+    constructionResourcesID: []
+    constructionRatio: 
+    icon: {fileID: 0}
+    description: 
+    hasCrafter: 0
+    hasPowerGenerator: 0
+    hasItemStorage: 0
+    hasLauncher: 0
+    hasLaunchpad: 0
+    prefab: {fileID: 0}
+    canBeClickedFromStart: 0
+    instantiationAction:
+      m_PersistentCalls:
+        m_Calls: []
+  powerGenerator: {fileID: 0}
+  itemStorage: {fileID: 0}
+  launcher: {fileID: 0}
+  launchpad: {fileID: 0}
