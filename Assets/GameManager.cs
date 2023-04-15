@@ -55,10 +55,10 @@ public class GameManager : MonoBehaviour
                 GameMenu(false);
                 break;
             case gameState.shipGUI:
-                shipPilot.SetActive(true);
+                shipPilot.SetActive(false);
                 shipPilot.GetComponent<PilotController>().ShowMouse(true);
                 surfacePlayer.SetActive(false);
-                menuCamera.SetActive(false);
+                menuCamera.SetActive(true);
                 GameMenu(false);
                 break;
             case gameState.surface:

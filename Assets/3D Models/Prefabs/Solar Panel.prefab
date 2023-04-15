@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7369760027757609300}
   - component: {fileID: 5902387495035899633}
   - component: {fileID: 8506606378763319867}
-  - component: {fileID: 4220425701160663303}
   m_Layer: 0
   m_Name: Solar Panel
   m_TagString: Untagged
@@ -27,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7858065697831508974}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.016990066, y: 0.05000019, z: -0.006}
-  m_LocalScale: {x: 5.6021357, y: 5.6021357, z: 5.6021357}
+  m_LocalPosition: {x: 1.0151179, y: 0.05000019, z: -3.0086088}
+  m_LocalScale: {x: 10.107754, y: 10.107754, z: 10.107754}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,7 +40,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7858065697831508974}
-  m_Mesh: {fileID: 8322055953642923493, guid: c2a2c5a6d58a06142afa4416b163e3a9, type: 3}
+  m_Mesh: {fileID: 8322055953642923493, guid: b4416d2b7db12b04199a69aec76286bd, type: 3}
 --- !u!23 &8506606378763319867
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: c2a2c5a6d58a06142afa4416b163e3a9, type: 3}
+  - {fileID: 5561349426305759274, guid: b4416d2b7db12b04199a69aec76286bd, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -84,38 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4220425701160663303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858065697831508974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21661c33426ddad4fae5a6d96e373580, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coordinate: {x: 0, y: 0}
-  building:
-    name: 
-    tileShapeID: 
-    powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
-    icon: {fileID: 0}
-    description: 
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
-    prefab: {fileID: 0}
-    canBeClickedFromStart: 0
-    instantiationAction:
-      m_PersistentCalls:
-        m_Calls: []
-  powerGenerator: {fileID: 0}
-  itemStorage: {fileID: 0}
-  launcher: {fileID: 0}
-  launchpad: {fileID: 0}

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3497630758066599443}
   - component: {fileID: 515045545723902390}
   - component: {fileID: 2360229767868173692}
-  - component: {fileID: -514277867436630759}
   - component: {fileID: -1427232564660337170}
   m_Layer: 0
   m_Name: Nitrogen Sapper
@@ -27,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4305938258199211177}
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.00354629, y: 0.049999952, z: -0.024105787}
-  m_LocalScale: {x: 9.264634, y: 9.264634, z: 9.264634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.99, y: 0.05000019, z: -0.008}
+  m_LocalScale: {x: 14.820443, y: 14.820443, z: 14.820443}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &515045545723902390
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -42,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4305938258199211177}
-  m_Mesh: {fileID: 420067178439671295, guid: 81df787eb5844b7479276d5c1298279e, type: 3}
+  m_Mesh: {fileID: 5817504230681292820, guid: 2681ab24c975ca74cb2b5e9387aa686c, type: 3}
 --- !u!23 &2360229767868173692
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -85,21 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-514277867436630759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4305938258199211177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae05f2a5bf95ecd42a80e60f5cd370b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjectiveComplete:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &-1427232564660337170
 MonoBehaviour:
   m_ObjectHideFlags: 0
