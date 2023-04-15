@@ -29,6 +29,6 @@ public class CameraMove : MonoBehaviour
         offset = transform.forward * -Mathf.Lerp(3, 10, scrollAmount);
         basePosition = new Vector3(Mathf.Clamp(basePosition.x, -bounds.x * (1-scrollAmount), bounds.x * (1 - scrollAmount)), 0, Mathf.Clamp(basePosition.z, -bounds.y * (1 - scrollAmount), bounds.y * (1 - scrollAmount)));
         transform.position = basePosition + offset;
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -7, 10), transform.position.y, Mathf.Clamp(transform.position.z, -5, 3));
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, -7, 4), transform.position.y, Mathf.Clamp(transform.position.z, -5, 3));
     }
 }
