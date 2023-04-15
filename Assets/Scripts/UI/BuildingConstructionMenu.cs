@@ -17,8 +17,6 @@ public class BuildingConstructionMenu : MonoBehaviour
     public GameObject iconPrefab;
     public Transform scrollParent;
 
-    public bool currentlyActive;
-
     public List<GameObject> Icons;
     public float scrollValue;
     float maxLength;
@@ -27,7 +25,7 @@ public class BuildingConstructionMenu : MonoBehaviour
     float screenWidth = 800;
     
     float scrollAcceleration = 20;
-    float maxScrollSpeed = 20;
+    float maxScrollSpeed = 40;
     float maxScrollDistance;
     public float scrollingFor;
     public float currentScrollDirection;
@@ -68,24 +66,13 @@ public class BuildingConstructionMenu : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (currentlyActive)
+        if (currentScrollDirection != 0)
         {
-            if (currentScrollDirection != 0)
-            {
                 scrollingFor += Time.deltaTime*scrollAcceleration;
                 scrollValue += Mathf.Clamp(scrollingFor, 0, maxScrollSpeed) * currentScrollDirection;
                 scrollValue = Mathf.Clamp(scrollValue, -maxScrollDistance,0);
                 scrollParent.transform.position = new Vector3(scrollValue, 0);
-
-
-            }
         }
-    }
-
-    public void setActivity(bool to)
-    {
-        currentlyActive = to;
-        bgObj.SetActive(currentlyActive);
     }
 
     public void DeactivateBuildButton(string id)
