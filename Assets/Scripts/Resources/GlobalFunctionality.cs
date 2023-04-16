@@ -5,10 +5,11 @@ using UnityEngine;
 public class GlobalFunctionality : MonoBehaviour
 {
     //public List<Crafter> activeCrafters;
+    /*
     public List<PowerGenerator> activePowerGenerators;
     public List<ItemStorage> activeItemStorage;
     public List<Launcher> activeLaunchers;
-    public List<Launchpad> activeLaunchpads;
+    public List<Launchpad> activeLaunchpads;*/
 
     float frequency = 0.5f;
     float progress;

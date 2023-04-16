@@ -6,6 +6,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
+public struct ItemGenerator
+{
+    public bool exists;
+    public Item item;
+}
 
 [Serializable]
 public struct Building
@@ -19,26 +25,15 @@ public struct Building
     public Sprite icon;
     public string description;
 
-    public bool hasCrafter;
-    public bool hasPowerGenerator;
-    public bool hasItemStorage;
-    public bool hasLauncher;
-    public bool hasLaunchpad;
+    public ItemGenerator f_itemGen;
+    public Crafting f_crafter;
 
     public GameObject prefab;
     public bool canBeClickedFromStart;
 
     public UnityEvent instantiationAction;
 }
-[Serializable]
-public struct ActiveBuildings
-{
-    public int activeCrafters;
-    public int activePowerGenerators;
-    public int activeItemStorage;
-    public int activeLaunchers;
-    public int activeLaunchpads;
-}
+
 
 [Serializable]
 public struct BuildingShape
@@ -48,16 +43,13 @@ public struct BuildingShape
 }
 
 [Serializable]
-public struct CrafterType
+public struct Crafting
 {
-    public Item[] input;
-    public Item[] output;
-    public int[] ratio;
-    public int[] max;
+    public bool exists;
+    public CraftingRecipe recipe;
 }
 public struct PowerGeneratorType
 {
-    public Requirement requirement;
     public bool requiresItems;
     public string requiredItemID;
     public int quantity;
@@ -68,16 +60,6 @@ public class Buildings : MonoBehaviour
 {
     public List<Building> buildings = new List<Building>();
     public List<BuildingShape> buildingShapes = new List<BuildingShape>();
-    public ActiveBuildings activeBuilds;
-
-    private void OnEnable()
-    {
-        foreach (BuildingShape bS in buildingShapes)
-        {
-
-        }
-    }
-
 
     public BuildingShape GetBuildingShapeFromID(string id)
     {
@@ -87,21 +69,7 @@ public class Buildings : MonoBehaviour
     }
     public Building GetBuildingFromID(string id)
     {
-        
         return buildings.Find(x => x.name == id);
     }
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

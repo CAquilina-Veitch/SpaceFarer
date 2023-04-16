@@ -4,12 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[Serializable]
-public struct Item
-{
-    public string name;
-    public Sprite icon;
-}
+
 
 
 

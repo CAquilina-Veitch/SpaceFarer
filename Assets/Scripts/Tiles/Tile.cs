@@ -10,53 +10,42 @@ public class Tile : MonoBehaviour
     public Building building;
 
 
+    Inventory inv;
 
 
-    [Header("Functionality Dependencies")]
-    //public Crafter crafter;
-    public PowerGenerator powerGenerator;
-    public ItemStorage itemStorage;
-    public Launcher launcher;
-    public Launchpad launchpad;
-
-    //[Header("Functionality Unique")]
 
     private void OnEnable()
     {
-        //TryGetComponent<Crafter>(out crafter);
-        TryGetComponent<PowerGenerator>(out powerGenerator);
-        TryGetComponent<ItemStorage>(out itemStorage);
-        TryGetComponent<Launcher>(out launcher);
-        TryGetComponent<Launchpad>(out launchpad);
+
+        inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
+
+        if (building.f_crafter.exists)
+        {
+            InitiateCrafting();
+        }
+        if (building.f_itemGen.exists)
+        {
+            InitiateGeneration();
+        }
+
+
+
+    }
+    void InitiateCrafting()
+    {
+        inv.AddCraftingOperation(building.f_crafter.recipe);
     }
 
-    public void InteractionWindow(bool openWindow)
+    void InitiateGeneration()
     {
-        //open correct gui
-        /*if (crafter != null)
-        {
-
-        }*/
-       /* if (powerGenerator != null)
-        {
-
-        }
-        else if (itemStorage != null)
-        {
-
-        }
-        else if (launcher != null)
-        {
-
-        }
-        else if (launchpad != null)
-        {
-
-        }*/
+        inv.ChangeItemGeneration(building.f_itemGen.item);
     }
-    private void OnDrawGizmos()
+
+
+
+    public void InteractionWindow()
     {
-        
+
     }
 
 

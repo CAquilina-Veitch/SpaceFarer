@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8561164276987000114}
   - component: {fileID: 5848956303677981176}
   - component: {fileID: 5109966431053716862}
+  - component: {fileID: 591081147085787190}
   m_Layer: 0
   m_Name: Solar Panels
   m_TagString: Untagged
@@ -115,7 +116,21 @@ MonoBehaviour:
     instantiationAction:
       m_PersistentCalls:
         m_Calls: []
-  powerGenerator: {fileID: 0}
+  powerGenerator: {fileID: 591081147085787190}
   itemStorage: {fileID: 0}
   launcher: {fileID: 0}
   launchpad: {fileID: 0}
+--- !u!114 &591081147085787190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344460717475864621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26eaa43d8bfaf0408181d13b7401c95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerOutput: 10
+  requiresPower: 0

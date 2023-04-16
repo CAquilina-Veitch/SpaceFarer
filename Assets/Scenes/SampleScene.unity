@@ -3690,6 +3690,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162343313}
   m_CullTransparentMesh: 1
+--- !u!1 &162706035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 162706036}
+  - component: {fileID: 162706038}
+  - component: {fileID: 162706037}
+  m_Layer: 0
+  m_Name: DraftVisual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &162706036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162706035}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 993367026}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &162706037
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162706035}
+  m_Mesh: {fileID: 0}
+--- !u!23 &162706038
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162706035}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -3541954276639423693, guid: 8de141720bc4aa5debd9f47d7cac2db5, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &164289290
 GameObject:
   m_ObjectHideFlags: 0
@@ -25861,11 +25944,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   Camera: {fileID: 905710089}
-  currentAction: 0
-  currentlySelectedTile: {fileID: 0}
   draft:
     active: 0
-    coordinate: {x: 0, y: 0}
     building:
       name: 
       tileShapeID: 
@@ -25874,16 +25954,28 @@ MonoBehaviour:
       constructionRatio: 
       icon: {fileID: 0}
       description: 
-      hasCrafter: 0
-      hasPowerGenerator: 0
-      hasItemStorage: 0
-      hasLauncher: 0
-      hasLaunchpad: 0
+      f_itemGen:
+        exists: 0
+        item:
+          name: 
+          icon: {fileID: 0}
+          num: 0
+      f_crafter:
+        exists: 0
+        recipe:
+          inputItems: []
+          outputItems: []
       prefab: {fileID: 0}
       canBeClickedFromStart: 0
       instantiationAction:
         m_PersistentCalls:
           m_Calls: []
+  draftVisual: {fileID: 162706035}
+  draftMesh: {fileID: 162706037}
+  draftMeshRenderer: {fileID: 162706038}
+  draftMats:
+  - {fileID: 2100000, guid: a5f55c40df83d98448eee02365024c25, type: 2}
+  - {fileID: 2100000, guid: 4348d6c4861f239458192c16d01b60e8, type: 2}
   activeBuildings: []
 --- !u!4 &993367026
 Transform:
@@ -25896,7 +25988,8 @@ Transform:
   m_LocalPosition: {x: -1.3957385, y: -2.7234404, z: -0.6261527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 162706036}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25912,10 +26005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ede8821481e3cbd4cb52108a8eb69ded, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activePowerGenerators: []
-  activeItemStorage: []
-  activeLaunchers: []
-  activeLaunchpads: []
   PowerLevel: 0
 --- !u!114 &993367028
 MonoBehaviour:
@@ -25937,11 +26026,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 48cecd57d0929e54a98a308973856eee, type: 3}
     description: Absorbs energy from the sun and turns it into electricity
-    hasCrafter: 0
-    hasPowerGenerator: 1
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 5344460717475864621, guid: c7f0c3c0c84d1aa46b90fd7265010bf3, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -25990,11 +26085,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 3af09ccf973ffd844be02a2ee25b8687, type: 3}
     description: Shoots materials off low gravity planets
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 4411515012657320809, guid: 3ed5cc0f4376005459d89b66c97143c9, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26043,11 +26144,23 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 07f7da0a2eb464f4496537ad6c6340ab, type: 3}
     description: Bucket Excavator Excavate Rock
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems:
+        - name: 
+          icon: {fileID: 0}
+          num: 0
+        outputItems:
+        - name: 
+          icon: {fileID: 0}
+          num: 0
     prefab: {fileID: 8723628151866066843, guid: dc14ce4236d88824eb1bf6b0dbd377c8, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26108,11 +26221,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 0b865e1ca11a1d346a3dbd6160489276, type: 3}
     description: Produces power from the flow of water
-    hasCrafter: 0
-    hasPowerGenerator: 1
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 4968524089657311996, guid: 349b9e44ec61b4f46840d3d4e893cd0f, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26173,11 +26292,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: c4c30425804eb0048af75cf4680f76e1, type: 3}
     description: Absorbs excess nitrogen from atmosphere
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 4188690778194480504, guid: 584bf630097b5fd4897597eeeab89498, type: 3}
     canBeClickedFromStart: 1
     instantiationAction:
@@ -26238,11 +26363,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: f1435c8c5e772cc40b35ab1e687890f5, type: 3}
     description: Contains cyanobacteria, the basis for life on this new planet
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26303,11 +26434,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 7009f4b537ebd6f4cbb844294f1a4f8a, type: 3}
     description: Seeds and waters plants
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 7992014355419568440, guid: fc878b70846471a4db0f2df5b0836ae5, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26344,11 +26481,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: cee193125c6218c4e98f618527d39c39, type: 3}
     description: Produces power from the splitting of atoms
-    hasCrafter: 0
-    hasPowerGenerator: 1
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 6596813623286389222, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26397,11 +26540,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Provides a place for colonists to sleep
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26450,11 +26599,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Provides a place for colonists to eat
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26503,11 +26658,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Allows for administration of new colony
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26556,11 +26717,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Allows for research of terraformed Venus
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26609,11 +26776,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Produces food for colony
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26662,11 +26835,17 @@ MonoBehaviour:
     constructionRatio: 
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Provides clean drinking water to colony
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        name: 
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -44915,8 +45094,10 @@ MonoBehaviour:
   items:
   - name: Item1
     icon: {fileID: 21300000, guid: c8a69ecdf54ac8e4b873466605de27ff, type: 3}
+    num: 0
   - name: Item2
     icon: {fileID: 21300000, guid: cdb88fdb0cf46b244a667edaff21c7df, type: 3}
+    num: 0
 --- !u!1 &1654909085
 GameObject:
   m_ObjectHideFlags: 0
@@ -56170,7 +56351,6 @@ MonoBehaviour:
   bgObj: {fileID: 164289290}
   iconPrefab: {fileID: 7851556850091961098, guid: f2a75fb1f9e7dc64693b047c1510c225, type: 3}
   scrollParent: {fileID: 1612182961}
-  currentlyActive: 0
   Icons: []
   scrollValue: 0
   scrollingFor: 0

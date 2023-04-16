@@ -10,15 +10,12 @@ using UnityEngine.Events;
 
 
 
-public enum tileShape { empty, single, nine, test}/*
-public enum tileType { empty, ore, furnace, test1}*/
-public enum mouseAction { blank, selecting, drafting, building }
+public enum tileShape { empty, single, nine, test}
 
 [Serializable]
 public struct BuildingDraft
 {
     public bool active;
-    public Vector2 coordinate;
     public Building building;
 };
 
@@ -39,15 +36,17 @@ public class TileManager : MonoBehaviour
     [SerializeField] Transform Camera;
 
     [Header("Tile Selection")]
-
-    public mouseAction currentAction;
-
-    public Tile currentlySelectedTile;
+    Vector2 recentTileChecked;
 
 
     [Header("Draft Tile")]
 
     [SerializeField] BuildingDraft draft;
+    [SerializeField] GameObject draftVisual;
+    [SerializeField] MeshFilter draftMesh;
+    [SerializeField] MeshRenderer draftMeshRenderer;
+    [SerializeField] Material[] draftMats;
+
 
     [Header("Tiles Information")]
 
@@ -101,29 +100,32 @@ public class TileManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        /*if (!IsMouseOverUIWithIgnores())
+        draftVisual.SetActive(draft.active);
+        if (draft.active)
         {
-            Ray ray = Camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, CameraGroundLayer))
+            draftMesh.mesh = draft.building.prefab.GetComponent<MeshFilter>().sharedMesh;
+            draftVisual.transform.position = GlobalFunctions.coordToPoint(CurrentMouseCoord());
+            draftVisual.transform.localScale = draft.building.prefab.transform.localScale;
+            if (recentTileChecked != CurrentMouseCoord())
             {
-
-                Vector3 temp = GlobalFunctions.posToCoord(hit.point);
-                Debug.Log(temp);
+                draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
+                recentTileChecked = CurrentMouseCoord();
             }
-        }*/
+            
+        }
             
     }
 
     private void Update()
     {
-        /// ALL TEMPORARY TESTING STUFF :DD:D::D:D::D::D::D:D::D::D:D:D::D::D::D:D:D:D:D
-        /// 
-
         if (gM.state != gameState.surface)
         {
             return;
         }
+
+
+
+
 
         if (Input.GetKeyDown(KeyCode.Mouse0)&&!IsMouseOverUIWithIgnores())
         {
@@ -132,24 +134,10 @@ public class TileManager : MonoBehaviour
 
 
 
-        /*if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            selectedTileType = (tileType)0;
-        }*/
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            draft.building = buildings.buildings[0];
-            UpdateDraftActivity();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            draft.building = buildings.buildings[1];
-            UpdateDraftActivity();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            Debug.LogWarning(buildings.GetBuildingShapeFromID(draft.building.name).name);
-        }
+
+
+
+
 
     }
     private bool IsMouseOverUIWithIgnores()
@@ -170,28 +158,11 @@ public class TileManager : MonoBehaviour
         return raycastResultList.Count > 0;
     }
 
-
-
-
-
-
-    void replaceTile(Vector2 coord)
-    {
-
-    }
-
     void ClearDraft()
     {
         draft.active = false;
-        draft.coordinate = Vector2.positiveInfinity;
-        draft.building = buildings.GetBuildingFromID("Empty");
-    }
-
-    void DraftCurrent()
-    {
-        Debug.Log("Drafted");
-        draft.coordinate = CurrentMouseCoord();
-        UpdateDraftActivity();
+        draft.building = new Building();
+        //draft.building = buildings.GetBuildingFromID("Empty");
     }
     Vector2 CurrentMouseCoord()
     {
@@ -210,100 +181,99 @@ public class TileManager : MonoBehaviour
 
     void InteractCurrent()
     {
-        currentlySelectedTile.InteractionWindow(false);
-        currentlySelectedTile = TileAtCoord(CurrentMouseCoord());
-        currentlySelectedTile.InteractionWindow(true);
+        Tile currentlySelectedTile = TileAtCoord(CurrentMouseCoord());
+        currentlySelectedTile.InteractionWindow();
     }
     void ClickedOnCoord(Vector2 Coordinate)
     {
         Debug.LogError($"Clicked on {Coordinate}");
         Debug.LogWarning("when you click a tile");
 
-        if (checkTileEmpty(Coordinate))
+        UpdateDraftActivity();
+        if (draft.active)//if building type is selected.
         {
-            Debug.LogWarning("if the tile has nothing in it");
-            UpdateDraftActivity();
-            if (draft.active)
+            Debug.Log("draft is active");
+            if (checkShapeEmpty(Coordinate, buildings.GetBuildingShapeFromID(draft.building.tileShapeID)))//if there is no building overlapping the current place.
             {
-                Debug.LogWarning("draft is currently active");
-                if (checkDraftAtCoord(Coordinate))
+                if (HasDraftResources()) // there are materials to build
                 {
-                    Debug.LogWarning("clicked on draft");
-
-                    bool canMake = true;
-                    for (int i = 0; i < draft.building.constructionResourcesID.Length; i++)
+                    if (HasDraftPower())//if there is enough power
                     {
-                        if (inv.inventory[draft.building.constructionResourcesID[i]] < draft.building.constructionRatio[i])
-                        {
-                            canMake = false;
-                        }
-                    }
-                    if (canMake)
-                    {
-                        Debug.LogWarning("you have the materials to build");
-
-                        ConfirmPlaceTile();
-
-
+                        TryPlaceBuilding(Coordinate, draft.building);
+                        ClearDraft();
                     }
                     else
                     {
-                        Debug.LogWarning("no materials");
-
+                        //not enough power
                     }
-
-
 
 
 
                 }
                 else
                 {
-                    Debug.LogWarning("empty, switched position");
-                    draft.coordinate = Coordinate;
+                    //not enough resources
                 }
+
+
             }
             else
             {
-                Debug.LogWarning("not drafting yet, doing now");
-                //draft.active = true;
-                UpdateDraftActivity();
-                draft.coordinate = Coordinate;
+                //there is a building in here
             }
-            
+
+
         }
         else
         {
-            Debug.LogWarning($"if the tile has something in it that is of course a: {TileAtCoord(Coordinate)}");
+            //Hasnt selected a building yet
+            if (!checkTileEmpty(Coordinate))//there is something to look at 
+            {
+                InteractCurrent();
+            }
+
+
 
         }
     }
+
+    bool HasDraftPower()
+    {
+        return draft.building.powerRequirement <= gF.PowerLevel;
+    }
+
+    bool HasDraftResources()
+    {
+        bool canMake = true;
+        for (int i = 0; i < draft.building.constructionResourcesID.Length; i++)
+        {
+            if (inv.inventory[draft.building.constructionResourcesID[i]] < draft.building.constructionRatio[i])
+            {
+                canMake = false;
+            }
+        }
+        return canMake;
+    }
+
+
 
     public void SetDraft(int num)
     {
         draft.building = buildings.buildings[num];
+        draft.active = true;
     }
 
-    public void ConfirmPlaceTile()
-    {
-        if (draft.building.powerRequirement > gF.PowerLevel)
-        {
-            Debug.LogError("Not enough power to place building");
-            return;
-        }
-        else if (draft.active)
-        {
-            TryPlaceBuilding(draft.coordinate, draft.building);
-            ClearDraft();
-        }
-    }
     void TryPlaceBuilding(Vector2 coord, Building build)
     {
         if (checkShapeEmpty(coord, buildings.GetBuildingShapeFromID(build.tileShapeID)))
         {
             PlaceTile(build, coord);
             build.instantiationAction.Invoke();
-            Debug.Log("ASDSADASD");
+            Debug.Log(" PLACED");
+        }
+        else
+        {
+            Debug.Log("FAILED PLACE");
         }
     }
     void PlaceTile(Building build, Vector2 coord)
@@ -331,42 +301,27 @@ public class TileManager : MonoBehaviour
         {
             tilePositions[pos] = tile;
         }
-        buildings.activeBuilds = GlobalFunctions.activeBuildingsOperator(buildings.activeBuilds, GlobalFunctions.BuildingToActiveBuilds(building), 1);
-    }
-    bool checkDraftAtCoord(Vector2 coord)
-    {
-        UpdateDraftActivity();
-        if (!draft.active) { return false; }
-        bool temp = false;
-        foreach(Vector2 position in GlobalFunctions.V2ArrayToCoord(coord, buildings.GetBuildingShapeFromID(draft.building.tileShapeID).Layout))
-        {
-            if(position == draft.coordinate)
-            {
-                temp = true;
-            }
-            
-        }
-        return temp;
-        
     }
 
     void UpdateDraftActivity()
     {
         draft.active = false;
-        if(draft.coordinate != Vector2.positiveInfinity)
+        if(draft.building.name!="Empty"&&draft.building.name!= null)
         {
-            if(draft.building.name!="Empty"&&draft.building.name!= "")
-            {
-                draft.active = true;
-            }
+            Debug.Log($"setting to true, is called {draft.building.name}");
+            draft.active = true;
         }
+        
+    }
+
+    private void OnEnable()
+    {
+        ClearDraft();
     }
 
 
 
 
-
-    
 
 
 
