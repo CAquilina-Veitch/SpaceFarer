@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: b4416d2b7db12b04199a69aec76286bd, type: 3}
+  - {fileID: 2100000, guid: 1950fe06b938d79409d00805e01b22be, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -102,24 +102,25 @@ MonoBehaviour:
     name: 
     tileShapeID: 
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 0}
     description: 
-    hasCrafter: 0
-    hasPowerGenerator: 0
-    hasItemStorage: 0
-    hasLauncher: 0
-    hasLaunchpad: 0
+    f_itemGen:
+      exists: 0
+      item:
+        type: 0
+        icon: {fileID: 0}
+        num: 0
+    f_crafter:
+      exists: 0
+      recipe:
+        inputItems: []
+        outputItems: []
     prefab: {fileID: 0}
     canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls: []
-  powerGenerator: {fileID: 591081147085787190}
-  itemStorage: {fileID: 0}
-  launcher: {fileID: 0}
-  launchpad: {fileID: 0}
 --- !u!114 &591081147085787190
 MonoBehaviour:
   m_ObjectHideFlags: 0
