@@ -45609,7 +45609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inv: {fileID: 1640325457}
   AsteroidGens:
-  - type: 3
+  - type: 0
     icon: {fileID: 0}
     num: 0
 --- !u!1 &1654909085
@@ -47638,7 +47638,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1749223195
 RectTransform:
   m_ObjectHideFlags: 0

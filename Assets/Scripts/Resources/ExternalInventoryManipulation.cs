@@ -9,10 +9,6 @@ public class ExternalInventoryManipulation : MonoBehaviour
     [SerializeField] List<Item> AsteroidGens;
     Item currentGen = new Item { type = itemType.None, num = 0 };
 
-    private void OnEnable()
-    {
-        AsteroidGens.Add(new Item { type = itemType.None, num = 0 });
-    }
 
     public void changeAsteroidItemGeneration(int opt)
     {
