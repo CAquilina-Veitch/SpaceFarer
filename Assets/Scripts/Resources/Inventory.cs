@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum resource { empty, iron, gold, redstone }
 
-public enum itemType { Iron, Silicon, Glass }
+public enum itemType { None, Iron, Silicon, Glass }
 
 
 
