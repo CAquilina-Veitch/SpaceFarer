@@ -26,7 +26,7 @@ public class BuildingConstructionMenu : MonoBehaviour
     
     float scrollAcceleration = 20;
     float maxScrollSpeed = 40;
-    float maxScrollDistance;
+    float maxScrollDistance = 2200;
     public float scrollingFor;
     public float currentScrollDirection;
 
@@ -45,8 +45,6 @@ public class BuildingConstructionMenu : MonoBehaviour
             Icon.GetComponent<BuildingIcon>().initiate(constructables[i],i);
             Icon.name = constructables[i].name;
             Icons.Add(Icon);
-            maxScrollDistance = i == constructables.Count - 1 ? screenWidth * ((i + 1) / (howManyOnScreen + 1)) : 0;
-            maxScrollDistance = i == constructables.Count - 1 && i < howManyOnScreen ? 0 : maxScrollDistance;
         }
     }
     public void OptionClicked(int num)

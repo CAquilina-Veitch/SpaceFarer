@@ -229,6 +229,7 @@ public class TileManager : MonoBehaviour
             //Hasnt selected a building yet
             if (!checkTileEmpty(Coordinate))//there is something to look at 
             {
+                Debug.LogError($"YOU HAVE NOW CLICKED UPPON THE TILE {TileAtCoord(Coordinate)}");
                 InteractCurrent();
             }
 
