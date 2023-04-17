@@ -10,9 +10,8 @@ public class ResourceAvailability : MonoBehaviour
     [SerializeField]Inventory inv;
     int currentInventoryVersion;
 
-    public string[]items;
-    public float[] invAmount;
-    public int[] ratio;
+    public Item[]items;
+    public int[] invAmount;
     resourceState[] states = new resourceState[4];
     public Color[] colours;
     public Image overlay;
@@ -27,11 +26,12 @@ public class ResourceAvailability : MonoBehaviour
     {
         if (inv.currentInventoryVersion != currentInventoryVersion)
         {
+
             for(int i =0; i<items.Length; i++)
             {
-                invAmount[i] = inv.inventory[items[i]];
+                invAmount[i] = inv.inventory[items[i].type];
                 currentInventoryVersion = inv.currentInventoryVersion;
-                if (invAmount[i] >= ratio[i])
+                if (invAmount[i] >= items[i].num)
                 {
                     SwitchState(i,resourceState.enough);
                 }

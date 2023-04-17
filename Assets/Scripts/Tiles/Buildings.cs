@@ -19,9 +19,12 @@ public struct Building
     public string name;
     public string tileShapeID;
     public float powerRequirement;
-
+/*
     public string[] constructionResourcesID;
     public int[] constructionRatio;
+*/
+    public Item[] constructionItems;
+
     public Sprite icon;
     public string description;
 

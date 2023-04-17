@@ -25950,13 +25950,13 @@ MonoBehaviour:
       name: 
       tileShapeID: 
       powerRequirement: 0
-      constructionResourcesID: []
-      constructionRatio: 
+      constructionItems: []
       icon: {fileID: 0}
       description: 
       f_itemGen:
         exists: 0
         item:
+          type: 0
           name: 
           icon: {fileID: 0}
           num: 0
@@ -26022,21 +26022,33 @@ MonoBehaviour:
   - name: Solar Panel
     tileShapeID: 2x2
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 48cecd57d0929e54a98a308973856eee, type: 3}
     description: Absorbs energy from the sun and turns it into electricity
     f_itemGen:
       exists: 0
       item:
-        name: 
+        type: 0
+        name: Iron
         icon: {fileID: 0}
         num: 0
     f_crafter:
       exists: 0
       recipe:
-        inputItems: []
-        outputItems: []
+        inputItems:
+        - type: 0
+          name: 
+          icon: {fileID: 0}
+          num: 3
+        - type: 0
+          name: 
+          icon: {fileID: 0}
+          num: 1
+        outputItems:
+        - type: 0
+          name: 
+          icon: {fileID: 0}
+          num: 4
     prefab: {fileID: 5344460717475864621, guid: c7f0c3c0c84d1aa46b90fd7265010bf3, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
@@ -26079,15 +26091,15 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
   - name: Mass Driver
-    tileShapeID: 1x3
+    tileShapeID: 3x1
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 3af09ccf973ffd844be02a2ee25b8687, type: 3}
     description: Shoots materials off low gravity planets
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26138,15 +26150,15 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - name: Bucket Excavator
-    tileShapeID: 2x1
+    tileShapeID: 1x2
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 07f7da0a2eb464f4496537ad6c6340ab, type: 3}
     description: Bucket Excavator Excavate Rock
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26154,11 +26166,13 @@ MonoBehaviour:
       exists: 0
       recipe:
         inputItems:
-        - name: 
+        - type: 0
+          name: 
           icon: {fileID: 0}
           num: 0
         outputItems:
-        - name: 
+        - type: 0
+          name: 
           icon: {fileID: 0}
           num: 0
     prefab: {fileID: 8723628151866066843, guid: dc14ce4236d88824eb1bf6b0dbd377c8, type: 3}
@@ -26217,13 +26231,13 @@ MonoBehaviour:
   - name: Hydroelectric Dam
     tileShapeID: Single
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 0b865e1ca11a1d346a3dbd6160489276, type: 3}
     description: Produces power from the flow of water
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26286,15 +26300,15 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - name: Nitrogen Sapper
-    tileShapeID: 1x2
+    tileShapeID: 2x1
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: c4c30425804eb0048af75cf4680f76e1, type: 3}
     description: Absorbs excess nitrogen from atmosphere
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26304,7 +26318,7 @@ MonoBehaviour:
         inputItems: []
         outputItems: []
     prefab: {fileID: 4188690778194480504, guid: 584bf630097b5fd4897597eeeab89498, type: 3}
-    canBeClickedFromStart: 1
+    canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -26359,13 +26373,13 @@ MonoBehaviour:
   - name: Cyanobacteria Container
     tileShapeID: Single
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: f1435c8c5e772cc40b35ab1e687890f5, type: 3}
     description: Contains cyanobacteria, the basis for life on this new planet
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26428,15 +26442,15 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
   - name: Planting Machine
-    tileShapeID: 1x3
+    tileShapeID: 3x1
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 7009f4b537ebd6f4cbb844294f1a4f8a, type: 3}
     description: Seeds and waters plants
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26475,15 +26489,15 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
   - name: Nuclear Power Plant
-    tileShapeID: 2x3
+    tileShapeID: 3x2
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: cee193125c6218c4e98f618527d39c39, type: 3}
     description: Produces power from the splitting of atoms
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26536,13 +26550,13 @@ MonoBehaviour:
   - name: Sleeping Quarters
     tileShapeID: Single
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Provides a place for colonists to sleep
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26551,7 +26565,7 @@ MonoBehaviour:
       recipe:
         inputItems: []
         outputItems: []
-    prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
+    prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
@@ -26595,13 +26609,13 @@ MonoBehaviour:
   - name: Food Hall
     tileShapeID: Single
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Provides a place for colonists to eat
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26610,7 +26624,7 @@ MonoBehaviour:
       recipe:
         inputItems: []
         outputItems: []
-    prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
+    prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
@@ -26654,13 +26668,13 @@ MonoBehaviour:
   - name: Town Hall
     tileShapeID: Single
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Allows for administration of new colony
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26669,7 +26683,7 @@ MonoBehaviour:
       recipe:
         inputItems: []
         outputItems: []
-    prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
+    prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
@@ -26713,13 +26727,13 @@ MonoBehaviour:
   - name: Science Facility
     tileShapeID: Single
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Allows for research of terraformed Venus
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26728,7 +26742,7 @@ MonoBehaviour:
       recipe:
         inputItems: []
         outputItems: []
-    prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
+    prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
@@ -26772,13 +26786,13 @@ MonoBehaviour:
   - name: Farm
     tileShapeID: Single
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Produces food for colony
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26787,7 +26801,7 @@ MonoBehaviour:
       recipe:
         inputItems: []
         outputItems: []
-    prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
+    prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
@@ -26829,15 +26843,15 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - name: Water Purification
-    tileShapeID: Single
+    tileShapeID: 1x3
     powerRequirement: 0
-    constructionResourcesID: []
-    constructionRatio: 
+    constructionItems: []
     icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
     description: Provides clean drinking water to colony
     f_itemGen:
       exists: 0
       item:
+        type: 0
         name: 
         icon: {fileID: 0}
         num: 0
@@ -26846,7 +26860,7 @@ MonoBehaviour:
       recipe:
         inputItems: []
         outputItems: []
-    prefab: {fileID: 2406983770974033254, guid: 37639d5a12fb25549a18222071d1eeba, type: 3}
+    prefab: {fileID: 3833815794174301523, guid: 5898fa3498178a7479a480ed7963cfa6, type: 3}
     canBeClickedFromStart: 0
     instantiationAction:
       m_PersistentCalls:
@@ -26899,14 +26913,14 @@ MonoBehaviour:
   - name: 1x2
     Layout:
     - {x: 0, y: 0}
-    - {x: 1, y: 0}
+    - {x: 0, y: -1}
   - name: 2x2
     Layout:
     - {x: 0, y: 0}
-    - {x: 0, y: -1}
-    - {x: -1, y: 0}
-    - {x: -1, y: -1}
-  - name: 2x3
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+  - name: 3x2
     Layout:
     - {x: 0, y: 0}
     - {x: 1, y: 0}
@@ -26914,12 +26928,6 @@ MonoBehaviour:
     - {x: 0, y: -1}
     - {x: 1, y: -1}
     - {x: 2, y: -1}
-  activeBuilds:
-    activeCrafters: 0
-    activePowerGenerators: 0
-    activeItemStorage: 0
-    activeLaunchers: 0
-    activeLaunchpads: 0
 --- !u!1 &999838322
 GameObject:
   m_ObjectHideFlags: 0
@@ -45076,9 +45084,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac4d25d80027cb149b9872ab46f88adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: {fileID: 1640325458}
   maxItemStackCapacity: 40
   currentInventoryVersion: 0
+  items: []
 --- !u!114 &1640325458
 MonoBehaviour:
   m_ObjectHideFlags: 0

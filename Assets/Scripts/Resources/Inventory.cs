@@ -6,10 +6,14 @@ using UnityEngine;
 
 public enum resource { empty, iron, gold, redstone }
 
+public enum itemType { Iron, Silicon, Glass }
+
+
+
 [Serializable]
 public struct Item
 {
-    public string name;
+    public itemType type;
     public Sprite icon;
     public int num;
 }
@@ -22,10 +26,9 @@ public struct CraftingRecipe
 
 public class Inventory: MonoBehaviour
 {
-    [SerializeField] Items items;
 
 
-    public Dictionary<string, int> inventory = new Dictionary<string, int>();
+    public Dictionary<itemType, int> inventory = new Dictionary<itemType, int>();
     public Dictionary<string, float> crafting = new Dictionary<string, float>();
     public int maxItemStackCapacity;
 
@@ -36,37 +39,56 @@ public class Inventory: MonoBehaviour
     float itemDelay = 1;
     bool itemGenerating;
 
-    Dictionary<string,int> Gens = new Dictionary<string, int>();
+    Dictionary<itemType,int> Gens = new Dictionary<itemType, int>();
 
 
     List<CraftingRecipe> UnsustainableCrafts;
 
 
+
+
+
+
+
+    public List<Item> items;
+
+    public Item GetItemFromID(itemType type)
+    {
+
+        return items.Find(x => x.type == type);
+    }
+
+
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        foreach(Item item in items.items)
+        foreach(Item item in items)
         {
-            inventory.Add(item.name, 0);
-            Debug.LogError($"Added item {item.name}");
+            inventory.Add(item.type, 0);
+            Debug.LogError($"Added item {item.type}");
         }
 
-        foreach(Item item in items.items)
+        foreach(Item item in items)
         {
-            TryChangeItems(item.name,maxItemStackCapacity);
+            TryChangeItems(item.type,maxItemStackCapacity);
         }
     }
 
-    public bool hasEnoughOfResource(string itemID, int num)
+    public bool hasEnoughOfResource(itemType type, int num)
     {
-        return inventory[itemID] >= num;
+        return inventory[type] >= num;
     }
 
-    public bool TryChangeItems(string itemID, int val)
+    public bool TryChangeItems(itemType type, int val)
     {
-        if (inventory[itemID] >= -val)
+        if (inventory[type] >= -val)
         {
-            inventory[itemID] += val;
+            inventory[type] += val;
             currentInventoryVersion++;
             return true;
         }
@@ -80,9 +102,9 @@ public class Inventory: MonoBehaviour
     IEnumerator GenerateItem()
     {
         
-        foreach(string i in Gens.Keys)
-        {;
-            inventory[i] += Gens[i];
+        foreach(itemType t in Gens.Keys)
+        {
+            inventory[t] += Gens[t];
         }
         //unsustainable craft
         foreach(CraftingRecipe rec in UnsustainableCrafts)
@@ -109,21 +131,21 @@ public class Inventory: MonoBehaviour
             StartCoroutine(GenerateItem());
         }
     }
-    public void StopGeneration(string item)
+    public void StopGeneration(itemType type)
     {
-        if (Gens.ContainsKey(item))
+        if (Gens.ContainsKey(type))
         {
-            Gens.Remove(item);
+            Gens.Remove(type);
         }
     }
 
     public void ChangeItemGeneration(Item item)
     {
-        if (!Gens.ContainsKey(item.name))
+        if (!Gens.ContainsKey(item.type))
         {
-            Gens.Add(item.name, 0);
+            Gens.Add(item.type, 0);
         }
-        Gens[item.name] += item.num;
+        Gens[item.type] += item.num;
     }
     //buildingShapes.First(shape => shape.name == id);
 
@@ -143,7 +165,7 @@ public class Inventory: MonoBehaviour
     {
         foreach (Item it in recipe.inputItems)
         {
-            ChangeItemGeneration(new Item() { name = it.name, num = -it.num });
+            ChangeItemGeneration(new Item() { type = it.type, num = -it.num });
         }
         foreach (Item it in recipe.outputItems)
         {
@@ -155,13 +177,13 @@ public class Inventory: MonoBehaviour
     {
         foreach (Item it in rec.inputItems)
         {
-            if (!Gens.ContainsKey(it.name))
+            if (!Gens.ContainsKey(it.type))
             {
                 return false;
             }
             else
             {
-                if(Gens[it.name] < it.num)
+                if(Gens[it.type] < it.num)
                 {
                     return false;
                 }
@@ -173,18 +195,18 @@ public class Inventory: MonoBehaviour
     {
         foreach(Item ID in rec.inputItems)
         {
-            if (inventory[ID.name] < ID.num)
+            if (inventory[ID.type] < ID.num)
             {
                 return;
             }
         }
         foreach(Item ID in rec.inputItems)
         {
-            inventory[ID.name] -= ID.num;
+            inventory[ID.type] -= ID.num;
         }
         foreach(Item ID in rec.outputItems)
         {
-            inventory[ID.name] += ID.num;
+            inventory[ID.type] += ID.num;
         }
     }
 }

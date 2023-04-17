@@ -9,7 +9,7 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 {
     Building build;
     public GameObject resourceImagePrefab;
-    Items items;
+    Inventory inv;
     int id;
     [SerializeField] TextMeshProUGUI Name;
     [SerializeField] TextMeshProUGUI GUIName;
@@ -24,7 +24,7 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         id = _id;
         build = b;
 
-        items = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Items>();
+        inv = GameObject.FindGameObjectWithTag("Inventory").GetComponent<Inventory>();
 
         CanBeClicked(build.canBeClickedFromStart);
         Name.text = build.name;
@@ -32,18 +32,16 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         image.sprite = build.icon;
         GUIDescription.text = build.description;
 
-        for (int i = 0; i < build.constructionResourcesID.Length; i++)
+        for (int i = 0; i < build.constructionItems.Length; i++)
         {
             GameObject resourceObj = Instantiate(resourceImagePrefab, GUIWindow.transform);
-            resourceObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(GlobalFunctions.EvenlyCenteredValueAround0(build.constructionResourcesID.Length, i), 3.84f);
-            resourceObj.GetComponent<Image>().sprite = items.GetItemFromID(build.constructionResourcesID[i]).icon;
+            resourceObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(GlobalFunctions.EvenlyCenteredValueAround0(build.constructionItems.Length, i), 3.84f);
+            resourceObj.GetComponent<Image>().sprite = inv.GetItemFromID(build.constructionItems[i].type).icon;
 
             ResourceAvailability _rA = resourceObj.GetComponent<ResourceAvailability>();
-            _rA.items = new string[1];
-            _rA.ratio = new int[1];
-            _rA.invAmount = new float[1];
-            _rA.items[0] = build.constructionResourcesID[i];
-            _rA.ratio[0] = build.constructionRatio[i];
+            _rA.items = new Item[1];
+            _rA.invAmount = new int[1];
+            _rA.items[0] = build.constructionItems[i];
             _rA.Size(20);
         }
         SetHover(false);

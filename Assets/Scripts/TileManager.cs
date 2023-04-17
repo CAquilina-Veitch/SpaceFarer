@@ -245,15 +245,14 @@ public class TileManager : MonoBehaviour
 
     bool HasDraftResources()
     {
-        bool canMake = true;
-        for (int i = 0; i < draft.building.constructionResourcesID.Length; i++)
+        foreach (Item it in draft.building.constructionItems)
         {
-            if (inv.inventory[draft.building.constructionResourcesID[i]] < draft.building.constructionRatio[i])
+            if (!inv.hasEnoughOfResource(it.type, it.num))
             {
-                canMake = false;
+                return false;
             }
         }
-        return canMake;
+        return true;
     }
 
 
