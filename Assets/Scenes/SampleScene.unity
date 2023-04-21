@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.049320586, g: 0.07050131, b: 0.12718523, a: 1}
+  m_IndirectSpecularColor: {r: 0.049320936, g: 0.070500866, b: 0.1271851, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1213,7 +1213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &66231515
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1226,8 +1226,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 164289291}
   - {fileID: 1917176119}
+  - {fileID: 164289291}
   m_Father: {fileID: 2085348076}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4397,7 +4397,7 @@ RectTransform:
   - {fileID: 815371720}
   - {fileID: 1803460854}
   m_Father: {fileID: 66231515}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -27981,7 +27981,7 @@ MonoBehaviour:
     tileShapeID: Single
     powerRequirement: 0
     constructionItems: []
-    icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
+    icon: {fileID: 21300000, guid: 9531c7df75f9c5640bced919160009b8, type: 3}
     description: Provides a place for colonists to sleep
     f_itemGen:
       exists: 0
@@ -28039,7 +28039,7 @@ MonoBehaviour:
     tileShapeID: Single
     powerRequirement: 0
     constructionItems: []
-    icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
+    icon: {fileID: 21300000, guid: 6adcb100264b2b2458c7889b7d3796dc, type: 3}
     description: Provides a place for colonists to eat
     f_itemGen:
       exists: 0
@@ -28097,7 +28097,7 @@ MonoBehaviour:
     tileShapeID: 2x1
     powerRequirement: 0
     constructionItems: []
-    icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
+    icon: {fileID: 21300000, guid: e6ab309ff533e344f80ae0ee23bb99aa, type: 3}
     description: Allows for administration of new colony
     f_itemGen:
       exists: 0
@@ -28155,7 +28155,7 @@ MonoBehaviour:
     tileShapeID: Single
     powerRequirement: 0
     constructionItems: []
-    icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
+    icon: {fileID: 21300000, guid: e57727fb975837743a8b066a8b36bb01, type: 3}
     description: Allows for research of terraformed Venus
     f_itemGen:
       exists: 0
@@ -28213,7 +28213,7 @@ MonoBehaviour:
     tileShapeID: Single
     powerRequirement: 0
     constructionItems: []
-    icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
+    icon: {fileID: 21300000, guid: 2c5a54834a4fd35418a8607f98422e13, type: 3}
     description: Produces food for colony
     f_itemGen:
       exists: 0
@@ -28271,7 +28271,7 @@ MonoBehaviour:
     tileShapeID: 1x3
     powerRequirement: 0
     constructionItems: []
-    icon: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
+    icon: {fileID: 21300000, guid: 57eeacca9a1dccd4eb9ec627fe7ee97f, type: 3}
     description: Provides clean drinking water to colony
     f_itemGen:
       exists: 0
@@ -36978,7 +36978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1432847376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44138,7 +44138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 115.8, y: -16}
+  m_AnchoredPosition: {x: 115.8, y: -4.4}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1539953284
@@ -52906,7 +52906,7 @@ RectTransform:
   m_Children:
   - {fileID: 1138184519}
   m_Father: {fileID: 66231515}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -54616,7 +54616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 15.800018, y: -15.999996}
+  m_AnchoredPosition: {x: 15.800018, y: -4.399994}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1966468609
@@ -56769,7 +56769,7 @@ RectTransform:
   m_GameObject: {fileID: 2052339726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.83862257, y: 0.83862257, z: 0.83862257}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 804615491}
@@ -56778,7 +56778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 534, y: -28}
+  m_AnchoredPosition: {x: 556, y: -16.400002}
   m_SizeDelta: {x: 200, y: 65.2956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2052339728
@@ -57471,7 +57471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2085348076
 RectTransform:
   m_ObjectHideFlags: 0
