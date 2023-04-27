@@ -463,7 +463,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &23311541
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29191,7 +29191,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 993367024}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ede8821481e3cbd4cb52108a8eb69ded, type: 3}
   m_Name: 
@@ -29216,16 +29216,16 @@ MonoBehaviour:
     constructionItems:
     - type: 1
       icon: {fileID: 0}
-      num: 15
+      num: 5
     - type: 5
       icon: {fileID: 0}
-      num: 20
+      num: 10
     - type: 4
       icon: {fileID: 0}
-      num: 20
+      num: 10
     - type: 3
       icon: {fileID: 0}
-      num: 25
+      num: 5
     icon: {fileID: 21300000, guid: 48cecd57d0929e54a98a308973856eee, type: 3}
     description: Absorbs energy from the sun and turns it into electricity
     f_itemGen:
@@ -29292,7 +29292,19 @@ MonoBehaviour:
   - name: Mass Driver
     tileShapeID: 3x1
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
+    - type: 2
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
+    - type: 5
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
     icon: {fileID: 21300000, guid: 3af09ccf973ffd844be02a2ee25b8687, type: 3}
     description: Shoots materials off low gravity planets
     f_itemGen:
@@ -29350,7 +29362,19 @@ MonoBehaviour:
   - name: Bucket Excavator
     tileShapeID: 1x2
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
+    - type: 2
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 3
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
     icon: {fileID: 21300000, guid: 07f7da0a2eb464f4496537ad6c6340ab, type: 3}
     description: Bucket Excavator Excavate Rock
     f_itemGen:
@@ -29426,7 +29450,16 @@ MonoBehaviour:
   - name: Hydroelectric Dam
     tileShapeID: Single
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
+    - type: 2
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 5
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
     icon: {fileID: 21300000, guid: 0b865e1ca11a1d346a3dbd6160489276, type: 3}
     description: Produces power from the flow of water
     f_itemGen:
@@ -29496,7 +29529,19 @@ MonoBehaviour:
   - name: Nitrogen Absorber
     tileShapeID: 2x1
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
+    - type: 3
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
+    - type: 5
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
     icon: {fileID: 21300000, guid: c4c30425804eb0048af75cf4680f76e1, type: 3}
     description: Absorbs excess nitrogen from atmosphere
     f_itemGen:
@@ -29566,7 +29611,13 @@ MonoBehaviour:
   - name: Cyanobacteria Container
     tileShapeID: Single
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 20
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
     icon: {fileID: 21300000, guid: f1435c8c5e772cc40b35ab1e687890f5, type: 3}
     description: Contains cyanobacteria, the basis for life on this new planet
     f_itemGen:
@@ -29636,7 +29687,19 @@ MonoBehaviour:
   - name: Planting Machine
     tileShapeID: 3x1
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
+    - type: 2
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 5
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
     icon: {fileID: 21300000, guid: 7009f4b537ebd6f4cbb844294f1a4f8a, type: 3}
     description: Seeds and waters plants
     f_itemGen:
@@ -29682,7 +29745,22 @@ MonoBehaviour:
   - name: Nuclear Power Plant
     tileShapeID: 3x2
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
+    - type: 2
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
+    - type: 3
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
+    - type: 5
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 20
     icon: {fileID: 21300000, guid: cee193125c6218c4e98f618527d39c39, type: 3}
     description: Produces power from the splitting of atoms
     f_itemGen:
@@ -29740,7 +29818,16 @@ MonoBehaviour:
   - name: Sleeping Quarters
     tileShapeID: Single
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
+    - type: 3
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
     icon: {fileID: 21300000, guid: 9531c7df75f9c5640bced919160009b8, type: 3}
     description: Provides a place for colonists to sleep
     f_itemGen:
@@ -29798,7 +29885,16 @@ MonoBehaviour:
   - name: Food Hall
     tileShapeID: Single
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
+    - type: 3
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 10
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
     icon: {fileID: 21300000, guid: 6adcb100264b2b2458c7889b7d3796dc, type: 3}
     description: Provides a place for colonists to eat
     f_itemGen:
@@ -29856,7 +29952,16 @@ MonoBehaviour:
   - name: Town Hall
     tileShapeID: 2x1
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 0}
+      num: 15
+    - type: 3
+      icon: {fileID: 0}
+      num: 10
+    - type: 4
+      icon: {fileID: 0}
+      num: 15
     icon: {fileID: 21300000, guid: e6ab309ff533e344f80ae0ee23bb99aa, type: 3}
     description: Allows for administration of new colony
     f_itemGen:
@@ -29914,7 +30019,16 @@ MonoBehaviour:
   - name: Science Facility
     tileShapeID: Single
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 0}
+      num: 15
+    - type: 3
+      icon: {fileID: 0}
+      num: 5
+    - type: 4
+      icon: {fileID: 0}
+      num: 10
     icon: {fileID: 21300000, guid: e57727fb975837743a8b066a8b36bb01, type: 3}
     description: Allows for research of terraformed Venus
     f_itemGen:
@@ -29972,7 +30086,16 @@ MonoBehaviour:
   - name: Farm
     tileShapeID: Single
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 15
+    - type: 3
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
+    - type: 4
+      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      num: 5
     icon: {fileID: 21300000, guid: 2c5a54834a4fd35418a8607f98422e13, type: 3}
     description: Produces food for colony
     f_itemGen:
@@ -30030,7 +30153,16 @@ MonoBehaviour:
   - name: Water Purification
     tileShapeID: 1x3
     powerRequirement: 0
-    constructionItems: []
+    constructionItems:
+    - type: 1
+      icon: {fileID: 0}
+      num: 15
+    - type: 2
+      icon: {fileID: 0}
+      num: 10
+    - type: 4
+      icon: {fileID: 0}
+      num: 10
     icon: {fileID: 21300000, guid: 57eeacca9a1dccd4eb9ec627fe7ee97f, type: 3}
     description: Provides clean drinking water to colony
     f_itemGen:
