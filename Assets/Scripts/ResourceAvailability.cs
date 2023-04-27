@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum resourceState { locked, notEnough, enough }
 
@@ -10,12 +11,13 @@ public class ResourceAvailability : MonoBehaviour
     [SerializeField]Inventory inv;
     int currentInventoryVersion;
 
-    public Item[]items;
-    public int[] invAmount;
-    resourceState[] states = new resourceState[4];
+    public Item item;
+    public int invAmount;
+    resourceState state = new resourceState();
     public Color[] colours;
     public Image overlay;
     public GameObject lockIcon;
+    public TextMeshProUGUI textBox;
 
     private void Awake()
     {
@@ -26,33 +28,30 @@ public class ResourceAvailability : MonoBehaviour
     {
         if (inv.currentInventoryVersion != currentInventoryVersion)
         {
-
-            for(int i =0; i<items.Length; i++)
+            invAmount = inv.inventory[item.type];
+            currentInventoryVersion = inv.currentInventoryVersion;
+            if (invAmount >= item.num)
             {
-                invAmount[i] = inv.inventory[items[i].type];
-                currentInventoryVersion = inv.currentInventoryVersion;
-                if (invAmount[i] >= items[i].num)
-                {
-                    SwitchState(i,resourceState.enough);
-                }
-                else if (invAmount[i] > 0)
-                {
-                    SwitchState(i,resourceState.notEnough);
-                }
-                else
-                {
-                    SwitchState(i,resourceState.locked);
-                }
+                SwitchState(resourceState.enough);
             }
+            else if (invAmount > 0)
+            {
+                SwitchState(resourceState.notEnough);
+            }
+            else
+            {
+                SwitchState(resourceState.locked);
+            }
+            textBox.text = $"{invAmount}/{item.num}";
             
         }
         
     }
-    void SwitchState(int i, resourceState to)
+    void SwitchState(resourceState to)
     {
-        if(states[i] != to)
+        if(state != to)
         {
-            states[i] = to;
+            state = to;
             lockIcon.SetActive(to == resourceState.locked);
             overlay.color = colours[(int)to];
 

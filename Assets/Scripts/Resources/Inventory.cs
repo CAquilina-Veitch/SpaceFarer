@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum resource { empty, iron, gold, redstone }
+public enum resource { empty, Iron, Silicon, Glass, Copper, Lithium }
 
 public enum itemType { None, Iron, Silicon, Glass, Copper, Lithium }
 
@@ -75,8 +75,9 @@ public class Inventory: MonoBehaviour
 
         foreach(Item item in items)
         {
-            TryChangeItems(item.type,maxItemStackCapacity);
+            //TryChangeItems(item.type,maxItemStackCapacity);
         }
+        StartCoroutine(GenerateItem());
     }
 
     public bool hasEnoughOfResource(itemType type, int num)
@@ -101,35 +102,39 @@ public class Inventory: MonoBehaviour
 
     IEnumerator GenerateItem()
     {
-        
-        foreach(itemType t in Gens.Keys)
+        Debug.LogError("gello");
+
+
+        foreach (itemType t in Gens.Keys)
         {
             inventory[t] += Gens[t];
         }
         //unsustainable craft
-        foreach(CraftingRecipe rec in UnsustainableCrafts)
+        if (UnsustainableCrafts != null)
         {
-            if (CheckSustainability(rec))
+            foreach (CraftingRecipe rec in UnsustainableCrafts)
             {
-                AddSustainableCraft(rec);
-            }
-            else
-            {
-                TryCraft(rec);
+                if (CheckSustainability(rec))
+                {
+                    AddSustainableCraft(rec);
+                }
+                else
+                {
+                    TryCraft(rec);
+                }
             }
         }
 
 
 
+        Debug.Log(currentInventoryVersion);
 
         currentInventoryVersion++;
 
 
         yield return new WaitForSeconds(itemDelay);
-        if (itemGenerating)
-        {
-            StartCoroutine(GenerateItem());
-        }
+        
+        StartCoroutine(GenerateItem());
     }
     public void StopGeneration(itemType type)
     {
@@ -141,6 +146,7 @@ public class Inventory: MonoBehaviour
 
     public void ChangeItemGeneration(Item item)
     {
+        Debug.Log($"{item.type}, {item.num}");
         if (!Gens.ContainsKey(item.type))
         {
             Gens.Add(item.type, 0);

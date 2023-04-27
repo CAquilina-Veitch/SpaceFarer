@@ -35,13 +35,13 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         for (int i = 0; i < build.constructionItems.Length; i++)
         {
             GameObject resourceObj = Instantiate(resourceImagePrefab, GUIWindow.transform);
-            resourceObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(GlobalFunctions.EvenlyCenteredValueAround0(build.constructionItems.Length, i), 3.84f);
+            resourceObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(GlobalFunctions.EvenlyCenteredValueAround0(build.constructionItems.Length, i), 16.7f);
             resourceObj.GetComponent<Image>().sprite = inv.GetItemFromID(build.constructionItems[i].type).icon;
 
             ResourceAvailability _rA = resourceObj.GetComponent<ResourceAvailability>();
-            _rA.items = new Item[1];
-            _rA.invAmount = new int[1];
-            _rA.items[0] = build.constructionItems[i];
+            _rA.item = new Item();
+            _rA.invAmount = new int();
+            _rA.item = build.constructionItems[i];
             _rA.Size(20);
         }
         SetHover(false);
