@@ -16204,9 +16204,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
+  m_text: Asteroids hold a wealth of different materials that humanity finds valuable,
+    and which can be used in the construction of technology and infrastructure. Due
+    to this fact, mining asteroids would provide a useful an steady supply of resources
+    for the spacefarer program.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
   m_sharedMaterial: {fileID: -4475702383649440301, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
@@ -16233,8 +16234,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11
-  m_fontSizeBase: 11
+  m_fontSize: 10.8
+  m_fontSizeBase: 10.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -26928,7 +26929,7 @@ MonoBehaviour:
   mouseInput: {x: 0, y: 0}
   sensitivity: 1.5
   moveInput: {x: 0, y: 0}
-  speed: 1
+  speed: 8
   acceleration: 10
   rb: {fileID: 915499120}
 --- !u!136 &915499116
@@ -71399,7 +71400,7 @@ RectTransform:
   m_GameObject: {fileID: 1724581673288092609}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.815291, y: 3.770072, z: 2.545437}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1724581674103745500}
@@ -71408,8 +71409,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.3205, y: 0.00829}
-  m_SizeDelta: {x: 109.1192, y: 284.62955}
+  m_AnchoredPosition: {x: 0.3204956, y: 0.008291155}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724581673288092611
 MonoBehaviour:
@@ -71868,7 +71869,7 @@ RectTransform:
   m_GameObject: {fileID: 1724581674103745499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6119384, y: 0.2946485, z: 0.43640682}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1724581673288092610}
@@ -71876,7 +71877,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 103.36095, y: 110.76375}
+  m_AnchoredPosition: {x: 36, y: 30}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1724581674103745501
@@ -72034,9 +72035,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
+  m_text: "Name: The Sun\nRadius: 700,000 km\r\n\nThe sun is the 4.5 billion year
+    old star at the centre of our solar system and is orbited by all the planets,
+    their moons and countless asteroids. The sun is made up of primarily hydrogen
+    and helium plasma that reaches up to 15 million\xB0C at its core, where nuclear
+    fusion occurs due to the extreme temperatures and pressure. On the surface, also
+    known as the photosphere, the temperature averages around 5,500\xB0C. Its gravitational
+    pull is what keeps the rest of the solar system in place as it orbits the Milky
+    Way every 230 million years."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
   m_sharedMaterial: {fileID: -4475702383649440301, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
@@ -72063,8 +72069,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.5
-  m_fontSizeBase: 11.5
+  m_fontSize: 9.3
+  m_fontSizeBase: 9.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -72340,7 +72346,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -80}
+  m_AnchoredPosition: {x: 0, y: -72}
   m_SizeDelta: {x: 230, y: 50}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &3187307668073195057
@@ -72389,9 +72395,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. '
+  m_text: "The closest star system to us is Alpha Centauri, which is about 4 light
+    years away from our solar system. There are over 100 billion stars and solar
+    systems orbiting our galaxy, the Milky Way, around a supermassive black hole
+    in its centre. There are billions of other galaxies in the universe, the closest
+    one being the Andromeda galaxy, which is on a collision course with the Milky
+    Way that\u2019ll take 4 billion years. Only about 5% of the universe is made
+    up of normal matter, the rest of it being dark matter and dark energy, that is
+    detectable only through gravitational effects."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
   m_sharedMaterial: {fileID: -4475702383649440301, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
@@ -72418,8 +72429,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12.5
-  m_fontSizeBase: 12.5
+  m_fontSize: 9.15
+  m_fontSizeBase: 9.15
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -72907,8 +72918,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.35
-  m_fontSizeBase: 25.35
+  m_fontSize: 21.1
+  m_fontSizeBase: 21.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

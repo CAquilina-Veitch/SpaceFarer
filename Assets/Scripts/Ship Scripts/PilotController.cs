@@ -11,7 +11,7 @@ public class PilotController : MonoBehaviour
     float pitch, yaw;
 
     [SerializeField] Vector2 moveInput;
-    [SerializeField] float speed = 3;
+    [SerializeField] float speed = 8;
     [SerializeField] float acceleration = 10;
     [SerializeField] Rigidbody rb;
 
