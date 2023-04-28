@@ -1,0 +1,8 @@
+TO DO:
+Make the water treatment and cyanobacteria container only placeable next to water
+Make hydroelectric dam only switch on in specific spot
+Make icons for resources
+Update resources required for each building X
+Source new surface texture
+Change megastructure button images
+Get rid of debug
