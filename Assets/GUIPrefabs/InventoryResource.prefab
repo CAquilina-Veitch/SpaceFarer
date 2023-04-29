@@ -94,7 +94,7 @@ MonoBehaviour:
   inv: {fileID: 0}
   item:
     type: 1
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: a4fd57d46d310374894021a52daed26b, type: 3}
     num: 0
   img: {fileID: 488436941687437175}
   name: {fileID: 2983532970072759129}

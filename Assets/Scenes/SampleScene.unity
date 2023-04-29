@@ -1539,8 +1539,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 171.00002, y: -88.99999}
-  m_SizeDelta: {x: 318.5142, y: 50}
+  m_AnchoredPosition: {x: 171, y: -88.99999}
+  m_SizeDelta: {x: 326.3678, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59695085
 MonoBehaviour:
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Poster Art
+  m_text: Poster/UI Art
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
   m_sharedMaterial: {fileID: -4475702383649440301, guid: 9fdeed54895ada240ba7aa58f66e525a, type: 2}
@@ -18955,6 +18955,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
+      propertyPath: item.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: a3dcdfb9871c1c54bbd11aaaff37f7d7, type: 3}
+    - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
       propertyPath: item.type
       value: 5
       objectReference: {fileID: 0}
@@ -30119,6 +30123,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
+      propertyPath: item.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: ae97f06d687991144b0a8165f13eaf60, type: 3}
+    - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
       propertyPath: item.type
       value: 2
       objectReference: {fileID: 0}
@@ -31073,16 +31081,16 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 5
     - type: 5
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
       num: 10
     - type: 4
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 10
     - type: 3
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 5
     icon: {fileID: 21300000, guid: 48cecd57d0929e54a98a308973856eee, type: 3}
     description: Absorbs energy from the sun and turns it into electricity
@@ -31107,7 +31115,7 @@ MonoBehaviour:
           icon: {fileID: 0}
           num: 4
     prefab: {fileID: 5344460717475864621, guid: c7f0c3c0c84d1aa46b90fd7265010bf3, type: 3}
-    canBeClickedFromStart: 0
+    canBeClickedFromStart: 1
     instantiationAction:
       m_PersistentCalls:
         m_Calls:
@@ -31152,16 +31160,16 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 10
     - type: 2
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 10
     - type: 5
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
       num: 5
     icon: {fileID: 21300000, guid: 3af09ccf973ffd844be02a2ee25b8687, type: 3}
     description: Shoots materials off low gravity planets
@@ -31222,16 +31230,16 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 10
     - type: 2
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
       num: 5
     - type: 3
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 10
     icon: {fileID: 21300000, guid: 07f7da0a2eb464f4496537ad6c6340ab, type: 3}
     description: Bucket Excavator Excavate Rock
@@ -31310,13 +31318,13 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 2
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
       num: 5
     - type: 5
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
       num: 15
     icon: {fileID: 21300000, guid: 0b865e1ca11a1d346a3dbd6160489276, type: 3}
     description: Produces power from the flow of water
@@ -31389,16 +31397,16 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 10
     - type: 3
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 15
     - type: 5
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
       num: 5
     icon: {fileID: 21300000, guid: c4c30425804eb0048af75cf4680f76e1, type: 3}
     description: Absorbs excess nitrogen from atmosphere
@@ -31471,10 +31479,10 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 20
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 10
     icon: {fileID: 21300000, guid: f1435c8c5e772cc40b35ab1e687890f5, type: 3}
     description: Contains cyanobacteria, the basis for life on this new planet
@@ -31547,16 +31555,16 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 10
     - type: 2
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 5
     - type: 5
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
       num: 10
     icon: {fileID: 21300000, guid: 7009f4b537ebd6f4cbb844294f1a4f8a, type: 3}
     description: Seeds and waters plants
@@ -31605,19 +31613,19 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 2
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
       num: 10
     - type: 3
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 15
     - type: 5
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
       num: 20
     icon: {fileID: 21300000, guid: cee193125c6218c4e98f618527d39c39, type: 3}
     description: Produces power from the splitting of atoms
@@ -31678,13 +31686,13 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 3
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 10
     icon: {fileID: 21300000, guid: 9531c7df75f9c5640bced919160009b8, type: 3}
     description: Provides a place for colonists to sleep
@@ -31745,13 +31753,13 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 3
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 10
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 5
     icon: {fileID: 21300000, guid: 6adcb100264b2b2458c7889b7d3796dc, type: 3}
     description: Provides a place for colonists to eat
@@ -31812,13 +31820,13 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 3
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 10
     - type: 4
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 15
     icon: {fileID: 21300000, guid: e6ab309ff533e344f80ae0ee23bb99aa, type: 3}
     description: Allows for administration of new colony
@@ -31879,13 +31887,13 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 3
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 10
     icon: {fileID: 21300000, guid: e57727fb975837743a8b066a8b36bb01, type: 3}
     description: Allows for research of terraformed Venus
@@ -31946,13 +31954,13 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 3
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
       num: 5
     - type: 4
-      icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 5
     icon: {fileID: 21300000, guid: 2c5a54834a4fd35418a8607f98422e13, type: 3}
     description: Produces food for colony
@@ -32013,13 +32021,13 @@ MonoBehaviour:
     powerRequirement: 0
     constructionItems:
     - type: 1
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
       num: 15
     - type: 2
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
       num: 10
     - type: 4
-      icon: {fileID: 0}
+      icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
       num: 10
     icon: {fileID: 21300000, guid: 57eeacca9a1dccd4eb9ec627fe7ee97f, type: 3}
     description: Provides clean drinking water to colony
@@ -39880,6 +39888,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
+      propertyPath: item.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 0c132e689ed36574b81b2c451d266847, type: 3}
+    - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
       propertyPath: item.type
       value: 3
       objectReference: {fileID: 0}
@@ -40100,6 +40112,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
+      propertyPath: item.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: a4fd57d46d310374894021a52daed26b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
 --- !u!1001 &1358138951
@@ -52256,19 +52272,19 @@ MonoBehaviour:
   currentInventoryVersion: 0
   items:
   - type: 1
-    icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+    icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
     num: 0
   - type: 2
-    icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+    icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
     num: 0
   - type: 3
-    icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+    icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
     num: 0
   - type: 4
-    icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+    icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
     num: 0
   - type: 5
-    icon: {fileID: 21300000, guid: 0c56dbb2c1d9d8e438372d3245f7252a, type: 3}
+    icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
     num: 0
 --- !u!114 &1640325458
 MonoBehaviour:
@@ -52285,19 +52301,19 @@ MonoBehaviour:
   inv: {fileID: 1640325457}
   AsteroidGens:
   - type: 1
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: a4fd57d46d310374894021a52daed26b, type: 3}
     num: 1
   - type: 3
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 0c132e689ed36574b81b2c451d266847, type: 3}
     num: 1
   - type: 2
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: ae97f06d687991144b0a8165f13eaf60, type: 3}
     num: 1
   - type: 4
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 795620ab3e174a9419c9d4bb93850a81, type: 3}
     num: 1
   - type: 5
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: a3dcdfb9871c1c54bbd11aaaff37f7d7, type: 3}
     num: 1
 --- !u!1 &1654909085
 GameObject:
@@ -52810,6 +52826,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
+      propertyPath: item.icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 795620ab3e174a9419c9d4bb93850a81, type: 3}
     - target: {fileID: 2699361832148390461, guid: cf69f7887b3017646a677ca1e90119ea, type: 3}
       propertyPath: item.type
       value: 4
@@ -63344,7 +63364,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 2055493964}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
