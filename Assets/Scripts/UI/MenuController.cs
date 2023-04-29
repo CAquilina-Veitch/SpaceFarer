@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public enum MenuState { none, main, pause, settings}
+public enum MenuState { none, main, pause, settings, credits}
 
 public class MenuController : MonoBehaviour
 {
