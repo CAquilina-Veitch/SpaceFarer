@@ -13,13 +13,16 @@ public class PlaySFX : MonoBehaviour
     SoundEffectManager sfxm;
     public void PlaySoundEffect()
     {
+        if(sfxm == null)
+        {
+            sfxm = GameObject.FindGameObjectWithTag("SFXManager").GetComponent<SoundEffectManager>();
+        }
         sfxm.PlaySoundEffectWithDelay(soundID,delay);
     }
 
 
     private void OnEnable()
     {
-        sfxm = GameObject.FindGameObjectWithTag("SFXManager").GetComponent<SoundEffectManager>();
         if (playOnStart)
         {
             PlaySoundEffect();
