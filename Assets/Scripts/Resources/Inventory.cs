@@ -102,7 +102,6 @@ public class Inventory: MonoBehaviour
 
     IEnumerator GenerateItem()
     {
-        Debug.LogError("gello");
 
 
         foreach (itemType t in Gens.Keys)
@@ -127,7 +126,7 @@ public class Inventory: MonoBehaviour
 
 
 
-        Debug.Log(currentInventoryVersion);
+        //Debug.Log(currentInventoryVersion);
 
         currentInventoryVersion++;
 
@@ -146,7 +145,7 @@ public class Inventory: MonoBehaviour
 
     public void ChangeItemGeneration(Item item)
     {
-        Debug.Log($"{item.type}, {item.num}");
+        //Debug.Log($"{item.type}, {item.num}");
         if (!Gens.ContainsKey(item.type))
         {
             Gens.Add(item.type, 0);
