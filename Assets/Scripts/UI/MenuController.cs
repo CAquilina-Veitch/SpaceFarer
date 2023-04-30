@@ -29,55 +29,9 @@ public class MenuController : MonoBehaviour
         {
             menus[i].SetActive(i +1 == (int)ms);
         }
-/*
-        switch (currentMenu)
-        {
-
-
-            case MenuState.none:
-                foreach (GameObject obj in menus)
-                {
-                    obj.SetActive(false);
-                }
-                break;
-            case MenuState.main:
-                foreach (GameObject obj in menus)
-                {
-                    obj.SetActive(false);
-                }
-                break;
-            case MenuState.pause:
-                foreach (GameObject obj in menus)
-                {
-                    obj.SetActive(false);
-                }
-                break;
-            case MenuState.settings:
-                foreach (GameObject obj in menus)
-                {
-                    obj.SetActive(false);
-                }
-                menus[1].SetActive(true);
-                break;
-            default:
-                break;
-
-        }*/
     }
     public void ChangeStateFS(string toState)
     {
         ChangeState((MenuState)Enum.Parse(typeof(MenuState), toState));
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

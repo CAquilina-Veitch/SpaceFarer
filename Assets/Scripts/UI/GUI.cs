@@ -14,13 +14,6 @@ public class GUI : MonoBehaviour
     public GameObject[] MainGUIObjects;
     public GameObject[] AdditionalGUIObjects;
 
-
-
-    /*    private void OnEnable()
-        {
-            //SwitchMainGUITo(MainGUIType.GUIMenu);
-        }
-    */
     public void SwitchMainGUIToString(string to)
     {
         SwitchMainGUITo((MainGUIType)Enum.Parse(typeof(MainGUIType), to));

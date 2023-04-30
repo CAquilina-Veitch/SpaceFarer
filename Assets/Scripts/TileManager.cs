@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using TMPro;
 
 
 
@@ -37,6 +38,7 @@ public class TileManager : MonoBehaviour
 
     [Header("Tile Selection")]
     Vector2 recentTileChecked;
+    public TextMeshProUGUI[] problemWarnings;
 
 
     [Header("Draft Tile")]
@@ -204,6 +206,7 @@ public class TileManager : MonoBehaviour
                     }
                     else
                     {
+                        StartCoroutine(BuildIssue("Power"));
                         //not enough power
                     }
 
@@ -212,7 +215,9 @@ public class TileManager : MonoBehaviour
                 }
                 else
                 {
+                    
                     //not enough resources
+                    StartCoroutine(BuildIssue("Resources"));
                 }
 
 
@@ -237,7 +242,30 @@ public class TileManager : MonoBehaviour
 
         }
     }
-
+    IEnumerator BuildIssue(string problem)
+    {
+        draftMeshRenderer.material = draftMats[2];
+        int p = 0;
+        if (problem == "Power")
+        {
+            p = 0;
+        } else if (problem == "Resources")
+        {
+            p = 1;
+        }
+        float i = 1f;
+        while (i > 0)
+        {
+            problemWarnings[p].color = UnityEngine.Color.Lerp( UnityEngine.Color.clear, UnityEngine.Color.white, i);
+               i -= 1 / 30f;
+            yield return new WaitForSeconds(1 / 60f);
+        }
+        foreach(TextMeshProUGUI warn in problemWarnings)
+        {
+            warn.color = UnityEngine.Color.clear;
+        }
+        draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
+    }
     bool HasDraftPower()
     {
         return draft.building.powerRequirement <= gF.PowerLevel;
