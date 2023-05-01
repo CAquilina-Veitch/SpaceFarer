@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     gameState prePauseState;
     MenuState prePauseMenu;
+    public GameObject shipGUI;
     public GameObject playGUI;
     public GameObject gameGUI;
     bool prePauseGameMenuActive;
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
                 surfacePlayer.SetActive(false);
                 menuCamera.SetActive(true);
                 GameMenu(true);
+                shipGUI.SetActive(false);
 
                 break;
             case gameState.ship:
@@ -53,6 +55,7 @@ public class GameManager : MonoBehaviour
                 shipPilot.GetComponent<PilotController>().ShowMouse(false);
                 mC.ChangeState(MenuState.none);
                 GameMenu(false);
+                shipGUI.SetActive(true);
                 break;
             case gameState.shipGUI:
                 shipPilot.SetActive(false);
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
                 surfacePlayer.SetActive(false);
                 menuCamera.SetActive(true);
                 GameMenu(false);
+                shipGUI.SetActive(false);
                 break;
             case gameState.surface:
                 shipPilot.SetActive(false);
@@ -67,6 +71,7 @@ public class GameManager : MonoBehaviour
                 menuCamera.SetActive(false);
                 mC.ChangeState(MenuState.none);
                 GameMenu(false);
+                shipGUI.SetActive(false);
                 break;
             default:
                 break;
