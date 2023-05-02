@@ -70,7 +70,7 @@ public class Inventory: MonoBehaviour
         foreach(Item item in items)
         {
             inventory.Add(item.type, 0);
-            Debug.LogError($"Added item {item.type}");
+            Debug.Log($"Added item {item.type}");
         }
 
         foreach(Item item in items)

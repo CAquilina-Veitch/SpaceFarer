@@ -105,16 +105,16 @@ public class TileManager : MonoBehaviour
     void FixedUpdate()
     {
         draftVisual.SetActive(draft.active);
-        Debug.LogError(CurrentMouseCoord());
+        //Debug.LogError(CurrentMouseCoord());
         if (draft.active)
         {
-            Debug.Log(1);
+            //Debug.Log(1);
             draftMesh.mesh = draft.building.prefab.GetComponent<MeshFilter>().sharedMesh;
             
             
             if (draft.building.exception == buldingException.none)
             {
-                Debug.Log(2);
+                //Debug.Log(2);
                 if (recentTileChecked != CurrentMouseCoord())
                 {
                     draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
@@ -147,10 +147,10 @@ public class TileManager : MonoBehaviour
                 }
             }else if (draft.building.exception == buldingException.waterfront)
             {
-                Debug.Log(3);
+               // Debug.Log(3);
                 if (recentTileChecked != CurrentMouseCoord())
                 {
-                    Debug.Log(4);
+                    //Debug.Log(4);
                     draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
                     recentTileChecked = CurrentMouseCoord();
 
@@ -161,10 +161,6 @@ public class TileManager : MonoBehaviour
                         if (draftShapeInBounds)
                         {
                             draftShapeInBounds = inBounds(cord, BeachBounds);
-                            if (!draftShapeInBounds)
-                            {
-                                Debug.LogWarning(cord);
-                            }
                         }
                         else
                         {
@@ -172,7 +168,7 @@ public class TileManager : MonoBehaviour
                         }
 
                     }
-                    Debug.Log("5"+draftShapeInBounds);
+                   // Debug.Log("5"+draftShapeInBounds);
                     if (draftShapeInBounds)
                     {
                         draftVisual.transform.position = GlobalFunctions.coordToPoint(CurrentMouseCoord());
@@ -197,7 +193,7 @@ public class TileManager : MonoBehaviour
     }
     bool inBounds(Vector2 coord,Vector2[] bounds)
     {
-        Debug.Log(coord + "Inbounds?");
+        //Debug.Log(coord + "Inbounds?");
         return bounds[0].x <= coord.x && coord.x <= bounds[1].x && bounds[0].y <= coord.y && coord.y <= bounds[1].y;
     }
 
@@ -260,7 +256,8 @@ public class TileManager : MonoBehaviour
 
             return temp;
         }
-        else { Debug.Log("NOTHING ON MOUSE"); return Vector2.zero; }
+        else {// Debug.Log("NOTHING ON MOUSE");
+              return Vector2.zero; }
     }
 
 
@@ -271,28 +268,28 @@ public class TileManager : MonoBehaviour
     }
     void ClickedOnCoord(Vector2 Coordinate)
     {
-        Debug.LogError($"Clicked on {Coordinate}");
-        Debug.LogWarning("when you click a tile");
+        //Debug.LogError($"Clicked on {Coordinate}");
+       // Debug.LogWarning("when you click a tile");
 
         UpdateDraftActivity();
         if (draft.active)//if building type is selected.
         {
-            Debug.Log("draft is active");
+           // Debug.Log("draft is active");
             if (inBounds(CurrentMouseCoord(),buildingBounds))
             {
-                Debug.Log("Mouse in bounds");
+              //  Debug.Log("Mouse in bounds");
                 //is in playable area
                 if (checkShapeEmpty(Coordinate, buildings.GetBuildingShapeFromID(draft.building.tileShapeID)))//if there is no building overlapping the current place.
                 {
-                    Debug.Log("no overlapping build");
+                   // Debug.Log("no overlapping build");
                     if (HasDraftResources()) // there are materials to build
                     {
-                        Debug.Log("Resources");
+                        //Debug.Log("Resources");
                         if (HasDraftPower())//if there is enough power
                         {
                             if (draft.building.exception == buldingException.none)
                             {
-                                Debug.Log("no exception");
+                                //Debug.Log("no exception");
                                 bool draftShapeInBounds = true;
                                 foreach (Vector2 cord in CoordinatePositionToVectorArray(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)).ArrayMinMax())
                                 {
@@ -306,15 +303,19 @@ public class TileManager : MonoBehaviour
                                     }
 
                                 }
-                                Debug.Log("draft in bounds " + draftShapeInBounds);
+                                //Debug.Log("draft in bounds " + draftShapeInBounds);
                                 if (draftShapeInBounds)
                                 {
                                     TryPlaceBuilding(Coordinate, draft.building);
                                     ClearDraft();
                                 }
+                                else
+                                {
+                                    StartCoroutine(BuildIssue("Bounds"));
+                                }
                             }else if(draft.building.exception == buldingException.waterfront)
                             {
-                                Debug.Log("Waterfront");
+                                //Debug.Log("Waterfront");
                                 bool draftShapeInBounds = true;
                                 foreach (Vector2 cord in CoordinatePositionToVectorArray(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)).ArrayMinMax())
                                 {
@@ -328,12 +329,16 @@ public class TileManager : MonoBehaviour
                                     }
 
                                 }
-                                Debug.Log("draft in bounds " + draftShapeInBounds);
+                                //Debug.Log("draft in bounds " + draftShapeInBounds);
 
                                 if (draftShapeInBounds)
                                 {
                                     TryPlaceBuilding(Coordinate, draft.building);
                                     ClearDraft();
+                                }
+                                else
+                                {
+                                    StartCoroutine(BuildIssue("Water"));
                                 }
                             }
                             else
@@ -396,7 +401,7 @@ public class TileManager : MonoBehaviour
             //Hasnt selected a building yet
             if (!checkTileEmpty(Coordinate))//there is something to look at 
             {
-                Debug.LogError($"YOU HAVE NOW CLICKED UPPON THE TILE {TileAtCoord(Coordinate)}");
+                //Debug.LogError($"YOU HAVE NOW CLICKED UPPON THE TILE {TileAtCoord(Coordinate)}");
                 InteractCurrent();
             }
 
@@ -414,6 +419,12 @@ public class TileManager : MonoBehaviour
         } else if (problem == "Resources")
         {
             p = 1;
+        }else if (problem == "Bounds")
+        {
+            p = 2;
+        }else if (problem == "Water")
+        {
+            p = 3;
         }
         float i = 1f;
         while (i > 0)
@@ -464,11 +475,11 @@ public class TileManager : MonoBehaviour
         {
             PlaceTile(build, coord);
             build.instantiationAction.Invoke();
-            Debug.Log(" PLACED");
+           // Debug.Log(" PLACED");
         }
         else
         {
-            Debug.Log("FAILED PLACE");
+          Debug.LogError("FAILED PLACE");
         }
     }
     void PlaceTile(Building build, Vector2 coord)
@@ -479,10 +490,10 @@ public class TileManager : MonoBehaviour
 
     Tile MakeTile(Vector2 coord, Building build)
     {
-        Debug.Log($"Making tile {build}, {build.name}, at {coord}");
+        //Debug.Log($"Making tile {build}, {build.name}, at {coord}");
         GameObject tempObj = Instantiate(build.prefab, GlobalFunctions.coordToPoint(coord), Quaternion.identity, transform);
         Tile tempTile = tempObj.GetComponent<Tile>();
-        Debug.Log($"{tempObj.name}");
+        //Debug.Log($"{tempObj.name}");
         tempTile.coordinate = coord;
         tempTile.building = build;
         ClearDraft();
@@ -503,7 +514,7 @@ public class TileManager : MonoBehaviour
         draft.active = false;
         if(draft.building.name!="Empty"&&draft.building.name!= null)
         {
-            Debug.Log($"setting to true, is called {draft.building.name}");
+            //Debug.Log($"setting to true, is called {draft.building.name}");
             draft.active = true;
         }
         
