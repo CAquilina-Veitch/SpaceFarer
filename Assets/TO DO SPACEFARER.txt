@@ -1,6 +1,6 @@
 TO DO:
-Make the water treatment and cyanobacteria container only placeable next to water
-Make hydroelectric dam only switch on in specific spot
+Make the water treatment and cyanobacteria container only placeable next to water X
+Make hydroelectric dam only switch on in specific spot X
 Make icons for resources X
 Update resources required for each building X
 Source new surface texture X

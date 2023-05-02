@@ -48,7 +48,7 @@ public class TileManager : MonoBehaviour
     [SerializeField] MeshFilter draftMesh;
     [SerializeField] MeshRenderer draftMeshRenderer;
     [SerializeField] Material[] draftMats;
-
+    [SerializeField] GameObject HydroelectricDam;
 
     [Header("Tiles Information")]
 
@@ -105,26 +105,88 @@ public class TileManager : MonoBehaviour
     void FixedUpdate()
     {
         draftVisual.SetActive(draft.active);
+        Debug.LogError(CurrentMouseCoord());
         if (draft.active)
         {
+            Debug.Log(1);
             draftMesh.mesh = draft.building.prefab.GetComponent<MeshFilter>().sharedMesh;
+            
+            
             if (draft.building.exception == buldingException.none)
             {
-                draftVisual.transform.position = GlobalFunctions.coordToPoint(CurrentMouseCoord());
-                draftVisual.transform.localScale = draft.building.prefab.transform.localScale;
+                Debug.Log(2);
                 if (recentTileChecked != CurrentMouseCoord())
                 {
                     draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
                     recentTileChecked = CurrentMouseCoord();
+
+
+                    bool draftShapeInBounds = true;
+                    foreach(Vector2 cord in CoordinatePositionToVectorArray(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)).ArrayMinMax())
+                    {
+                        if (draftShapeInBounds)
+                        {
+                            draftShapeInBounds = inBounds(cord, buildingBounds);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
+                    }
+
+                    if (draftShapeInBounds)
+                    {
+                        draftVisual.transform.position = GlobalFunctions.coordToPoint(CurrentMouseCoord());
+                        draftVisual.transform.localScale = draft.building.prefab.transform.localScale;
+                    }
+
+                    
+
+
                 }
             }else if (draft.building.exception == buldingException.waterfront)
             {
-                
+                Debug.Log(3);
+                if (recentTileChecked != CurrentMouseCoord())
+                {
+                    Debug.Log(4);
+                    draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
+                    recentTileChecked = CurrentMouseCoord();
+
+
+                    bool draftShapeInBounds = true;
+                    foreach (Vector2 cord in CoordinatePositionToVectorArray(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)).ArrayMinMax())
+                    {
+                        if (draftShapeInBounds)
+                        {
+                            draftShapeInBounds = inBounds(cord, BeachBounds);
+                            if (!draftShapeInBounds)
+                            {
+                                Debug.LogWarning(cord);
+                            }
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                    }
+                    Debug.Log("5"+draftShapeInBounds);
+                    if (draftShapeInBounds)
+                    {
+                        draftVisual.transform.position = GlobalFunctions.coordToPoint(CurrentMouseCoord());
+                        draftVisual.transform.localScale = draft.building.prefab.transform.localScale;
+                    }
+
+                }
             }
             else
             {
                 //dam
-
+                draftMeshRenderer.material = draftMats[0];
+                draftVisual.transform.position = HydroelectricDam.transform.position;
+                draftVisual.transform.localScale = HydroelectricDam.transform.localScale;
             }
 
 
@@ -132,6 +194,11 @@ public class TileManager : MonoBehaviour
             
         }
             
+    }
+    bool inBounds(Vector2 coord,Vector2[] bounds)
+    {
+        Debug.Log(coord + "Inbounds?");
+        return bounds[0].x <= coord.x && coord.x <= bounds[1].x && bounds[0].y <= coord.y && coord.y <= bounds[1].y;
     }
 
     private void Update()
@@ -210,42 +277,117 @@ public class TileManager : MonoBehaviour
         UpdateDraftActivity();
         if (draft.active)//if building type is selected.
         {
-            if(buildingBounds[0].x< Coordinate.x && Coordinate.x < buildingBounds[1].x&& buildingBounds[0].y < Coordinate.y && Coordinate.y < buildingBounds[1].y)
-            {
-
-            }
             Debug.Log("draft is active");
-            if (checkShapeEmpty(Coordinate, buildings.GetBuildingShapeFromID(draft.building.tileShapeID)))//if there is no building overlapping the current place.
+            if (inBounds(CurrentMouseCoord(),buildingBounds))
             {
-                if (HasDraftResources()) // there are materials to build
+                Debug.Log("Mouse in bounds");
+                //is in playable area
+                if (checkShapeEmpty(Coordinate, buildings.GetBuildingShapeFromID(draft.building.tileShapeID)))//if there is no building overlapping the current place.
                 {
-                    if (HasDraftPower())//if there is enough power
+                    Debug.Log("no overlapping build");
+                    if (HasDraftResources()) // there are materials to build
                     {
-                        TryPlaceBuilding(Coordinate, draft.building);
-                        ClearDraft();
+                        Debug.Log("Resources");
+                        if (HasDraftPower())//if there is enough power
+                        {
+                            if (draft.building.exception == buldingException.none)
+                            {
+                                Debug.Log("no exception");
+                                bool draftShapeInBounds = true;
+                                foreach (Vector2 cord in CoordinatePositionToVectorArray(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)).ArrayMinMax())
+                                {
+                                    if (draftShapeInBounds)
+                                    {
+                                        draftShapeInBounds = inBounds(cord, buildingBounds);
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+
+                                }
+                                Debug.Log("draft in bounds " + draftShapeInBounds);
+                                if (draftShapeInBounds)
+                                {
+                                    TryPlaceBuilding(Coordinate, draft.building);
+                                    ClearDraft();
+                                }
+                            }else if(draft.building.exception == buldingException.waterfront)
+                            {
+                                Debug.Log("Waterfront");
+                                bool draftShapeInBounds = true;
+                                foreach (Vector2 cord in CoordinatePositionToVectorArray(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)).ArrayMinMax())
+                                {
+                                    if (draftShapeInBounds)
+                                    {
+                                        draftShapeInBounds = inBounds(cord, BeachBounds);
+                                    }
+                                    else
+                                    {
+                                        break;
+                                    }
+
+                                }
+                                Debug.Log("draft in bounds " + draftShapeInBounds);
+
+                                if (draftShapeInBounds)
+                                {
+                                    TryPlaceBuilding(Coordinate, draft.building);
+                                    ClearDraft();
+                                }
+                            }
+                            else
+                            {
+                                //dam
+                                TryPlaceDam(draft.building);
+                                ClearDraft();
+
+
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                
+                        }
+                        else
+                        {
+                            StartCoroutine(BuildIssue("Power"));
+                            //not enough power
+                        }
+
+
+
                     }
                     else
                     {
-                        StartCoroutine(BuildIssue("Power"));
-                        //not enough power
-                    }
 
+                        //not enough resources
+                        StartCoroutine(BuildIssue("Resources"));
+                    }
 
 
                 }
                 else
                 {
-                    
-                    //not enough resources
-                    StartCoroutine(BuildIssue("Resources"));
+                    //there is a building in here
                 }
-
-
             }
-            else
-            {
-                //there is a building in here
-            }
+            
+            
 
 
         }
@@ -311,6 +453,11 @@ public class TileManager : MonoBehaviour
         draft.active = true;
     }
 
+    void TryPlaceDam(Building build)
+    {
+        build.instantiationAction.Invoke();
+        HydroelectricDam.SetActive(true);
+    }
     void TryPlaceBuilding(Vector2 coord, Building build)
     {
         if (checkShapeEmpty(coord, buildings.GetBuildingShapeFromID(build.tileShapeID)))
