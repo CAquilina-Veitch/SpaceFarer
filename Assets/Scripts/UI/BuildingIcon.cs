@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+public enum buldingException { none,waterfront,dam}
+
 public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     Building build;
@@ -50,6 +52,7 @@ public class BuildingIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     public void Activate()
     {
         GetComponentInParent<BuildingConstructionMenu>().OptionClicked(id);
+        
     }
 
 

@@ -58,7 +58,9 @@ public class TileManager : MonoBehaviour
 
     public Dictionary<Vector2, Tile> tilePositions = new Dictionary<Vector2, Tile>();
 
-    
+    public Vector2[] buildingBounds;
+    public Vector2[] BeachBounds;
+
     Vector2[] CoordinatePositionToVectorArray(Vector2 coord, BuildingShape shape)
     {
         return GlobalFunctions.V2ArrayToCoord(coord, shape.Layout);
@@ -106,13 +108,27 @@ public class TileManager : MonoBehaviour
         if (draft.active)
         {
             draftMesh.mesh = draft.building.prefab.GetComponent<MeshFilter>().sharedMesh;
-            draftVisual.transform.position = GlobalFunctions.coordToPoint(CurrentMouseCoord());
-            draftVisual.transform.localScale = draft.building.prefab.transform.localScale;
-            if (recentTileChecked != CurrentMouseCoord())
+            if (draft.building.exception == buldingException.none)
             {
-                draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
-                recentTileChecked = CurrentMouseCoord();
+                draftVisual.transform.position = GlobalFunctions.coordToPoint(CurrentMouseCoord());
+                draftVisual.transform.localScale = draft.building.prefab.transform.localScale;
+                if (recentTileChecked != CurrentMouseCoord())
+                {
+                    draftMeshRenderer.material = checkShapeEmpty(CurrentMouseCoord(), buildings.GetBuildingShapeFromID(draft.building.tileShapeID)) ? draftMats[0] : draftMats[1];
+                    recentTileChecked = CurrentMouseCoord();
+                }
+            }else if (draft.building.exception == buldingException.waterfront)
+            {
+                
             }
+            else
+            {
+                //dam
+
+            }
+
+
+            
             
         }
             
@@ -194,6 +210,10 @@ public class TileManager : MonoBehaviour
         UpdateDraftActivity();
         if (draft.active)//if building type is selected.
         {
+            if(buildingBounds[0].x< Coordinate.x && Coordinate.x < buildingBounds[1].x&& buildingBounds[0].y < Coordinate.y && Coordinate.y < buildingBounds[1].y)
+            {
+
+            }
             Debug.Log("draft is active");
             if (checkShapeEmpty(Coordinate, buildings.GetBuildingShapeFromID(draft.building.tileShapeID)))//if there is no building overlapping the current place.
             {

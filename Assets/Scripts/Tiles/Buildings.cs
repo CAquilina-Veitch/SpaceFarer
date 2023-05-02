@@ -35,6 +35,7 @@ public struct Building
     public bool canBeClickedFromStart;
 
     public UnityEvent instantiationAction;
+    public buldingException exception;
 }
 
 
