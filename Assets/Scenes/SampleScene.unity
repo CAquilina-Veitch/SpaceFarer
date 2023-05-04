@@ -3693,6 +3693,7 @@ GameObject:
   - component: {fileID: 112277839}
   - component: {fileID: 112277838}
   - component: {fileID: 112277841}
+  - component: {fileID: 112277842}
   m_Layer: 5
   m_Name: Skyhook V Megastructure Icon
   m_TagString: Untagged
@@ -3880,6 +3881,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &112277842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112277836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 0}
+    num: 10
+  - type: 4
+    icon: {fileID: 0}
+    num: 5
+  - type: 2
+    icon: {fileID: 0}
+    num: 5
+  - type: 5
+    icon: {fileID: 0}
+    num: 10
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Picks up low orbit payloads and accelerate them into space
 --- !u!1 &116631792
 GameObject:
   m_ObjectHideFlags: 0
@@ -6882,6 +6911,7 @@ GameObject:
   - component: {fileID: 188579431}
   - component: {fileID: 188579430}
   - component: {fileID: 188579433}
+  - component: {fileID: 188579434}
   m_Layer: 5
   m_Name: Mass Driver Megastructure Icon
   m_TagString: Untagged
@@ -7081,6 +7111,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &188579434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188579428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
+    num: 10
+  - type: 4
+    icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
+    num: 5
+  - type: 3
+    icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
+    num: 10
+  - type: 2
+    icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
+    num: 5
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Sends objects off low gravity planetary bodies
 --- !u!1 &193113347
 GameObject:
   m_ObjectHideFlags: 0
@@ -8201,6 +8259,7 @@ GameObject:
   - component: {fileID: 211636879}
   - component: {fileID: 211636878}
   - component: {fileID: 211636881}
+  - component: {fileID: 211636882}
   m_Layer: 5
   m_Name: Skyhook E Megastructure Icon
   m_TagString: Untagged
@@ -8412,6 +8471,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &211636882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211636876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 0}
+    num: 10
+  - type: 4
+    icon: {fileID: 0}
+    num: 5
+  - type: 2
+    icon: {fileID: 0}
+    num: 5
+  - type: 5
+    icon: {fileID: 0}
+    num: 10
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Picks up low orbit payloads and accelerate them into space
 --- !u!1 &214607273
 GameObject:
   m_ObjectHideFlags: 0
@@ -16394,6 +16481,7 @@ GameObject:
   - component: {fileID: 429075438}
   - component: {fileID: 429075437}
   - component: {fileID: 429075440}
+  - component: {fileID: 429075441}
   m_Layer: 5
   m_Name: Mining Equipment Megastructure Button Icon
   m_TagString: Untagged
@@ -16605,6 +16693,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &429075441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429075435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 0}
+    num: 5
+  - type: 4
+    icon: {fileID: 0}
+    num: 10
+  - type: 3
+    icon: {fileID: 0}
+    num: 5
+  - type: 2
+    icon: {fileID: 0}
+    num: 10
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Mines resources for the Spacefarer Program
 --- !u!1 &429861033
 GameObject:
   m_ObjectHideFlags: 0
@@ -18225,6 +18341,7 @@ GameObject:
   - component: {fileID: 485676687}
   - component: {fileID: 485676686}
   - component: {fileID: 485676689}
+  - component: {fileID: 485676690}
   m_Layer: 5
   m_Name: Skyhook Megastructure Icon
   m_TagString: Untagged
@@ -18412,6 +18529,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &485676690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485676684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 0}
+    num: 10
+  - type: 4
+    icon: {fileID: 0}
+    num: 5
+  - type: 2
+    icon: {fileID: 0}
+    num: 5
+  - type: 5
+    icon: {fileID: 0}
+    num: 10
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Picks up low orbit payloads and accelerate them into space
 --- !u!1 &487023418
 GameObject:
   m_ObjectHideFlags: 0
@@ -19925,6 +20070,7 @@ GameObject:
   - component: {fileID: 546324886}
   - component: {fileID: 546324885}
   - component: {fileID: 546324888}
+  - component: {fileID: 546324889}
   m_Layer: 5
   m_Name: Mass Driver Megastructure Icon
   m_TagString: Untagged
@@ -20136,6 +20282,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &546324889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546324883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 0}
+    num: 10
+  - type: 4
+    icon: {fileID: 0}
+    num: 5
+  - type: 3
+    icon: {fileID: 0}
+    num: 10
+  - type: 2
+    icon: {fileID: 0}
+    num: 5
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Sends objects off low gravity planetary bodies
 --- !u!1 &553672010
 GameObject:
   m_ObjectHideFlags: 0
@@ -20284,6 +20458,7 @@ GameObject:
   - component: {fileID: 553837770}
   - component: {fileID: 553837769}
   - component: {fileID: 553837772}
+  - component: {fileID: 553837773}
   m_Layer: 5
   m_Name: Power Source Megastructure Button Icon
   m_TagString: Untagged
@@ -20495,6 +20670,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &553837773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553837767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
+    num: 10
+  - type: 4
+    icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
+    num: 5
+  - type: 3
+    icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
+    num: 5
+  - type: 5
+    icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
+    num: 10
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Supplies power for structures built
 --- !u!1 &561282717
 GameObject:
   m_ObjectHideFlags: 0
@@ -29575,13 +29778,10 @@ MonoBehaviour:
   cost:
   - type: 1
     icon: {fileID: 0}
-    num: 1
-  - type: 3
-    icon: {fileID: 0}
-    num: 3
+    num: 30
   windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
   resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
-  Description: 
+  Description: Giant mirror that deflects a majority of light away from Venus' surface
 --- !u!1 &877779267
 GameObject:
   m_ObjectHideFlags: 0
@@ -37473,6 +37673,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f185528b9ad4aa1458bbe1d1546afacd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8ed61b724734b354984b51d62bdcf404, type: 2}
     - target: {fileID: 919132149155446097, guid: f185528b9ad4aa1458bbe1d1546afacd, type: 3}
       propertyPath: m_Name
       value: Venus Megastructure Monitor
@@ -39570,6 +39774,7 @@ GameObject:
   - component: {fileID: 1185024091}
   - component: {fileID: 1185024090}
   - component: {fileID: 1185024093}
+  - component: {fileID: 1185024094}
   m_Layer: 5
   m_Name: Mass Driver E Megastructure Icon
   m_TagString: Untagged
@@ -39769,6 +39974,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &1185024094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1185024088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 0}
+    num: 10
+  - type: 4
+    icon: {fileID: 0}
+    num: 5
+  - type: 3
+    icon: {fileID: 0}
+    num: 10
+  - type: 2
+    icon: {fileID: 0}
+    num: 5
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Sends objects off low gravity planetary bodies
 --- !u!1 &1189474483
 GameObject:
   m_ObjectHideFlags: 0
@@ -44514,7 +44747,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 22331d679d6da46408fc5af9d6d813e4, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22331d679d6da46408fc5af9d6d813e4, type: 3}
       propertyPath: m_LocalScale.x
@@ -45795,6 +46028,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f185528b9ad4aa1458bbe1d1546afacd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78dcdf960ebc9814186f689bd92c2e49, type: 2}
     - target: {fileID: 919132149155446097, guid: f185528b9ad4aa1458bbe1d1546afacd, type: 3}
       propertyPath: m_Name
       value: Venus Monitor
@@ -46798,7 +47035,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 74bc5c661370c424ea08b6ce0f260e31, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74bc5c661370c424ea08b6ce0f260e31, type: 3}
       propertyPath: m_LocalScale.x
@@ -47182,7 +47419,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 79140d43ef08eab48b91eec8133e3079, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 79140d43ef08eab48b91eec8133e3079, type: 3}
       propertyPath: m_LocalScale.x
@@ -55939,7 +56176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e2e2a3edc5edcb049a85f584000a5c07, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1736e58df8046ce4f860cebc27a029ca, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -57643,19 +57880,19 @@ MonoBehaviour:
   items:
   - type: 1
     icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
-    num: 0
+    num: 25
   - type: 2
     icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
-    num: 0
+    num: 15
   - type: 3
     icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
-    num: 0
+    num: 10
   - type: 4
     icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
-    num: 0
+    num: 20
   - type: 5
     icon: {fileID: 21300000, guid: b68b070eb4f8dc94291ce9de280b1132, type: 3}
-    num: 0
+    num: 10
 --- !u!114 &1640325458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58634,6 +58871,7 @@ GameObject:
   - component: {fileID: 1717380100}
   - component: {fileID: 1717380099}
   - component: {fileID: 1717380102}
+  - component: {fileID: 1717380103}
   m_Layer: 5
   m_Name: Mining Equipment Megastructure Button Icon
   m_TagString: Untagged
@@ -58845,6 +59083,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &1717380103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717380097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 21300000, guid: 9a535259ecf30d04db92444399736bf7, type: 3}
+    num: 5
+  - type: 4
+    icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
+    num: 10
+  - type: 3
+    icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
+    num: 5
+  - type: 2
+    icon: {fileID: 21300000, guid: ba4f77399d0d18246b03d69997fb115b, type: 3}
+    num: 10
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Mines resources for the Spacefarer Program
 --- !u!1 &1718131302
 GameObject:
   m_ObjectHideFlags: 0
@@ -70333,6 +70599,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f185528b9ad4aa1458bbe1d1546afacd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9fbb33966ad14ce4d9f1c4ce90bf0431, type: 2}
     - target: {fileID: 919132149155446097, guid: f185528b9ad4aa1458bbe1d1546afacd, type: 3}
       propertyPath: m_Name
       value: Probing Monitor
@@ -76820,6 +77090,7 @@ GameObject:
   - component: {fileID: 2127526487}
   - component: {fileID: 2127526486}
   - component: {fileID: 2127526489}
+  - component: {fileID: 2127526490}
   m_Layer: 5
   m_Name: Power Source Megastructure Button Icon
   m_TagString: Untagged
@@ -77031,6 +77302,34 @@ MonoBehaviour:
   soundID: click1
   delay: 0
   playOnStart: 0
+--- !u!114 &2127526490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127526484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646b6029d14315845a7a1f75721a972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost:
+  - type: 1
+    icon: {fileID: 0}
+    num: 10
+  - type: 4
+    icon: {fileID: 0}
+    num: 5
+  - type: 3
+    icon: {fileID: 0}
+    num: 5
+  - type: 5
+    icon: {fileID: 0}
+    num: 10
+  windowPrefab: {fileID: 8937079642488634567, guid: 1f2dfbc0b9cd60142b2ef282b637ba14, type: 3}
+  resourceImagePrefab: {fileID: 1181017797127052378, guid: d4909cdf5fb6dd24289831a8d62c0605, type: 3}
+  Description: Supplies power for structures built
 --- !u!1 &2128655784
 GameObject:
   m_ObjectHideFlags: 0
