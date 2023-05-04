@@ -57965,7 +57965,7 @@ MonoBehaviour:
     num: 15
   - type: 3
     icon: {fileID: 21300000, guid: 6a7b54d6691bbc34996a0725c062604a, type: 3}
-    num: 10
+    num: 20
   - type: 4
     icon: {fileID: 21300000, guid: 856e28ff37f0b1f40b948f61669a8b31, type: 3}
     num: 20
