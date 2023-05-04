@@ -70,6 +70,10 @@ public class MegaStructureOption : MonoBehaviour, IPointerEnterHandler, IPointer
         if (hasEnough)
         {
             buildEvent.Invoke();
+            foreach(Item it in cost)
+            {
+                inv.TryChangeItems(it.type, -it.num);
+            }
         }
     }
 

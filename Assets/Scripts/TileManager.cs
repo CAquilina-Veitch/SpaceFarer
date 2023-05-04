@@ -474,6 +474,11 @@ public class TileManager : MonoBehaviour
         if (checkShapeEmpty(coord, buildings.GetBuildingShapeFromID(build.tileShapeID)))
         {
             PlaceTile(build, coord);
+            foreach(Item it in build.constructionItems)
+            {
+                inv.TryChangeItems(it.type, -it.num);
+            }
+            
             build.instantiationAction.Invoke();
            // Debug.Log(" PLACED");
         }

@@ -48,8 +48,6 @@ public class Inventory: MonoBehaviour
 
 
 
-
-
     public List<Item> items;
 
     public Item GetItemFromID(itemType type)
@@ -73,9 +71,9 @@ public class Inventory: MonoBehaviour
             Debug.Log($"Added item {item.type}");
         }
 
-        foreach(Item item in items)
+        for (int i = 0; i < items.Count; i++)
         {
-            //TryChangeItems(item.type,maxItemStackCapacity);
+            TryChangeItems(items[i].type, items[i].num);
         }
         StartCoroutine(GenerateItem());
     }
