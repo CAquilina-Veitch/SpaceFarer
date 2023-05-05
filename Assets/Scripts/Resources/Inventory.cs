@@ -212,14 +212,5 @@ public class Inventory: MonoBehaviour
             inventory[ID.type] += ID.num;
         }
     }
-    private void FixedUpdate()
-    {
-        if (Input.GetKey(KeyCode.Backslash))
-        {
-            for (int i = 0; i < items.Count; i++)
-            {
-                TryChangeItems(items[i].type, 1000);
-            }
-        }
-    }
+
 }
