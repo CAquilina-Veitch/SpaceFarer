@@ -33,6 +33,7 @@ public class BuildingConstructionMenu : MonoBehaviour
     private void OnEnable()
     {
         initiate();
+        maxScrollDistance = 2400 / 1920 * Screen.width + 400;
     }
 
     void initiate()
